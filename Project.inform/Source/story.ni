@@ -1546,7 +1546,7 @@ Sphinx is a woman. She is in Northwest Path. The description is "She towers abov
 
 
 [riddles]	
-Instead of talking to sphinx:
+Instead of talking to sphinx: 
 	if Answer1 is not in blackbox:
 		say "'Um, hello?' The sphinx looks at you emotionlessly.[line break]'I have riddles of three,' she says. 'Answer them all, and ye shall be free.' [line break]'Well, okay-'[line break]'But, fail simply one, and ye shall be none.' Attempt her riddles?";
 		if player consents:
@@ -1555,7 +1555,7 @@ Instead of talking to sphinx:
 		otherwise:
 			say "You decline her invite.";
 	if Answer1 is in blackbox and Answer2 is not in blackbox:
-		say "'What force and strength cannot get through,[line break]I with a simple action can do.[line break]Many a man would stand,[line break]barred from their abode,[line break]were I not held in their hand.'";
+		say "'What force and strength cannot get through,[line break]I with a simple action I can do.[line break]Many a man would stand,[line break]barred from their abode,[line break]were I not held in their hand.'";
 	if Answer2 is in blackbox and Answer3 is not in blackbox:
 		say "'I always tell the truth. I show off everything that I see. I come in many shapes and sizes, but I am always flat. I hang and lean off of walls.'"
 		
@@ -1746,22 +1746,47 @@ After going to Cave2 when Cave2 is unvisited:
 		say "You continue into the darkness of the cave, and come upon a giant, floor-to-ceiling steel gate."
 
 [Steel Gate]
-Steel Gate is a door. It is locked and lockable. It is west of Cave2.
-Instead of opening steel gate when steel gate is locked:
-	say "You rattle the cold bars, but the gate is locked."
+Steel Gate is a door. It is locked and lockable. It is west of Cave2. The description is "A floor-to-ceiling barred steel door."
+Instead of opening steel gate:
+	if steel gate is locked:
+		say "You rattle the cold bars, but the gate is locked.";
+	if steel gate is unlocked:
+		say "With a heave you push the heavy gate open. Flakes of rust fall down around you.";
+		now player is in Empty Room.
+
 
 [Empty Room]
-Empty Room is a room. It is west of Steel Gate.
+Empty Room is a room. It is west of Steel Gate. "The gate opens up to a large, empty room. The walls are lined with flickering blue fire torches. To the north the shadow of a spiral staircase winds it's way into the darkness with only the flickering of the magic fire to light the steps. Each footfall echoes."
+Empty-Room Walls are scenery. Understand "walls" or "wall" as Empty-Room Walls. The description is "Very cold and slightly damp to the touch. Abandoned spiderwebs and moss cover the corners."
 
 [Spiral Staircase]
-Spiral Staircase is a door. It is north of Empty Room.
+Spiral Staircase is a door. It is unlocked. It is north of Empty Room.
+Understand "staircase" as Spiral Staircase.
+Instead of examining Spiral Staircase:
+	say "Hundreds of old stone steps spiral tightly upward."
 
 [Portal Chamber]
-Portal Chamber is a room. It is north of Spiral Staircase. 
+Portal Chamber is a room. It is north of Spiral Staircase. "A medium sized room lit by rows of blue fire torches and a large purple portal to the north. A large gold cauldron sits ontop of a green flame in the center of the room. A tall wizard is burrowing his nose into an old leather bound book, muttering an ancient language to himself."
+Grand Wizard is a man. He is in Portal Chamber. The description is "A tall and dangeriously skinny wizard with a bad slouch and a brilliant blue robe. His wand is long and full of knotts."
 
 [Portal]
+Defeated is a thing.
+Red Beryl is a thing. The description is "The most valuable stone known to man. Aka 'red emerald' or 'scarlet emerald', and chemically similar to both emerals and aquamarines though considerably more rare. This particular specimen appears to be about two carats worth; approximately 20 grand."
 Portal is a room. It is north of Portal Chamber.
-[Instead of entering Portal room when the sorcer is not defeated: say "the sorcer stops you from entering the portal" if player doens't have stone: "say, aren't you forgetting something"(the stone)]
+[Instead of entering Portal when the sorcer is not defeated: say "the sorcer stops you from entering the portal" if player doens't have stone: "say, aren't you forgetting something"(the stone)]
+Instead of entering Portal:
+	if Defeated is in BlackBox:
+		if player has Red Beryl:
+			say "The portal looms before you, yes. You have the Red Beryl and the possibility of forever with Elily, yes. But what about the Mer Princess? What about life with her- life in the Mer Kingdom. A life of fame and fourtune and respect. Are you sure you want to enter the portal and leave all of that behind, forever?";
+			if player consents:
+				say "Pushing aside your thoughts of Mer City you step forward and into the swirling purple and silver portal. It feels cold on your skin, and suddenly you feel yourself in a vaccuum, gasping for air that isn't there.";
+				now player is in Abandoned Toolshed;
+			otherwise:
+				say "".
+				
+
+[Abandoned Toolshed]
+Abandoned Toolshed is a room. "You fall face down onto the floor of the dirty floor of a tiny toolshed. The portal above you 
 
 
 

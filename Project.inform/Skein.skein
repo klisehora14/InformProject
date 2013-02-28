@@ -11,7 +11,7 @@ You&apos;ve planned a wonderful camping trip with your girlfriend. She&apos;s de
 
 Project
 The Campfire by Kapri Lisehora
-Release 1 / Serial number 130227 / Inform 7 build 6G60 (I6/v6.32 lib 6/12N) SD
+Release 1 / Serial number 130228 / Inform 7 build 6G60 (I6/v6.32 lib 6/12N) SD
 
 Campfire
 It&apos;s night, but the fire just burned out and you both are getting cold. Your tent is in a grassy clearing. To the north are the woods, to the east a stream, and the west a rocky cliff. A mysterious cabin is to your south. In your tent there&apos;s a cooler, a backpack, and two sleeping bags.
@@ -20,13 +20,12 @@ You can see a cooler (closed), a backpack (closed) and sleeping bags here.
 
 &gt;</result>
     <played>YES</played>
-    <changed>NO</changed>
+    <changed>YES</changed>
     <temporary score="4">NO</temporary>
     <children>
       <child nodeId="node-0x5882450" />
       <child nodeId="node-0x58834f0" />
       <child nodeId="node-0x5882ed0" />
-      <child nodeId="node-0x5882300" />
       <child nodeId="node-0x5883800" />
       <child nodeId="node-0x58821b0" />
       <child nodeId="node-0x587ee80" />
@@ -6264,35 +6263,6 @@ You can see an oak door and a Master lock here.
     <played>YES</played>
     <changed>YES</changed>
     <temporary score="133">YES</temporary>
-  </item>
-  <item nodeId="node-0x5882300">
-    <command xml:space="preserve"></command>
-    <result xml:space="preserve">I beg your pardon?
-
-&gt;</result>
-    <played>YES</played>
-    <changed>YES</changed>
-    <temporary score="4">YES</temporary>
-    <children>
-      <child nodeId="node-0x5882370" />
-    </children>
-  </item>
-  <item nodeId="node-0x5882370">
-    <command xml:space="preserve">talk to</command>
-    <result xml:space="preserve">(yourself)
-&gt;</result>
-    <played>YES</played>
-    <changed>YES</changed>
-    <temporary score="4">YES</temporary>
-    <children>
-      <child nodeId="node-0x58823e0" />
-    </children>
-  </item>
-  <item nodeId="node-0x58823e0">
-    <command xml:space="preserve">talk to player</command>
-    <played>YES</played>
-    <changed>YES</changed>
-    <temporary score="3">YES</temporary>
   </item>
   <item nodeId="node-0x5882ed0">
     <command xml:space="preserve">gonear northeast path</command>
