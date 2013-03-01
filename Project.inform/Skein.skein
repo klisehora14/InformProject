@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Skein rootNode="node-0x587d690" xmlns="http://www.logicalshift.org.uk/IF/Skein">
   <generator>Zoom</generator>
-  <activeNode nodeId="node-0x587d690" />
+  <activeNode nodeId="node-0xc3718a0" />
   <item nodeId="node-0x587d690">
     <command xml:space="preserve">- start -</command>
     <result xml:space="preserve">
@@ -9,8 +9,8 @@
 
 You&apos;ve planned a wonderful camping trip with your girlfriend. She&apos;s depending on you to make the experience memorable, but everything keeps going wrong for you.
 
-Project
-The Campfire by Kapri Lisehora
+An Experience
+The Beginning by Kapri Lisehora
 Release 1 / Serial number 130228 / Inform 7 build 6G60 (I6/v6.32 lib 6/12N) SD
 
 Campfire
@@ -21,7 +21,7 @@ You can see a cooler (closed), a backpack (closed) and sleeping bags here.
 &gt;</result>
     <played>YES</played>
     <changed>YES</changed>
-    <temporary score="4">NO</temporary>
+    <temporary score="65">NO</temporary>
     <children>
       <child nodeId="node-0x5882450" />
       <child nodeId="node-0x58834f0" />
@@ -435,18 +435,841 @@ You see nothing special about Fire.
   </item>
   <item nodeId="node-0x587e0b0">
     <command xml:space="preserve">gonear unicorn</command>
-    <result xml:space="preserve">Fifth Trail
+    <result xml:space="preserve">Which do you mean, Unicorn or Unicorn Hair?
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0x587e120" />
+      <child nodeId="node-0x580fbb0" />
+    </children>
+  </item>
+  <item nodeId="node-0x580fbb0">
+    <command xml:space="preserve">gonear unicorn</command>
+    <result xml:space="preserve">Which do you mean, Unicorn or Unicorn Hair?
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0x5829fd0" />
+    </children>
+  </item>
+  <item nodeId="node-0x5829fd0">
+    <command xml:space="preserve">restart</command>
+    <result xml:space="preserve">Are you sure you want to restart? </result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc38b610" />
+    </children>
+  </item>
+  <item nodeId="node-0xc38b610">
+    <command xml:space="preserve">y</command>
+    <result xml:space="preserve">
+
+
+You&apos;ve planned a wonderful camping trip with your girlfriend. She&apos;s depending on you to make the experience memorable, but everything keeps going wrong for you.
+
+An Experience
+The Beginning by Kapri Lisehora
+Release 1 / Serial number 130228 / Inform 7 build 6G60 (I6/v6.32 lib 6/12N) SD
+
+Campfire
+It&apos;s night, but the fire just burned out and you both are getting cold. Your tent is in a grassy clearing. To the north are the woods, to the east a stream, and the west a rocky cliff. A mysterious cabin is to your south. In your tent there&apos;s a cooler, a backpack, and two sleeping bags.
+
+You can see a cooler (closed), a backpack (closed) and sleeping bags here.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0x585c490" />
+    </children>
+  </item>
+  <item nodeId="node-0x585c490">
+    <command xml:space="preserve">purloin bottled water</command>
+    <result xml:space="preserve">[Purloined.]
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xbd05d20" />
+    </children>
+  </item>
+  <item nodeId="node-0xbd05d20">
+    <command xml:space="preserve">drink water</command>
+    <result xml:space="preserve">The water tastes fine to you, so you give your girlfriend a reassuring smile. She takes a sip.
+
+[Your score has just gone up by one point.]
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0x5802ca0" />
+    </children>
+  </item>
+  <item nodeId="node-0x5802ca0">
+    <command xml:space="preserve">purloin soup</command>
+    <result xml:space="preserve">[Purloined.]
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xdbb2640" />
+    </children>
+  </item>
+  <item nodeId="node-0xdbb2640">
+    <command xml:space="preserve">eat soup</command>
+    <result xml:space="preserve">Apparently you have less class than your girlfriend. You need to cook this first.
+
+[Your score has just gone up by one point.]
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc3c34c0" />
+    </children>
+  </item>
+  <item nodeId="node-0xc3c34c0">
+    <command xml:space="preserve">cook soup</command>
+    <result xml:space="preserve">You need to light a fire to cook something.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0x5731910" />
+    </children>
+  </item>
+  <item nodeId="node-0x5731910">
+    <command xml:space="preserve">light fire</command>
+    <result xml:space="preserve">This dangerous act would achieve little.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc3c6e00" />
+    </children>
+  </item>
+  <item nodeId="node-0xc3c6e00">
+    <command xml:space="preserve">purloin branches</command>
+    <result xml:space="preserve">[Purloined.]
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0x58c9580" />
+    </children>
+  </item>
+  <item nodeId="node-0x58c9580">
+    <command xml:space="preserve">light branches</command>
+    <result xml:space="preserve">[Your score has just gone up by one point.]
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0x572a640" />
+    </children>
+  </item>
+  <item nodeId="node-0x572a640">
+    <command xml:space="preserve">cook soup</command>
+    <result xml:space="preserve">The Soup is now cooked.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xdb83be0" />
+    </children>
+  </item>
+  <item nodeId="node-0xdb83be0">
+    <command xml:space="preserve">eat soup</command>
+    <result xml:space="preserve">The soup singes your tongue, but you&apos;re grateful. You fear if it was cooler you&apos;d be able to taste the cabin in it. (I hope you have something to wash this down!)
+
+You survived the camping trip! However, your girlfriend isn&apos;t very happy with you. You promised her a wonderful weekend, but there was literally nothing wonderful about it. You fed her sketchy soup that you stole from a cabin that you broke into, for heaven&apos;s sake!
+But that was last weekend. It&apos;s Saturday morning, and you&apos;re in the Marketplace. You want to make it up to your girl, but you&apos;re not quite sure how. I guess the first thing would be to stop calling her &quot;girl&quot; or &quot;girlfriend&quot;. She has a name. It&apos;s Elily. Now, look around. Maybe you&apos;ll see something to inspire you. (remember, NW, SW, NE and SE are directions)
+Marketplace
+You are in the center of the Marketplace. Look around to see where you want to go. If you get lost, head over to the General Store for a map.
+
+[Your score has just gone up by one point.]
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xbd3bef0" />
+    </children>
+  </item>
+  <item nodeId="node-0xbd3bef0">
+    <command xml:space="preserve">nw</command>
+    <result xml:space="preserve">
+General Store
+The General Store was here first. It has several little things on the front desk.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xbd053d0" />
+    </children>
+  </item>
+  <item nodeId="node-0xbd053d0">
+    <command xml:space="preserve">x front desk</command>
+    <result xml:space="preserve">On the counter are many different boxes selling little things: matches, lighters, and town maps.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0x2d9f70" />
+    </children>
+  </item>
+  <item nodeId="node-0x2d9f70">
+    <command xml:space="preserve">buy map</command>
+    <result xml:space="preserve">Why don&apos;t you try to take that instead.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xbd66890" />
+    </children>
+  </item>
+  <item nodeId="node-0xbd66890">
+    <command xml:space="preserve">take map</command>
+    <result xml:space="preserve">You can&apos;t steal this! It costs a Five Coin Piece. Perhaps you have some money in the bank.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc37c500" />
+    </children>
+  </item>
+  <item nodeId="node-0xc37c500">
+    <command xml:space="preserve">se</command>
+    <result xml:space="preserve">
+Marketplace
+You are in the center of the Marketplace. Look around to see where you want to go. If you get lost, head over to the General Store for a map.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0x5804360" />
+    </children>
+  </item>
+  <item nodeId="node-0x5804360">
+    <command xml:space="preserve">ne</command>
+    <result xml:space="preserve">
+Park
+A lovely little park. It has a few tall trees and a picnic bench. It looks like someone abandoned their picnic here.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xbd494f0" />
+    </children>
+  </item>
+  <item nodeId="node-0xbd494f0">
+    <command xml:space="preserve">x picnic</command>
+    <result xml:space="preserve">It appears as if a family abandoned their picnic. There&apos;s a basket, some trash, and the tablecloth.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc3a4090" />
+    </children>
+  </item>
+  <item nodeId="node-0xc3a4090">
+    <command xml:space="preserve">take tablecloth</command>
+    <result xml:space="preserve">You fold up the blanket and throw it over your shoulder. As you do so, a key falls out from between the folds.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc392b50" />
+    </children>
+  </item>
+  <item nodeId="node-0xc392b50">
+    <command xml:space="preserve">i</command>
+    <result xml:space="preserve">You are carrying:
+  Simple Key
+  Picnic Blanket
+  Wallet (closed)
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0x2dffe0" />
+    </children>
+  </item>
+  <item nodeId="node-0x2dffe0">
+    <command xml:space="preserve">open wallet</command>
+    <result xml:space="preserve">You open your wallet, only to see that it is empty.
+
+You open Wallet.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0x514720" />
+    </children>
+  </item>
+  <item nodeId="node-0x514720">
+    <command xml:space="preserve">put key in wallet</command>
+    <result xml:space="preserve">You put Simple Key into Wallet.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xbd079a0" />
+    </children>
+  </item>
+  <item nodeId="node-0xbd079a0">
+    <command xml:space="preserve">take key out of wallet</command>
+    <result xml:space="preserve">I only understood you as far as wanting to take Simple Key.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0x2cc280" />
+    </children>
+  </item>
+  <item nodeId="node-0x2cc280">
+    <command xml:space="preserve">sw</command>
+    <result xml:space="preserve">
+Marketplace
+You are in the center of the Marketplace. Look around to see where you want to go. If you get lost, head over to the General Store for a map.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xbdcc4e0" />
+    </children>
+  </item>
+  <item nodeId="node-0xbdcc4e0">
+    <command xml:space="preserve">sw</command>
+    <result xml:space="preserve">You climb the stone steps and enter the bank, looking around. The teller looks up at you.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xdbae5a0" />
+    </children>
+  </item>
+  <item nodeId="node-0xdbae5a0">
+    <command xml:space="preserve">x teller</command>
+    <result xml:space="preserve">A simple fellow appearing to be about 35. He&apos;s wearing a blue collard shirt and a paisley tie.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xdb6b1d0" />
+    </children>
+  </item>
+  <item nodeId="node-0xdb6b1d0">
+    <command xml:space="preserve">take shirt</command>
+    <result xml:space="preserve">That seems to belong to the teller.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0x58b0540" />
+    </children>
+  </item>
+  <item nodeId="node-0x58b0540">
+    <command xml:space="preserve">take tie</command>
+    <result xml:space="preserve">That seems to belong to the teller.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc35db00" />
+    </children>
+  </item>
+  <item nodeId="node-0xc35db00">
+    <command xml:space="preserve">talk to teller</command>
+    <result xml:space="preserve">Hello, I&apos;m Wade-&quot;
+
+&quot;I know who you are. Do you have your key?&quot; You rummage through your pockets, but come up empty. &quot;No, I must have dropped it in the park or something.&quot; The teller is unamused. &quot;I can&apos;t open your vault unless you have the key. Come back after you find it.&quot;
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc31a2e0" />
+    </children>
+  </item>
+  <item nodeId="node-0xc31a2e0">
+    <command xml:space="preserve">i</command>
+    <result xml:space="preserve">You are carrying:
+  Picnic Blanket
+  Wallet (open)
+    Simple Key
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0x56e7600" />
+    </children>
+  </item>
+  <item nodeId="node-0x56e7600">
+    <command xml:space="preserve">drop simple key</command>
+    <result xml:space="preserve">You haven&apos;t got that.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xbd6f980" />
+    </children>
+  </item>
+  <item nodeId="node-0xbd6f980">
+    <command xml:space="preserve">open vault 316 with simple key</command>
+    <result xml:space="preserve">You can&apos;t see any such thing.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0x5826160" />
+    </children>
+  </item>
+  <item nodeId="node-0x5826160">
+    <command xml:space="preserve">purloin simple key</command>
+    <result xml:space="preserve">[Purloined.]
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc313210" />
+    </children>
+  </item>
+  <item nodeId="node-0xc313210">
+    <command xml:space="preserve">i</command>
+    <result xml:space="preserve">You are carrying:
+  Simple Key
+  Picnic Blanket
+  Wallet (open but empty)
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0x56c7000" />
+    </children>
+  </item>
+  <item nodeId="node-0x56c7000">
+    <command xml:space="preserve">talk to teller</command>
+    <result xml:space="preserve">&quot;Hello, I&apos;m Wade-&quot;
+
+&quot;I know who you are. Do you have your key?&quot; You rummage through your pockets and pull out the key you found at the park. &quot;Ah, very good, sir. Right this way.&quot; The teller leads you to your vault, &quot;vault 316,&quot; then returns to the front of the bank.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc33a890" />
+    </children>
+  </item>
+  <item nodeId="node-0xc33a890">
+    <command xml:space="preserve">open vault with key</command>
+    <result xml:space="preserve">You unlock Vault 316.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xdb82b80" />
+    </children>
+  </item>
+  <item nodeId="node-0xdb82b80">
+    <command xml:space="preserve">x cault</command>
+    <result xml:space="preserve">You can&apos;t see any such thing.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc3ee560" />
+    </children>
+  </item>
+  <item nodeId="node-0xc3ee560">
+    <command xml:space="preserve">x vault</command>
+    <result xml:space="preserve">You see nothing special about Vault 316.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc32c390" />
+    </children>
+  </item>
+  <item nodeId="node-0xc32c390">
+    <command xml:space="preserve">take all</command>
+    <result xml:space="preserve">There are none at all available!
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0x5780c40" />
+    </children>
+  </item>
+  <item nodeId="node-0x5780c40">
+    <command xml:space="preserve">gonear forest</command>
+    <result xml:space="preserve">Forest
+The forest is criss-crossed with hiking and biking trails. It&apos;s a nice place to go for a walk.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc32d420" />
+    </children>
+  </item>
+  <item nodeId="node-0xc32d420">
+    <command xml:space="preserve">purloin saddle</command>
+    <result xml:space="preserve">[Purloined.]
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc3e6c80" />
+    </children>
+  </item>
+  <item nodeId="node-0xc3e6c80">
+    <command xml:space="preserve">purloin bridle</command>
+    <result xml:space="preserve">[Purloined.]
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xbdf0580" />
+    </children>
+  </item>
+  <item nodeId="node-0xbdf0580">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">
+Main Trail
+You step onto the main trail. To the west, is the first trail. To the north, the main trail continues on.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0x56eb4d0" />
+    </children>
+  </item>
+  <item nodeId="node-0x56eb4d0">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">
+Main Trail
+You continue along the main trail, and see the second trail to the east.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc38ef10" />
+    </children>
+  </item>
+  <item nodeId="node-0xc38ef10">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">
+Main Trail
+You continue along the main trail. Two trails turn off: one to the east and one to the west. The main trail continues north.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc35a240" />
+    </children>
+  </item>
+  <item nodeId="node-0xc35a240">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">
+Main Trail
+You continue along the main trail. The fifth trail turns off to the west.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc3ecaf0" />
+    </children>
+  </item>
+  <item nodeId="node-0xc3ecaf0">
+    <command xml:space="preserve">w</command>
+    <result xml:space="preserve">
+Fifth Trail
+You turn west off of the main trail onto the fifth trail.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc3ee100" />
+    </children>
+  </item>
+  <item nodeId="node-0xc3ee100">
+    <command xml:space="preserve">w</command>
+    <result xml:space="preserve">
+Fifth Trail
+You come to a dead end with only one way to turn.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xdba9750" />
+    </children>
+  </item>
+  <item nodeId="node-0xdba9750">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">
+Fifth Trail
+You turn. A trail turns off to the side, or you can continue south.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc3dc180" />
+    </children>
+  </item>
+  <item nodeId="node-0xc3dc180">
+    <command xml:space="preserve">w</command>
+    <result xml:space="preserve">
+Fifth Trail
+You come to a dead end with only one way to turn.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xdb97e20" />
+    </children>
+  </item>
+  <item nodeId="node-0xdb97e20">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">
+Fifth Trail
+You come to a dead end with only one way to turn.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0x5f0040" />
+    </children>
+  </item>
+  <item nodeId="node-0x5f0040">
+    <command xml:space="preserve">e</command>
+    <result xml:space="preserve">
+Fifth Trail
+You come to a dead end with only one way to turn.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xdb80770" />
+    </children>
+  </item>
+  <item nodeId="node-0xdb80770">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">
+Fifth Trail
+You come to a dead end with only one way to turn.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc359610" />
+    </children>
+  </item>
+  <item nodeId="node-0xc359610">
+    <command xml:space="preserve">w</command>
+    <result xml:space="preserve">
+Fifth Trail
+You come to a dead end with only one way to turn.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xdb9a410" />
+    </children>
+  </item>
+  <item nodeId="node-0xdb9a410">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">
+Fifth Trail
+You come to a dead end with only one way to turn.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc333060" />
+    </children>
+  </item>
+  <item nodeId="node-0xc333060">
+    <command xml:space="preserve">w</command>
+    <result xml:space="preserve">
+Fifth Trail
 You turn west and stumble into a clearing. There&apos;s a small pond and nibbling at the grass around it is a glistening silver unicorn. You move towards the unicorn. She spies you, and whips her head up in alert. You halt instantly, not wanting to scare her away. &quot;Hey, pretty girl,&quot; you say, and reach for a carrot. She watches you intently. You hold the carrot out. &quot;Hey girl, do you want a treat?&quot; She paws at the ground. You take another step forward. Then another. And another. Finally, your outstretched arm holding the carrot is just infront of her head. She reaches forward, and takes the carrot. You give her another.
 
 You can see Unicorn here.
 
 &gt;</result>
     <played>YES</played>
-    <changed>NO</changed>
-    <temporary score="393">YES</temporary>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
     <children>
-      <child nodeId="node-0x587e120" />
+      <child nodeId="node-0xdb99340" />
     </children>
+  </item>
+  <item nodeId="node-0xdb99340">
+    <command xml:space="preserve">ride unicorn</command>
+    <result xml:space="preserve">You cannot ride her without a saddle.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc3ea530" />
+    </children>
+  </item>
+  <item nodeId="node-0xc3ea530">
+    <command xml:space="preserve">put saddle on unicorn</command>
+    <result xml:space="preserve">You offer the unicorn another carrot, and while she is chewing you throw the saddle over her back. She doesn&apos;t seem to mind, as if this is nothing new. Her muzzle pushes into your pocket, looking for more carrots.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xbd81d70" />
+    </children>
+  </item>
+  <item nodeId="node-0xbd81d70">
+    <command xml:space="preserve">put bridle on uniocrn</command>
+    <result xml:space="preserve">You can&apos;t see any such thing.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xdbb00d0" />
+    </children>
+  </item>
+  <item nodeId="node-0xdbb00d0">
+    <command xml:space="preserve">put bridle on unicorn</command>
+    <result xml:space="preserve">You stroke the unicorn&apos;s neck, then slip the bridle over her head. She protests a little, but gives in quickly. She doesn&apos;t seem to mind much, as if this is nothing new.
+
+&gt;</result>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="65">YES</temporary>
+    <children>
+      <child nodeId="node-0xc3718a0" />
+    </children>
+  </item>
+  <item nodeId="node-0xc3718a0">
+    <command xml:space="preserve">ride unicorn</command>
+    <played>YES</played>
+    <changed>YES</changed>
+    <temporary score="64">YES</temporary>
   </item>
   <item nodeId="node-0x587e120">
     <command xml:space="preserve">purloin bridle</command>

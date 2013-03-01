@@ -1,6 +1,6 @@
-"Project" by Kapri Lisehora
+"An Experience" by Kapri Lisehora
 
-The story headline is "The Campfire". The story genre is "Adventure". The story description is "An unfortunately memorable weekend".
+The story headline is "The Beginning". The story genre is "Adventure". 
 
 When play begins: 
     now left hand status line is "Exits: [exit list]"; 
@@ -27,7 +27,7 @@ The player is thirsty.
 motorcycles."]
 
 Include Plurality by Emily Short.
-
+nw
 A rideable animal is a kind of animal.
 A rideable animal is usually not portable.
 Include (-
@@ -1189,7 +1189,7 @@ T5-7 is a room. It is east of T5-6. The printed name is "Fifth Trail". "You turn
 T5-3-7 is a room. It is west of T5-3-6. The printed name is "Fifth Trail". "You turn west and stumble into a clearing. There's a small pond and nibbling at the grass around it is a glistening silver unicorn. You move towards the unicorn. She spies you, and whips her head up in alert. You halt instantly, not wanting to scare her away. 'Hey, pretty girl,' you say, and reach for a carrot. She watches you intently. You hold the carrot out. 'Hey girl, do you want a treat?' She paws at the ground. You take another step forward. Then another. And another. Finally, your outstretched arm holding the carrot is just infront of her head. She reaches forward, and takes the carrot. You give her another.";
 	now carrots are in Unicorn-Box.
 Unicorn-Box is a container.
-Unicorn is a rideable animal. Understand "Amara" as unicorn. It is in T5-3-7. The description is "A beautiful, stunningly white, unicorn. Her mane and tail are whiter than snow and are accented by sparkling silver streaks. Her long white horn is twisted beautifully, and her eyes are the deep blue of the ocean depths. Black hooves make little sound upon the ground they walk on.[if saddle is in unicorn-box] She has a brown leather saddle on her back.[end if][if bridle is in unicorn-box] There is a black leather bridle on her head.[end if]". 
+Unicorn is a rideable animal. Understand "Amara" as unicorn. It is in T5-3-7. The description is "A beautiful, stunningly white, unicorn. Her mane and tail are whiter than snow and are accented by sparkling silver streaks. Her long white horn is twisted beautifully, and her eyes are the deep blue of the ocean depths. Black hooves make little sound upon the ground they walk on.[if saddle is in unicorn-box] She has a brown leather saddle on her back[end if].[if bridle is in unicorn-box] There is a black leather bridle on her head.[end if]". 
 
 Instead of putting saddle on unicorn:
 	say "You offer the unicorn another carrot, and while she is chewing you throw the saddle over her back. She doesn't seem to mind, as if this is nothing new. Her muzzle pushes into your pocket, looking for more carrots.";
@@ -1272,8 +1272,8 @@ Instead of looking under the Counter:
 Potions Shopkeeper is a woman. She is wearing a long black coat. The description is "A woman who appears to be over a hundred and fifteen years old."
 If Code is in Blackbox then Potions Shopkeeper is off-stage.
 Display Table is a scenery supporter in One Stop Alchemist. It is fixed in place. The description is "A wooden shelfed table. It displays [list of things on Display Table].".
-Silver Cauldron is a thing. It is on Display Table. The description is "A medium sized silver cauldron."
-Brass Cauldron is a thing. It is on Display Table. The description is "A medium sized brass cauldron." 
+Silver Cauldron is a thing. It is fixed in place. It is on Display Table. The description is "A medium sized silver cauldron."
+Brass Cauldron is a thing. It is fixed in place. It is on Display Table. The description is "A medium sized brass cauldron." 
 Copper Cauldron is a container. It is on Display Table. The description is "A medium sized copper cauldron."
 Glass Phials are a thing. They are in Ingredients Cabinet. The description is "A box of twelve glass phials."
 Crystal Phials are a container. They are in Ingredients Cabinet. The description is "A box of twelve crystal phials."
@@ -1327,7 +1327,9 @@ Instead of taking copper cauldron:
 After going to Armory when Armory is unvisited:
 	say "You step into the armory to see some familiar -or atleast nonmagic- items. A cannon and a pitchfork sit on either side of an extravagent weapons cabinet. the burly man behind the counter wears leather and off white cloth. His eyes follow you untrustfully."
 Burly Man is a man. He is in Armory. The description is "A heavy set, extremely tall, man. He is wrapped in leather armor and has strapped his body with various knives."
-Weapons Case is a container. It is in Armory. It is fixed in place. The description is "A floor-to-ceiling wooden display case with a glass door. Inside, supported by racks, are many different weapons: [list of things in Weapons Case]. It is currently empty.".
+Instead of talking to Burly Man:
+	say "'Go away, boy! I will never unlock the weapons case for you."
+Weapons Case is a container. It is in Armory. It is locked and lockable. It is fixed in place. The description is "A floor-to-ceiling wooden display case with a glass door. Inside, supported by racks, are many different weapons: [list of things in Weapons Case]. It is currently empty.".
 Sword is a thing. It is in Weapons Case. The description is "A polished steel sword with a gorgeous hilt. This is truely the sword of a champion. [if Sword is in Weapons Case]It is supported by four protruding hooks."
 Blunt Weapon is a thing. It is in Weapons Case. The description is "A huge stone tethered to the end of a slick. It looks heavy, but with a strong arm behind it, it could easily take someone out.[if Blunt Weapon is in Weapons Case] It stands erect at the bottom of the weapons case.".
 Spear is a thing. It is in Weapons Case. The description is "A long wooden shaft with a polished steal tip. Leather grips are adhesed in three different places.[If Spear is in Weapons Case] It hangs by leader supporters from two nails in the weapons case."
@@ -1354,7 +1356,14 @@ Instead of taking Long Boxes:
 	say "I'd advise against stealing magic items from people who could probably kill you without even touching you."
 Wizard1 is a man. Rule for printing the name of Wizard1: say "Wizard". The description is "A frail man with too much agility for his age. He runs this shop and is wearing a long black cloak." He is wearing a long black cloak. 
 Spellbooks are scenery in Wand-Shop. The description is "Books full of spells."
-Spellbook is a thing. The description is "Light: 'Levis wand'[line break]Extinguish Light: 'Haud Levis Wand'[line break]Attack: 'Invado'[line break]Put to Sleep: 'Somnus'".
+Spellbook is a thing. The description is "Light: 'Levis wand'[line break]Extinguish Light: 'Haud Levis Wand'[line break]Attack: 'Invado'[line break]Put to Sleep: 'Somnus'[line break]Unlock: 'resero'".
+Understand "resero [something]" as Resero. Resero is an action applying to one thing.
+Check Resero:
+	if noun is Weapons Case:
+		say "You try out the spell on the weapons case. It unlocks.";
+		now Weapons Case is unlocked;
+	otherwise:
+		say "The spell is not fitted for [noun]."
 Instead of taking spellbooks:
 	if player has wand:
 		say "You reach forward and take a book. The wizard is still nowhere to be seen.";
@@ -1366,7 +1375,8 @@ Instead of talking to wizard1:
 	now unicorn hair is off-stage;
 	now player has Wand.
 	
-[Spells]
+
+[Spellbook]
 Understand "levis [wand]" as switching on.
 Understand "haud levis [wand]" as switching off.
 Understand "invado [something]" as Invado. Invado is an action applying to one thing. 
@@ -1395,6 +1405,9 @@ Check Invado:
 
 
 [Beasts]
+Instead of entering Beasts:
+	say "You enter the store, but before you can look around a large man shoves you out. 'These pets are not for children!' He bellows.";
+	now player is in Town Center.
 
 
 [Dirt Path]
@@ -1612,6 +1625,11 @@ Instead of examining List:
 Breathing-Potion is a thing. The printed name is "Breathing Potion". It is edible. The description is "A thick purple potion in a crystal phial."
 Breathing is a thing.
 Potion is scenery. The description is "A thick purple potion."
+Instead of putting Copper Cauldron on Cauldron Stand:
+	say "Glad to be rid of the weight, you put the cauldron onto the stand. Instantly a flame lights under the cauldron.";
+	continue the action;
+	now Copper Cauldron is fixed in place.
+Flame is scenery in Lake. The description is "A small orange flame flickering under the copper cauldron."
 
 Every turn:
 	If Copper Cauldron is on Cauldron Stand:
@@ -1730,6 +1748,12 @@ Instead of talking to Mer King:
 			now player has Gate Key;
 	if point3 is in blackbox:
 		say "The Mer King is busy. He cannot speak to you now."
+
+Instead of entering Tunnel:
+	if player has Gate Key:
+		say "'Wait!' Calls the mermaid princess, swimming after you. 'I hope you won't forget my offer,' she begins.[line break]'Don't worry, I won't.'[line break]'Here, you earned this.' She passes you a book. 'I see you're carrying a wand, but that's useless without knowing any real spells.' [line break]You thank her, and then continue on your way.";
+		continue the action;
+		now player has Advanced Spellbook.
 		
 
 [Cave]
@@ -1767,9 +1791,182 @@ Instead of examining Spiral Staircase:
 
 [Portal Chamber]
 Portal Chamber is a room. It is north of Spiral Staircase. "A medium sized room lit by rows of blue fire torches and a large purple portal to the north. A large gold cauldron sits ontop of a green flame in the center of the room. A tall wizard is burrowing his nose into an old leather bound book, muttering an ancient language to himself."
-Grand Wizard is a man. He is in Portal Chamber. The description is "A tall and dangeriously skinny wizard with a bad slouch and a brilliant blue robe. His wand is long and full of knotts."
+
+[Grand Wizard]
+Grand Wizard is a man. Understand "wizard" as Grand Wizard. He is in Portal Chamber. The description is "A tall and dangeriously skinny wizard with a bad slouch and a brilliant blue robe. His wand is long and full of knotts." He is wearing Thick Chain. He is wearing Red Stone.
+
+Instead of talking to Grand Wizard:
+	say "'What! Who are you?!' The wizard demands furiously.[line break]'Hi. I'm-' The wizard doesn't seem to care.[line break] 'Obstupefio!' He cries defiantly, his wand pointed straight at you. You feel your body grow stiff, and you fall backwards against the wall. You are temporarily paralyzed.[line break] The wizard returns to his potion and becomes visibly distressed, looking between his cauldron and his book, muttering under his breath. He turns slowly to look at you. 'Concalo pars' he says with a flick of his wand. Every potion related item that you're carrying flies towards him.";
+	now Glass Phials are off-stage;
+	now Crystal Phials are off-stage;
+	now Cabinet Key is off-stage;
+	now bat blood is off-stage;
+	now cat hair is off-stage;
+	now caterpillar is off-stage;
+	now crocodile heart is off-stage;
+	now dragon claw is off-stage;
+	now cat eye is off-stage;
+	now fairy wings are off-stage;
+	now frog brain is off-stage;
+	now griffin claw is off-stage;
+	now leech juice is off-stage;
+	now peacock feathers is off-stage;
+	now salamander blood is off-stage;
+	now turtle shell is off-stage.
+
+[Spells]
+[Advanced Spellbook]
+Safekeeping is a container. It is open.
+Advanced Spellbook is a thing. The description is "Light: 'levis wand'[line break]Extinguish Light: 'haud levis wand'[line break]Sleep: 'somnus'[line break]Attack: 'invado'[line break]Disarm: 'detrahere arma'[line break]Disorient: 'conturbatus'[line break]Temporarily Paralyze: 'obstupefio'[line break]Block: 'oppilo'[line break]Push Aside: 'trudo'[line break]Render Immobile: 'inerrans'[line break]Throw Fire: 'accendo'".
+Understand "accendo [someone]" as Accendo. Accendo is an action applying to one thing.
+Understand "inerrans [someone]" as Inerrans. Inerrans is an action applying to one thing.
+Understand "trudo [someone]" as Trudo. Trudo is an action applying to one thing.
+Understand "oppilo [someone]" as Oppilo. Oppilo is an action applying to one thing.
+Understand "obstupefio [someone]" as Obstupefio. Obstupefio is an action applying to one thing. 
+Understand "detrahere arma [someone]" as Disarming. Disarming is an action applying to one thing.
+Understand "conturbatus [someone]" as Conturbatus. Conturbatus is an action applying to one thing.
+
+Spell1 is a thing. [conturbatus]
+Spell2 is a thing. [conturbatus]
+Spell3 is a thing. [obstupefio]
+Spell4 is a thing. [trudo]
+Spell5 is a thing. [trudo]
+Spell6 is a thing. [inerrans]
+Spell7 is a thing. [accendo]
+
+Defeat1 is a thing.
+Defeat2 is a thing.
+Defeat3 is a thing.
+Defeat4 is a thing.
+Defeat5 is a thing.
+Defeat6 is a thing.
+Defeat7 is a thing.
+
+Check Accendo:
+	if player is in portal chamber:
+		if defeated is not in blackbox:
+			if a random chance of 1 in 3 succeeds:
+				say "Falls of fire shoot out from your wand, landing on and around the wizard. He screams and tries to put them out.";
+				now spell7 is in blackbox;
+			otherwise:
+				say "He easily deflects your fireballs, sending them down the staircase from which you came. He cries[one of] 'Detrahere Arma'! Your wand is thrown out of your hands and you scramble to reclaim it.[or] 'Conturbatus!' You're instantly confused, stumbling around trying to figure out where you are.[or]'Obstupefio!' Once again, you are temporarily paralyzed.[or]'Trudo!' You are forced by an invisible hand to the side with such force that you fall over.[or] 'Inerrans!' You are frozen in place temporarily while the wizard continues working on his potion.[or]'Accendo!' A stream of fire bubbles hutle themselves at you, burning your clothes and leaving black stains on the rock around you.[at random]";
+				now defeat7 is in blackbox.
+Check Inerrans:
+	if player is in Portal Chamber:
+		if Defeated is not in blackbox:
+			if a random chance of 1 in 3 succeeds:
+				say "You render the wizard immobile, and are able to throw another spell at him.";
+				now spell6 is in blackbox;
+			otherwise:
+				say "The wizard laughs at your incompitence. He cries[one of] 'Detrahere Arma'! Your wand is thrown out of your hands and you scramble to reclaim it.[or] 'Conturbatus!' You're instantly confused, stumbling around trying to figure out where you are.[or]'Obstupefio!' Once again, you are temporarily paralyzed.[or]'Trudo!' You are forced by an invisible hand to the side with such force that you fall over.[or] 'Inerrans!' You are frozen in place temporarily while the wizard continues working on his potion.[or]'Accendo!' A stream of fire bubbles hutle themselves at you, burning your clothes and leaving black stains on the rock around you.[at random]";
+				now defeat6 is in blackbox.
+Check Trudo:
+	if player is in Portal Chamber:
+		if Defeated is not in blackbox:
+			if a random chance of 1 in 3 succeeds:
+				say "The wizard is shoved to the side by your spell.";
+				now spell4 is in blackbox;
+				now spell5 is in blackbox;
+			otherwise:
+				say "The wizard easily blocks your attack. He cries[one of] 'Detrahere Arma'! Your wand is thrown out of your hands and you scramble to reclaim it.[or] 'Conturbatus!' You're instantly confused, stumbling around trying to figure out where you are.[or]'Obstupefio!' Once again, you are temporarily paralyzed.[or]'Trudo!' You are forced by an invisible hand to the side with such force that you fall over.[or] 'Inerrans!' You are frozen in place temporarily while the wizard continues working on his potion.[or]'Accendo!' A stream of fire bubbles hutle themselves at you, burning your clothes and leaving black stains on the rock around you.[at random]";
+				now defeat5 is in blackbox.
+
+Check Oppilo:
+	if player is in Portal Chamber:
+		if Defeated is not in blackbox:
+			if a random chance of 1 in 20 succeeds:
+				say "You successfuly manage to block his spell.";
+				now defeat2 is in safekeeping;
+				now spell4 is in blackbox;
+			otherwise:
+				say "You try to deflect his attack, but you miss. He cries[one of] 'Detrahere Arma'! Your wand is thrown out of your hands and you scramble to reclaim it.[or] 'Conturbatus!' You're instantly confused, stumbling around trying to figure out where you are.[or]'Obstupefio!' Once again, you are temporarily paralyzed.[or]'Trudo!' You are forced by an invisible hand to the side with such force that you fall over.[or] 'Inerrans!' You are frozen in place temporarily while the wizard continues working on his potion.[or]'Accendo!' A stream of fire bubbles hutle themselves at you, burning your clothes and leaving black stains on the rock around you.[at random]";
+				now defeat4 is in blackbox.
+				
+
+Check Obstupefio:
+	if player is in Portal Chamber:
+		if Defeated is not in blackbox:
+			if a random chance of 1 in 3 succeeds:
+				say "You remporarily paralyze the wizard, and are able to throw another spell in.";
+				now spell3 is in blackbox;
+			otherwise:
+				say "You try to paralyze the Grand wizard, but he easily deflects it. He cries[one of] 'Detrahere Arma'! Your wand is thrown out of your hands and you scramble to reclaim it.[or] 'Conturbatus!' You're instantly confused, stumbling around trying to figure out where you are.[or]'Obstupefio!' Once again, you are temporarily paralyzed.[or]'Trudo!' You are forced by an invisible hand to the side with such force that you fall over.[or] 'Inerrans!' You are frozen in place temporarily while the wizard continues working on his potion.[or]'Accendo!' A stream of fire bubbles hutle themselves at you, burning your clothes and leaving black stains on the rock around you.[at random]";
+				now Defeat3 is in blackbox.
+Check Conturbatus:
+	if player is in Portal Chamber:
+		if Defeated is not in blackbox:
+			if a random chance of 1 in 4 succeeds:
+				say "With a flick of your wand you cause the Grand Wizard to become disoriented. He stumbles around, trying to figure out where he is.";
+				now Spell1 is in blackbox;
+				now spell2 is in blackbox;
+			otherwise:
+				say "You throw a jinx at the wizard, but he easily deflects it. He cries[one of] 'Detrahere Arma'! Your wand is thrown out of your hands and you scramble to reclaim it.[or] 'Conturbatus!' You're instantly confused, stumbling around trying to figure out where you are.[or]'Obstupefio!' Once again, you are temporarily paralyzed.[or]'Trudo!' You are forced by an invisible hand to the side with such force that you fall over.[or] 'Inerrans!' You are frozen in place temporarily while the wizard continues working on his potion.[or]'Accendo!' A stream of fire bubbles hutle themselves at you, burning your clothes and leaving black stains on the rock around you.[at random]";
+				now defeat1 is in blackbox.
+Check Disarming:
+	if player is in Portal Chamber:
+		if Defeated is not in blackbox:
+			if a random chance of 1 in 100 succeeds:
+				say "With a flick of your wand, you cause the Grand Wizard's wand to go flying. 'How did you..' he says, falling to his knees.[line break]'Obstupefio!' you cry, paralyzing him. The wizard falls to the ground, his eyes the only part of his body that moves. Around his neck is a thick chain with a beautiful red stone.";
+				now spell1 is in blackbox;
+				now spell2 is in blackbox;
+				now spell3 is in blackbox;
+				now spell4 is in blackbox;
+				now spell5 is in blackbox;
+				now spell6 is in blackbox;
+				now spell7 is in blackbox;
+				now defeated is in blackbox;
+			otherwise:
+				say "You try to disarm the wizard, but he easily deflects it. He cries[one of] 'Detrahere Arma'! Your wand is thrown out of your hands and you scramble to reclaim it.[or] 'Conturbatus!' You're instantly confused, stumbling around trying to figure out where you are.[or]'Obstupefio!' Once again, you are temporarily paralyzed.[or]'Trudo!' You are forced by an invisible hand to the side with such force that you fall over.[or] 'Inerrans!' You are frozen in place temporarily while the wizard continues working on his potion.[or]'Accendo!' A stream of fire bubbles hutle themselves at you, burning your clothes and leaving black stains on the rock around you.[at random]";
+				now defeat2 is in blackbox.
+An every turn rule:
+	If spell1 is in blackbox:
+		if spell2 is in blackbox:
+			if spell3 is in blackbox:
+				if spell4 is in blackbox:
+					if spell5 is in blackbox:
+						if spell6 is in blackbox:
+							if spell7 is in blackbox:
+								say "With your final spell you bring the wizard to his knees, defeated. 'How did you…' he says, falling onto his hands.[line break]'Obstupefio!' you cry, paralyzing him. The wizard falls to the ground, his eyes the only part of his body that moves. Around his neck is a thick chain with a beautiful red stone.";
+								now defeated is in Blackbox.
+An every turn rule:
+	If defeat1 is in blackbox:
+		if defeat2 is in blackbox:
+			if defeat3 is in blackbox:
+				if defeat4 is in blackbox:
+					if defeat5 is in blackbox:
+						if defeat6 is in blackbox:
+							if defeat7 is in blackbox:
+								say "The wizard strikes you down, defeating you. Accept your defeat with death?";
+								if player consents:
+									say "You bid the world farewell, and regret not staying in the Mer Kingdom. You say a silent prayer to Elily.";
+									end the game in death;
+								otherwise:
+									say "You restart the challenge.";
+									now defeat1 is in safekeeping;
+									now defeat2 is in safekeeping;
+									now defeat3 is in safekeeping;
+									now defeat4 is in safekeeping;
+									now defeat5 is in safekeeping;
+									now defeat6 is in safekeeping;
+									now defeat7 is in safekeeping;
+									now spell1 is in safekeeping;
+									now spell2 is in safekeeping;
+									now spell3 is in safekeeping;
+									now spell4 is in safekeeping;
+									now spell5 is in safekeeping;
+									now spell6 is in safekeeping;
+									now spell7 is in safekeeping.
 
 [Portal]
+Understand "chain" as Thick Chain. The description of Thick Chain is "A gold chain that loops around the Grand Wizard's neck."
+Understand "stone" as Red Stone. The description of Red Stone is "A gorgeous red stone. You've never seen a jewl as beautiful as this."
+Instead of taking Red Stone:
+	if defeated is in blackbox:
+		say "You reach forward, ignoring the spazzing eyes of the wizard. You pry the stone from the setting, admiring it. 'This must be a red beryl,' you whisper to yourself, then slip it into your pocket.";
+		now Red Stone is off-stage;
+		now player has Red Beryl;
+	otherwise:
+		say "You have to defeat the wizard before you can take that!"
 Defeated is a thing.
 Red Beryl is a thing. The description is "The most valuable stone known to man. Aka 'red emerald' or 'scarlet emerald', and chemically similar to both emerals and aquamarines though considerably more rare. This particular specimen appears to be about two carats worth; approximately 20 grand."
 Portal is a room. It is north of Portal Chamber.
@@ -1782,11 +1979,18 @@ Instead of entering Portal:
 				say "Pushing aside your thoughts of Mer City you step forward and into the swirling purple and silver portal. It feels cold on your skin, and suddenly you feel yourself in a vaccuum, gasping for air that isn't there.";
 				now player is in Abandoned Toolshed;
 			otherwise:
-				say "".
+				say "You hesitate at the portal's edge, but decide against it. The Mer Kingdom has so much more to offer you! You make your way down the mountain towards Mer City.";
+				now player is in Lake;
+		otherwise:
+			say "You've come all of this way. Why would you leave without the special something for Elily?";
+	otherwise:
+		say "You approach the portal, determined to leave this confusing world. But the wizard blocks your path."
 				
 
+				
+[Scene 4][Scene Four]
 [Abandoned Toolshed]
-Abandoned Toolshed is a room. "You fall face down onto the floor of the dirty floor of a tiny toolshed. The portal above you 
+Abandoned Toolshed is a room. "You fall face down onto the floor of the dirty floor of a tiny toolshed. The portal above you spins quickly before disappearing."
 
 
 
