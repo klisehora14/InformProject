@@ -150,6 +150,8 @@ direction (called the way):
 [Rideable Vehicles ends here.]
 
 
+
+
 [Food]
 Food is a kind of thing. 
 Food can be cooked or uncooked.
@@ -1189,7 +1191,7 @@ T5-7 is a room. It is east of T5-6. The printed name is "Fifth Trail". "You turn
 T5-3-7 is a room. It is west of T5-3-6. The printed name is "Fifth Trail". "You turn west and stumble into a clearing. There's a small pond and nibbling at the grass around it is a glistening silver unicorn. You move towards the unicorn. She spies you, and whips her head up in alert. You halt instantly, not wanting to scare her away. 'Hey, pretty girl,' you say, and reach for a carrot. She watches you intently. You hold the carrot out. 'Hey girl, do you want a treat?' She paws at the ground. You take another step forward. Then another. And another. Finally, your outstretched arm holding the carrot is just infront of her head. She reaches forward, and takes the carrot. You give her another.";
 	now carrots are in Unicorn-Box.
 Unicorn-Box is a container.
-Unicorn is a rideable animal. Understand "Amara" as unicorn. It is in T5-3-7. The description is "A beautiful, stunningly white, unicorn. Her mane and tail are whiter than snow and are accented by sparkling silver streaks. Her long white horn is twisted beautifully, and her eyes are the deep blue of the ocean depths. Black hooves make little sound upon the ground they walk on.[if saddle is in unicorn-box] She has a brown leather saddle on her back[end if].[if bridle is in unicorn-box] There is a black leather bridle on her head.[end if]". 
+Unicorn is a rideable animal. Understand "Amara" as unicorn. Unicorn is in T5-3-7. The description is "A beautiful, stunningly white, unicorn. Her mane and tail are whiter than snow and are accented by sparkling silver streaks. Her long white horn is twisted beautifully, and her eyes are the deep blue of the ocean depths. Black hooves make little sound upon the ground they walk upon.[if saddle is in unicorn-box] She has a brown leather saddle on her back[end if].[if bridle is in unicorn-box] There is a black leather bridle on her head.[end if]". 
 
 Instead of putting saddle on unicorn:
 	say "You offer the unicorn another carrot, and while she is chewing you throw the saddle over her back. She doesn't seem to mind, as if this is nothing new. Her muzzle pushes into your pocket, looking for more carrots.";
@@ -1602,11 +1604,11 @@ Instead of answering sphinx that "a mirror":
 	
 	
 [northeast path]
-[Northeast Path is a room. It is northeast of Dirt Path3.
+[Northeast Path is a room. It is northeast of Dirt Path3.]
 After going to Northeast Path when Northeast Path is unvisited:
 	say "You turn right onto the path and continue until you come upon a lake. The path seems to end here.";
 	now player is in Lake.
-Lake is a room. It is northeast of Northeast Path.]
+Lake is a room. It is northeast of Northeast Path.
 
 Witch is a woman. 
 After going to lake when lake is unvisited:
@@ -1970,7 +1972,8 @@ Instead of taking Red Stone:
 Defeated is a thing.
 Red Beryl is a thing. The description is "The most valuable stone known to man. Aka 'red emerald' or 'scarlet emerald', and chemically similar to both emerals and aquamarines though considerably more rare. This particular specimen appears to be about two carats worth; approximately 20 grand."
 Portal is a room. It is north of Portal Chamber.
-[Instead of entering Portal when the sorcer is not defeated: say "the sorcer stops you from entering the portal" if player doens't have stone: "say, aren't you forgetting something"(the stone)]
+
+[entering portal]
 Instead of entering Portal:
 	if Defeated is in BlackBox:
 		if player has Red Beryl:
@@ -1990,7 +1993,13 @@ Instead of entering Portal:
 				
 [Scene 4][Scene Four]
 [Abandoned Toolshed]
-Abandoned Toolshed is a room. "You fall face down onto the floor of the dirty floor of a tiny toolshed. The portal above you spins quickly before disappearing."
+Abandoned Toolshed is a room. "You fall face down onto the floor of the dirty floor of a tiny toolshed. The portal above you spins quickly before disappearing. There's barely anything in the toolshed except rotting wood and a door that leads south."
+Door1 is a door. It is south of Abandoned Toolshed. It is north of Abandoned Path. The printed name is "the door".
+Abandoned Path is a room. It is south of Door1.
+After entering Abandoned Path when Abandoned Path is unvisited:
+	say "You cautiously step out of the toolshed. The air smells familiar, almost like home. The path stretches south to what could possibly be your home town. When you look back, you notice that the toolshed has vanished.";
+	now Abandoned Toolshed is off-stage;
+	now Door1 is off-stage.
 
 
 
