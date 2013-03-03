@@ -11,6 +11,9 @@ To say exit list:
 		let place be the room way from the location; 
 		if place is a room, say " [way]".
 
+Include Rideable Vehicles by Graham Nelson.
+
+Part 1 - The Campfire
 
 When play begins: say "You've planned a wonderful camping trip with your girlfriend. She's depending on you to make the experience memorable, but everything keeps going wrong for you."
 
@@ -19,138 +22,6 @@ A person can be hungry or full.
 A person can be thirsty or quenched.
 The player is hungry.
 The player is thirsty.
-
-[Rideable Vehicles Graham Nelson]
-[Version 3 of Rideable Vehicles by Graham Nelson begins here.]
-
-["Vehicles which one sits on top of, rather than inside, such as elephants or
-motorcycles."]
-
-Include Plurality by Emily Short.
-nw
-A rideable animal is a kind of animal.
-A rideable animal is usually not portable.
-Include (-
-	has enterable supporter,
-	with before [; Go: return 1; ],
--) when defining a rideable animal.
-
-A rideable vehicle is a kind of supporter.
-A rideable vehicle is always enterable.
-A rideable vehicle is usually not portable.
-Include (-
-	with before [; Go: return 1; ],
--) when defining a rideable vehicle.
-
-The stand up before going rule is not listed in any rulebook.
-
-Definition: Something is vehicular if it is a vehicle or it is a
-rideable animal or it is a rideable vehicle.
-
-Rule for setting action variables for going (this is the allow rideables to be
-	going vehicles rule):
-	if the actor is carried by a rideable animal (called the steed),
-		now the vehicle gone by is the steed;
-	if the actor is on a rideable vehicle (called the conveyance),
-		now the vehicle gone by is the conveyance.
-
-Mounting is an action applying to one thing.
-
-Before an actor entering a rideable animal (called the steed), try the actor
-mounting the steed instead.
-
-Before an actor entering a rideable vehicle (called the conveyance), try the
-actor mounting the conveyance instead.
-
-Before an actor getting off a rideable animal (called the steed), try the
-actor dismounting instead.
-
-Before an actor getting off a rideable vehicle (called the conveyance), try
-the actor dismounting instead.
-
-Before an actor exiting:
-	if the actor is carried by a rideable animal, try the actor dismounting instead;
-	if the actor is carried by a rideable vehicle, try the actor dismounting instead.
-
-Check an actor mounting (this is the can't mount when mounted on an animal rule): 
-	if the actor is carried by a rideable animal (called the steed):
-		if the actor is the player, say "You are already riding [the steed].";
-		stop the action.
-
-Check an actor mounting (this is the can't mount when mounted on a vehicle rule):
-	if the actor is on a rideable vehicle (called the conveyance):
-		if the actor is the player, say "You are already riding [the conveyance].";
-		stop the action.
-
-Check an actor mounting (this is the can't mount something unrideable rule):
-	if the noun is not a rideable animal and the noun is not a rideable vehicle:
-		if the actor is the player, say "[The noun] cannot be ridden." instead;
-		stop the action.
-
-Check an actor mounting (this is the can't mount something carried rule):
-	abide by the can't enter something carried rule.
-
-Check an actor mounting (this is the can't mount something unreachable rule):
-	abide by the implicitly pass through other barriers rule. 
-	
-Carry out an actor mounting (this is the standard mounting rule):
-	surreptitiously move the actor to the noun.
-
-Report an actor mounting (this is the standard report mounting rule):
-	if the actor is the player:
-		say "You mount [the noun].";
-		describe locale for the noun;
-	otherwise:
-		say "[The actor] mount[s] [the noun]." instead. 
-
-Unsuccessful attempt by someone trying mounting (this is the mounting excuses rule):
-	if the reason the action failed is the can't mount when mounted on an animal rule,
-		say "[The person asked] [is-are] already riding [the random rideable animal which carries the person asked].";
-	if the reason the action failed is the can't mount when mounted on a vehicle rule,
-		say "[The person asked] [is-are] already riding [the random rideable vehicle which supports the person asked].";
-	if the reason the action failed is the can't mount something unrideable rule,
-		say "[The noun] cannot be ridden.";
-
-Understand "ride [something]" as mounting.
-Understand "mount [something]" as mounting.
-
-Dismounting is an action applying to nothing.
-
-Check an actor dismounting (this is the can't dismount when not mounted rule):
-	if the actor is not carried by a rideable animal and the actor is not on a rideable vehicle:
-		if the actor is a player, say "You are not riding anything.";
-		stop the action.
-
-Carry out an actor dismounting (this is the standard dismounting rule):
-	if the actor is carried by a rideable animal (called the steed),
-		now the noun is the steed;
-	if the actor is on a rideable vehicle (called the conveyance),
-		now the noun is the conveyance;
-	let the former exterior be the holder of the noun;
-	surreptitiously move the actor to the former exterior.
-
-Report an actor dismounting (this is the standard report dismounting rule):
-	if the actor is the player:
-		say "You dismount [the noun].[line break][run paragraph on]";
-		produce a room description with going spacing conventions;
-	otherwise:
-		say "[The actor] dismount[s] [the noun]."
-	
-Unsuccessful attempt by someone trying dismounting (this is the dismounting excuses rule):
-	if the reason the action failed is the can't dismount when not mounted rule,
-		say "[The person asked] [is-are] not riding anything.";
-	otherwise make no decision.
-
-Understand "dismount" as dismounting.
-
-Before asking a rideable animal (called the mount) to try going a
-direction (called the way):
-	if the player is carried by the mount, try going the way instead.
-
-[Rideable Vehicles ends here.]
-
-
-
 
 [Food]
 Food is a kind of thing. 
@@ -525,7 +396,8 @@ Instead of eating or drinking bottled water when the player is in Campfire:
 	now the bottled water is off-stage; 
 	increase score by 1.
 	
-[SCENE 2] [SCENE TWO]
+Part 2 - The Marketplace
+
 Marketplace is a room. "You are in the center of the Marketplace. Look around to see where you want to go. If you get lost, head over to the General Store for a map."
 Wallet is a container. It is closed and openable. The description is "A simple but nice brown leather wallet that has seen years of use."
 After of opening wallet:
@@ -1051,13 +923,11 @@ Instead of talking to The Teller:
 [Money]
 Monetary is a kind of thing.
 Monetary can be given. Monetary can be taken. 
-Understand "put [something] in [something]" as Put. Put is an action applying to two things.
+Understand "put [something] in [something]" or "put [something] into [something]" as Put. Put is an action applying to two things.
 Check putting:
 	if noun is Monetary and second noun is wallet:
 		say "You put the coin in your wallet.";
-		now noun is in Wallet;
-	otherwise:
-		say "That won't fit in your wallet!"
+		now noun is in Wallet.
 Vault 316 is a container. It is locked and lockable. It is fixed in place. Simple Key unlocks Vault 316.
 One Coin Piece is a Monetary. It is in Vault 316.
 One And A Half Coin Piece is a Monetary. It is in Vault 316.
@@ -1193,6 +1063,9 @@ T5-3-7 is a room. It is west of T5-3-6. The printed name is "Fifth Trail". "You 
 Unicorn-Box is a container.
 Unicorn is a rideable animal. Understand "Amara" as unicorn. Unicorn is in T5-3-7. The description is "A beautiful, stunningly white, unicorn. Her mane and tail are whiter than snow and are accented by sparkling silver streaks. Her long white horn is twisted beautifully, and her eyes are the deep blue of the ocean depths. Black hooves make little sound upon the ground they walk upon.[if saddle is in unicorn-box] She has a brown leather saddle on her back[end if].[if bridle is in unicorn-box] There is a black leather bridle on her head.[end if]". 
 
+Instead of giving carrots to Unicorn:
+	say "Not all at once!"
+
 Instead of putting saddle on unicorn:
 	say "You offer the unicorn another carrot, and while she is chewing you throw the saddle over her back. She doesn't seem to mind, as if this is nothing new. Her muzzle pushes into your pocket, looking for more carrots.";
 	now saddle is in Unicorn-box.
@@ -1206,7 +1079,7 @@ Instead of mounting:
 			say "You step forward, and mount the unicorn.";
 			say "'Hey, beautiful. Wow. I can't believe this is real.'[paragraph break]'Hayden said you were coming,' says a bell-like voice in your head. You nearly fall off the unicorn. 'You're so silly,' the voice continues. 'My name is Amara.' You look down at your mount.[paragraph break]'Are you the unicorn?' The bell-like voice chimes a laugh in your head.[paragraph break]'Yea, I am. So, I hear that we have somewhere special to go!'";
 			say "Amara picks up a trot, and heads north. At about fifty yards away from the trees she hastens her pace, and leaps into the air. You clutch desperately at her soft white mane in an effort to stay on.[paragraph break]You look behind you as she climbs ever higher. You can see the town. A man in a black coat stands in the center of the marketplace, and seems to be watching you. But a blink later and he's gone. 'Where are we going, Amara?'[paragraph break]'Oh, you'll see.'";
-			now player is in Broken Lighthouse;
+			move player to Broken Lighthouse;
 			now player has unicorn hair;
 			continue the action;
 		otherwise:
@@ -1214,10 +1087,18 @@ Instead of mounting:
 	otherwise:
 		say "You cannot ride her without a saddle."
 		
+[Unicorn Test]
+Understand "take me to amara" as aMazing. aMazing is an action out of world.
+Carry out aMazing:
+	move player to T5-3-7;
+	move saddle to player;
+	move bridle to player;
+	move carrots to player.
+		
 	
 [End Scene Two]
-[Scene Three][Scene 3]
-[Magic Realm]
+
+Part 3 - The Magic Realm 
 
 [Town Rooms]
 Broken Lighthouse is a room. "A cliff drops off towards the ocean, with a tall lighthouse looming over. The ocean is dark blue and frothy from slamming against the sharp rocks at the base of the cliff. To the north is an old, unkept cobblestone path."
@@ -1225,15 +1106,16 @@ Cobblestone Path is a room. It is north of Broken Lighthouse. "Weeds grow up thr
 Town Center is a room. It is north of Cobblestone Path. "The town center is a worn and dusty clearing to which the surrounding shops are circled around. The cobblestone path lies to the south. To the west is One Stop Alchemist, northwest is an armory, the blacksmith is north, a wand shop to the east, and a store called 'Beasts' to the southeast."
 One Stop Alchemist is a room. It is west of Town Center. "One Stop Alchemist is a potions shop. Dirty windows frame the door."
 Armory is a room. It is northwest of Town Center. "The town's best weapons shop."
-Blacksmith is a room. It is north of Town Center. 
+Blacksmith is a room. It is north of Town Center. "A large one-room shop. There's a door to the north and the Town Center to the south."
 Wand-Shop is a room. The printed name of Wand-Shop is "Wand Shop". It is east of Town Center. "The best kept store in town. The inside looks like a library, except instead of books stacked to the ceiling there are long slender boxes. Along the door are buckets of spellbooks."
 Beasts is a room. It is southeast of Town Center. "A magical pet store."
 Dirt Path is a room. It is north of Blacksmith. "A simple path worn down by frequent use."
 Small Cottage is a room. It is north of Dirt Path. "A small one or two room cottage."
 
 [Broken Lighthouse]
-After going to Broken Lighthouse when Broken Lighthouse is unvisited:
-	say "After flying over the clouds for what seemed to be hours, Amara lands on the bank of some great ocean next to a broken lighthouse. Stretching north is an old and worn cobblestone bath. You shiver."
+Instead of going to Broken Lighthouse when Broken Lighthouse is unvisited:
+	say "After flying over the clouds for what seemed to be hours, Amara lands on the bank of some great ocean next to a broken lighthouse. Stretching north is an old and worn cobblestone bath. You shiver.";
+	continue the action.
 Light-house is scenery. The printed name is "lighthouse". Understand "lighthouse" as light-house. It is in Broken Lighthouse. The description is "A tall dilapidated stone lighthouse that towers backwards like haunted buildings do in old horror movies. You half expect black clouds to form and lighting to strike. On the lighthouse are two large double doors."
 Double Doors are scenery in Broken Lighthouse. The description is "Two heavy wooden door with iron reinforcements dripped in rust."
 Instead of opening Double Doors:
@@ -1242,45 +1124,40 @@ Instead of opening Double Doors:
 
 
 [Cobblestone Path]
-After going to Cobblestone Path when Cobblestone Path is unvisited:
-	say "'Hey,' Amara says. 'I'm going to take off now. Call me if you need me.'"
-Understand "Call [rideable animal]" as CallingAnimal. CallingAnimal is an action applying to one thing.
-Check CallingAnimal:
-	if rideable animal is Unicorn:
-		if player is in Cave:
-			say "'Try going to the lake,' Amara says.";
-		otherwise:
-			say "You call out to Amara, searching the skies. You hear her bells in your head. 'This is something you can handle yourself, Wade.'";
-	otherwise:
-		say "You call out, but to no avail."
+
 
 [Town Center]
 
 
 [One Stop Alchemist]
-After going to One Stop Alchemist when One Stop Alchemist is unvisited:
-	say "You step cautiously into what appears to be a potions shop. You see a display table with a few cauldrons on it. Mounted on the wall is an ingredients cabinet stocked with what appears to be potion ingredients. Behind the counter stands a frail older woman in a long black coat. Her pale wrinkled skin hangs from her face in a most distasteful way. She makes you nervous."
-The Counter is scenery in One Stop Alchemist. The description is "A simple counter."
+Instead of going to One Stop Alchemist when One Stop Alchemist is unvisited:
+	say "You step cautiously into what appears to be a potions shop. You see a display table with a few cauldrons on it. Mounted on the wall is an ingredients cabinet stocked with what appears to be potion ingredients. [if player does not have Shopping List]Behind the counter stands a frail older woman in a long black coat. Her pale wrinkled skin hangs from her face in a most distasteful way. She makes you nervous.[end if][if player has shopping list]The potions shopkeeper seems to have stepped out.";
+	continue the action.
+The Counter is a thing in One Stop Alchemist. It is fixed in place. The description is "A simple counter."
 Instead of looking under the Counter:
 	if player has Shopping List:
 		say "You rummage under the counter and find a key.";
-		now player has Cabinet Key;
-	if Code is in Blackbox:
+		now player has Cabinet-Key;
+	else if Code is in Blackbox:
 		say "You rummage under the counter and find a key.";
-	if player has gold coins:
+		now player has Cabinet-Key;
+	else if player has gold coins:
 		say "You rumage under the counter and find a key.";
+		now player has Cabinet-Key;
 	otherwise:
 		say "You're pretty sure that the ancient woman will curse you into space if you go near her counter. Her eyes follow you everywhere you go. You decide to check back later."
-Potions Shopkeeper is a woman. She is wearing a long black coat. The description is "A woman who appears to be over a hundred and fifteen years old."
+Potions Shopkeeper is a woman. She is wearing a long black coat. Understand "woman" or "shopkeeper" as Potions Shopkeeper. She is in One Stop Alchemist. The description is "A woman who appears to be over a hundred and fifteen years old."
+Instead of talking to Potions Shopkeeper:
+	say "The woman refuses to talk to you. Instead, she mutters something under her breath about 'meddlesome kids' and 'not really buying anything'."
 If Code is in Blackbox then Potions Shopkeeper is off-stage.
 Display Table is a scenery supporter in One Stop Alchemist. It is fixed in place. The description is "A wooden shelfed table. It displays [list of things on Display Table].".
-Silver Cauldron is a thing. It is fixed in place. It is on Display Table. The description is "A medium sized silver cauldron."
-Brass Cauldron is a thing. It is fixed in place. It is on Display Table. The description is "A medium sized brass cauldron." 
-Copper Cauldron is a container. It is on Display Table. The description is "A medium sized copper cauldron."
+Silver Cauldron is a thing. It is fixed in place. It is undescribed. It is on Display Table. The description is "A medium sized silver cauldron."
+Brass Cauldron is a thing. It is fixed in place. It is undescribed. It is on Display Table. The description is "A medium sized brass cauldron." 
+Copper Cauldron is a container. It is on Display Table. It is undescribed. The description is "A medium sized copper cauldron."
 Glass Phials are a thing. They are in Ingredients Cabinet. The description is "A box of twelve glass phials."
 Crystal Phials are a container. They are in Ingredients Cabinet. The description is "A box of twelve crystal phials."
-Cabinet Key is a thing. The description is "The key to the ingredients cabinet."
-An Ingredients Cabinet is a container in One Stop Alchemist. It is fixed in place. It is locked and lockable. Cabinet Key unlocks Ingredients Cabinet. The description of Ingredients Cabinet is "A large hanging wooden cabinet with glass doors to display an arrange of different potion incredients.You can see [list of things in Ingredients Cabinet].".
+Cabinet-Key is a thing. Understand "cabinet key" as cabinet-key. The printed name is "cabinet key". It unlocks Ingredients Cabinet. The description is "The key to the ingredients cabinet."
+An Ingredients Cabinet is a container in One Stop Alchemist. It is fixed in place. It is locked and lockable. Cabinet-Key unlocks Ingredients Cabinet. The description of Ingredients Cabinet is "A large hanging wooden cabinet with glass doors to display an arrange of different potion incredients.You can see [list of things in Ingredients Cabinet].".
 bat blood is a thing. It is in Ingredients Cabinet. The description is "A glass bottle full of thick dark red liquid. The corked bottle top is covered in cooled dripped wax to insure the seal.".
 cat hair is a thing. It is in Ingredients Cabinet. The description of cat hair is "A small glass box with dividers displaying several different types of cat hair.".
 caterpillar is a thing. It is in Ingredients Cabinet. The description is "A bottle of dried cattepillars.".
@@ -1323,42 +1200,58 @@ Instead of taking copper cauldron:
 	say "You can't just steal that. Come back when you have the money."
 
 
-
-
 [Armory]
+Convinced is a thing.
 After going to Armory when Armory is unvisited:
-	say "You step into the armory to see some familiar -or atleast nonmagic- items. A cannon and a pitchfork sit on either side of an extravagent weapons cabinet. the burly man behind the counter wears leather and off white cloth. His eyes follow you untrustfully."
+	say "You step into the armory to see some familiar -or atleast nonmagic- items. A cannon and a pitchfork sit on either side of an extravagent weapons cabinet. The burly man behind the counter wears leather and off white cloth. His eyes follow you untrustfully."
 Burly Man is a man. He is in Armory. The description is "A heavy set, extremely tall, man. He is wrapped in leather armor and has strapped his body with various knives."
 Instead of talking to Burly Man:
-	say "'Go away, boy! I will never unlock the weapons case for you."
-Weapons Case is a container. It is in Armory. It is locked and lockable. It is fixed in place. The description is "A floor-to-ceiling wooden display case with a glass door. Inside, supported by racks, are many different weapons: [list of things in Weapons Case]. It is currently empty.".
+	if Convinced is in blackbox:
+		say "'Ugh, what do you want, kid. I really think you're too tiny for these weapons. How will you be paying for these?'[line break]'The blacksmith sent me,' you say, having forgotten completely about money.[line break]'Oh. Fine. Take whatever you want, kid.'";
+		now Weapons Case is unlocked;
+	otherwise:
+		say "'Go away, boy! You are too puny to handle any of these weapons!'"
+Weapons Case is a container. It is in Armory. It is locked and lockable. It is fixed in place. The description is "A floor-to-ceiling wooden display case with a glass door. Inside, supported by racks, are many different weapons: [list of things in Weapons Case].".
 Sword is a thing. It is in Weapons Case. The description is "A polished steel sword with a gorgeous hilt. This is truely the sword of a champion. [if Sword is in Weapons Case]It is supported by four protruding hooks."
 Blunt Weapon is a thing. It is in Weapons Case. The description is "A huge stone tethered to the end of a slick. It looks heavy, but with a strong arm behind it, it could easily take someone out.[if Blunt Weapon is in Weapons Case] It stands erect at the bottom of the weapons case.".
 Spear is a thing. It is in Weapons Case. The description is "A long wooden shaft with a polished steal tip. Leather grips are adhesed in three different places.[If Spear is in Weapons Case] It hangs by leader supporters from two nails in the weapons case."
 Axe is a thing. It is in Weapons Case. The description is "A one sided axe. The blade is curved and sharpened to a point. The wooden handle has inlays of metal and a reinforced leather hand grip.[if Axe is in Weapons Case] It hands upsidedown from the ceiling of the weapons case."
 Shield is a thing. It is in Weapons Case. The description is "It almost looks like the Ferrari shield, except with a dragon instead of a horse and made of a shimmering metal. It looks very heavy. [if Shield is in Weapons Case]It's tip rests on the bottom of the case and leans against the back."
-A cannon is a thing. It is in Armory. The description is "A small cast iron cannon mounted ontop of a wheeled wooden holder.[if Cannon is in Weapons Case] It stands paralled to the wall to the right of the weapons case."
-A pitchfork is a thing. It is in Armory. The description is "A sharp four pronged metal pitchfork mounted intop of a long wooden shaft.[if pitchfork is in Armory] It is leaning to the left of the weapons case."
+A cannon is a thing. It is in Armory. It is fixed in place. The description is "A small cast iron cannon mounted ontop of a wheeled wooden holder.[if Cannon is in Weapons Case] It stands paralled to the wall to the right of the weapons case."
+A pitchfork is a thing. It is in Armory. It is fixed in place. The description is "A sharp four pronged metal pitchfork mounted ontop of a long wooden shaft.[if pitchfork is in Armory] It is leaning to the left of the weapons case."
 
 
 [Blacksmith]
+Blacksmith1 is a man. He is in Blacksmith. The printed name is "Blacksmith". The description is "A well built and sturdy man with a thick black apron and the obvious need of a bath."
+Instead of talking to Blacksmith:
+	if Convinced is in blackbox:
+		say "'Have fun on that path, boy. Just bring your wand and some weapons and you should be okay.'"
+Speak1 is a thing.
 After going to Blacksmith when Blacksmith is unvisited:
-	say "You knock on the closed, apparently windowless, blacksmith shop. The blacksmith opens the door for you. He looks at you gruffyly. 'What do you want.'[line break]'I'm new in town… I'm not really from around these parts.' The gruff man looks you up and down.[line break]'Obviously.' He becons you in, and steps aside. You enter one giant room with a door to the norht and a door to the east, which seems to lead to his private quarters. 'Did a unicorn bring you?' You nod, amazed that you're still finding things suprising today. The man nods in response, and kicks a stool at you. 'I got a few words to say to you, boy. Got a minute?'";
-	if player consents:
-		say "You nod, adjusting your weight on the rocking rickety stool.";
+	if Speak1 is in blackbox:
+		say "The blacksmith looks up, sees that it is you, and returns to his work.";
 	otherwise:
-		say "You consider telling the man no, but your'e too intimidated to say otherwise. You nod.";
-	say "'I used to be like you, kid.'[line break]'Wade.'[line break]'What?. I used to live down south where the normal people live. I used to go to restaurants and buy flowers for all the girls in my life. I used to be a real charmer, you know. But I met a man named Hayden. That must have been fifty years ago. Amara brought me here.'[line break]'Well, that all sounds familiar.'[line break]'Hayden sent me here for a personal quest of my own, but I was just overtaken by this land, boy. This world is beyond your most glorious imaginations. Sure, it snows ninety perfect of the time, but the air smells of magic and I fell in love. I'm warning you now, boy. This world will steal your heart away. If you truly want to go home, then you must find your way. But if you decide to stay, I could help you along.' You look at the man, and think of Elily. You had to return to her. Right? 'Mr. Blacksmith,' you say. 'How might I find my way out of here?'[line break] The man sighs. 'There's a dirt path behind my shop that leads north to the mountains. I've heard tale of a magic portal up there. I'm sure that could get you back home."
+		say "You knock on the closed, apparently windowless, blacksmith shop. The blacksmith opens the door for you. He looks at you gruffyly. 'What do you want.'[line break]'I'm new in town… I'm not really from around these parts.' The gruff man looks you up and down.[line break]'Obviously.' He becons you in, and steps aside. You enter one giant room with a door to the north and a door to the east, which seems to lead to his private quarters. 'Did a unicorn bring you?' You nod, amazed that you're still finding things suprising today. The man nods in response, and kicks a stool at you. 'I got a few words to say to you, boy. Got a minute?'";
+		if player consents:
+			say "You nod, adjusting your weight on the rocking rickety stool.";
+		otherwise:
+			say "You consider telling the man no, but your'e too intimidated to say otherwise. You nod.";
+		say "'I used to be like you, kid.'[line break]'Wade.'[line break]'What?. I used to live down south where the normal people live. I used to go to restaurants and buy flowers for all the girls in my life. I used to be a real charmer, you know. But I met a man named Hayden. That must have been fifty years ago. Amara brought me here.'[line break]'Well, that all sounds familiar.'[line break]'Hayden sent me here for a personal quest of my own, but I was just overtaken by this land, boy. This world is beyond your most glorious imaginations. Sure, it snows ninety perfect of the time, but the air smells of magic and I fell in love. I'm warning you now, boy. This world will steal your heart away. If you truly want to go home, then you must find your way. But if you decide to stay, I could help you along.' You look at the man, and think of Elily. You had to return to her. Right? [line break]'Mr. Blacksmith,' you say. 'How might I find my way out of here?'[line break] The man sighs. 'There's a dirt path behind my shop that leads north to the mountains. I've heard tale of a magic portal up there. I'm sure that could get you back home.'[paragraph break]'Wait, kid. Look, it gets dangerous up there. Go to the armory and pick up some weapons.'";
+		now Convinced is in blackbox;
+		now speak1 is in blackbox.
 
 
 [Wand Shop]
-Wand is a device. The description is "A wand made of long, polished, dark wood. You don't know much about it other than that."
+Buckets are scenery. They are in Wand-Shop. The description is "Several buckets full of spellbooks."
+Wand is a device. 
+Instead of examining Wand:
+	say "A wand made of long, polished, dark wood. You don't know much about it other than that."
 Long Boxes are scenery in Wand-Shop. The description is "You assume these boxes all contain wands."
 Instead of taking Long Boxes:
 	say "I'd advise against stealing magic items from people who could probably kill you without even touching you."
-Wizard1 is a man. Rule for printing the name of Wizard1: say "Wizard". The description is "A frail man with too much agility for his age. He runs this shop and is wearing a long black cloak." He is wearing a long black cloak. 
+Wizard1 is a man. The printed name is "Wizard". Understand "wizard" or "shopkeeper" or "wizard shopkeeper" as Wizard1. He is in Wand-Shop. The description is "A frail man with too much agility for his age. He runs this shop and is wearing a long black cloak." He is wearing a long black cloak. 
 Spellbooks are scenery in Wand-Shop. The description is "Books full of spells."
-Spellbook is a thing. The description is "Light: 'Levis wand'[line break]Extinguish Light: 'Haud Levis Wand'[line break]Attack: 'Invado'[line break]Put to Sleep: 'Somnus'[line break]Unlock: 'resero'".
+Spellbook is a thing. It is fixed in place. The description is "Light: 'Levis wand'[line break]Extinguish Light: 'Haud Levis Wand'[line break]Attack: 'Invado'[line break]Put to Sleep: 'Somnus'[line break]Unlock: 'resero'".
 Understand "resero [something]" as Resero. Resero is an action applying to one thing.
 Check Resero:
 	if noun is Weapons Case:
@@ -1373,7 +1266,7 @@ Instead of taking spellbooks:
 	otherwise:
 		say "You should probably talk to the wizard shopkeeper before you take that."
 Instead of talking to wizard1:
-	say "'Hello?' You call out into the stop. You hear a scuffing, then silence. You look around.[line break]'Hello?'[line break]'Hello there.' You jump, startled. The wizard stands behind you, barely five feet tall. 'Now what may I do for you today?' His voice twists around you and makes you uncomfortable. 'A wand, me'boy? A wand is what you surely need.' You just nod and go long with it. The wizard starts muttering to himself, making circles around you. 'Yes, yes, a tall young boy…brown hair, too, yes…perhaps mahagony?…no, no, that's not it.' The man skuttles off leaving you alone for several minutes.[paragraph break]Bearing a long slender box, the man hurries back to you. He runs awkwardly; as if his legs are half as long as they should be. 'Here, here, me'boy. Try this one. It's perfect, it is.' He opens the box, extending it to you. Reaching in, you pick up the long slender piece of wood. It's nicely polished if nothing else. The wizard watches, expectant.[line break]'Well? What do you have to give me for it?' You reach into your pockets and pull out the unicorn hair that ripped out in your hands from the ride. His eyes widen. 'Perfect, perfect. This is perfect.' He snatches the hair from you and skuttles back into the depths of his shop.";
+	say "'Hello?' You call out into the stop. You hear a scuffing, then silence. You look around. 'Hello?'[line break]'Hello there.' You jump, startled. The wizard stands behind you, barely five feet tall. 'Now what may I do for you today?' His voice twists around you and makes you uncomfortable. 'A wand, me'boy? A wand is what you surely need.' You just nod and go long with it. The wizard starts muttering to himself, making circles around you. 'Yes, yes, a tall young boy…brown hair, too, yes…perhaps mahagony?…no, no, that's not it.' The man skuttles off leaving you alone for several minutes.[paragraph break]Bearing a long slender box, the man hurries back to you. He runs awkwardly; as if his legs are half as long as they should be. 'Here, here, me'boy. Try this one. It's perfect, it is.' He opens the box, extending it to you. Reaching in, you pick up the long slender piece of wood. It's nicely polished if nothing else. The wizard watches, expectant.[line break]'Well? What do you have to give me for it?' You reach into your pockets and pull out the unicorn hair that ripped out in your hands from the ride. His eyes widen. 'Perfect, perfect. This is perfect.' He snatches the hair from you and skuttles back into the depths of his shop.";
 	now unicorn hair is off-stage;
 	now player has Wand.
 	
@@ -1383,11 +1276,20 @@ Understand "levis [wand]" as switching on.
 Understand "haud levis [wand]" as switching off.
 Understand "invado [something]" as Invado. Invado is an action applying to one thing. 
 Understand "somnus [something]" as Somnus. Somnus is an action applying to one thing.
+Instead of switching on wand:
+	say "You flick the wand, and the tip glows bright with light.";
+	now wand is switched on.
+Instead of switching off wand:
+	say "You flick the wand, and the tip dims until there is no more light.";
+	now wand is switched off.
 Check Somnus:
 	if player has wand:
 		if player is in Stone Valley Pass3:
 			say "You flick the wand and confidently cast the spell at the ogre, who falls heavily to the ground with echoing snores.";
 			now LifeForce is in blackbox;
+		if player is in Mer-Castle Gate:
+			if noun is Guard:
+				say "The sleeping spell just bounces off of the guard. He seems a little upset now, though.";
 		otherwise:
 			say "Why would you put that to sleep?";
 	otherwise:
@@ -1399,6 +1301,9 @@ Check Invado:
 				say "You flick the wand, throwing an attack spell at the ogre. But it bounces right off of him. Magic cannot defeat this beast.";
 			otherwise:
 				say "Why would you attack [noun]?";
+		if player is in Mer-Castle Gate:
+			if noun is Guard:
+				say "You throw an attack spell at the guard, but it only bounces off. He seems a little upset now, too. Smooth.";
 		otherwise:
 			say "Why would you attack [noun]?";
 	otherwise:
@@ -1407,33 +1312,38 @@ Check Invado:
 
 
 [Beasts]
-Instead of entering Beasts:
+Instead of going southeast while in town center:
 	say "You enter the store, but before you can look around a large man shoves you out. 'These pets are not for children!' He bellows.";
 	now player is in Town Center.
 
 
 [Dirt Path]
-After going to Dirt Path when Dirt Path is unvisited:
-	say "You start walking up the dirt path. The steady incline starts to steal your breath in the thin mountain air. Up ahead, you see a small cottage."
+Instead of going to Dirt Path when Dirt Path is unvisited:
+	say "You start walking up the dirt path. The steady incline starts to steal your breath in the thin mountain air. Up ahead, you see a small cottage.";
+	continue the action.
 
 
 [Small Cottage]
 Code is a thing. The description is "A helpful condition."
-Shopping List is a thing. The description is "- bat blood[line break]- fairy wings[line break]- octopu powder[line break]- rose thorns".
-After going to Small Cottage when Small Cottage is unvisited:
+Shopping List is a thing. 
+Instead of examining Shopping List:
+	say "- bat blood[line break]- fairy wings[line break]- octopu powder[line break]- rose thorns".
+Instead of going to Small Cottage when Small Cottage is unvisited:
 	say "You rap on the door. An old man, unged in a floor length black cloak answers the door.[line break]'Oh, lovely. You're here. Come, come.' the man hobbles back into his home. Follow him?";
 	if player consents:
 		say "'Um, sure,' you mutter to yourself and step into the cottage. Humble furnature compliments the interior of the modest living space. In the center of the room, resting on a nest of unprotected blue flames sits a large cast iron cauldron. The blue fire licks the floor and surrounding furnature but doesn't leave a mark. The wizard looks over into the cauldron.".;
+		continue the action;
 	otherwise: 
 		say "You step away from the house and its weird occupant. You make your way around the house and continue north along the dirt path.";
 		now Code is in Blackbox;
 		now player is on Dirt Path2.
 Wizard is a man in Small Cottage.
 Instead of talking to Wizard for the first time:
-	say "'Hey, did you need me for something?'[line break]'Ah, yes, m'boy. Look. I'm an old fellow.' You looked. He spoke an obvious truth. 'I need a few things from the potions store. I will pay you when you return. Can you do that for me?'";
+	say "'Hey, did you need me for something?'[line break]'Ah, yes, m'boy. Look. I'm an old fellow.' You look. He spoke an obvious truth. 'I need a few things from the potions store. I will pay you when you return. Can you do that for me?'";
 	if player consents:
-		say "'Sure.. I think I can handle that. What do you need?'[line break]'Here's a list. Thanks, son.' the wizard hands you ap iece of partchment written on in medieval caligraphy.";
+		say "'Sure.. I think I can handle that. What do you need?'[line break]'Here's a list. Thanks, son.' the wizard hands you a piece of partchment written on in medieval caligraphy.";
 		now player has Shopping List;
+		now Potions Shopkeeper is in Broken Lighthouse;
 	otherwise:
 		say "'Sorry, but I'm not comfortable with this errand. I'm going to be on my way. You leave the cottage and continue north up the trail.";
 		now player is on Dirt Path2;
@@ -1443,11 +1353,13 @@ Instead of talking to Wizard for the second time:
 		if player has fairy wings:
 			if player has octopus powder:
 				if player has rose thorn:
-					say "'Hey, mister…' you let yourself into the cottage. The man is slaving away over his cauldron. You can see the sweat drenching his face. A drop falls into the potion which then gives off a tremendous hiss. He curses, then sees you.[paragraph break]'Oh, thank Merlin you're here. com, come, give me those.' He snatches the ingredients from your hands.[line break]Watch the deranged man make his potion?";
+					say "'Hey, mister…' you let yourself into the cottage. The man is slaving away over his cauldron. You can see the sweat drenching his face. A drop falls into the potion which then gives off a tremendous hiss. He curses, then sees you.[paragraph break]'Oh, thank Merlin you're here. Come, come, give me those.' He snatches the ingredients from your hands.[line break]Watch the deranged man make his potion?";
 					if player consents:
-						say "You watch, memorized, as the wizard dashes in the octopus powder, mixing it in by swirling his hands over the cauldron. He adds a drop of bat blood and the potion begins to boil, emitting a purple steam.[line break]'Careful not to breathe this,' he coughs at you. The fairy wings go in next ,and he mixes them in until the potion turns white and comes to a simmer, then throws in a handful of rose thorns. 'One extra for good luck, eh?' He winks at you, flicking one last thorn into the cauldron. The potion lights up the room with a bang, blinding you. When your sight returns, you're standing alone on the dirt path; the cottage nowhere to be seen.";
+						say "You watch, memorized, as the wizard dashes in the octopus powder, mixing it in by swirling his hands over the cauldron. He adds a drop of bat blood and the potion begins to boil, emitting a purple steam.[line break]'Careful not to breathe this,' he coughs at you. The fairy wings go in next ,and he mixes them in until the potion turns white and comes to a simmer, then throws in a handful of rose thorns. 'One extra for good luck, eh?' He winks at you, flicking one last thorn into the cauldron. The potion lights up the room with a bang, blinding you. When your sight returns, you're standing alone on the dirt path.";
 						now player is in Dirt Path2;
-						now small cottage is off-stage;
+						now Wizard is in Broken Lighthouse;
+						now the description of Small cottage is "The charred remains of a small one or two room cottage.";
+						now player has gold coins;
 					otherwise:
 						say "'Well, this was fun.. but I need to go.'[line break]'Go, go then! The coins are over, um,' he reaches into his pockets and throws a small bag at you. 'Now go on your way!' You leave the cottage and continue north along the trail. Up ahead you see looming stone mountains. The trail leads through the dark center of both of them.";
 						now player has gold coins;
@@ -1463,13 +1375,14 @@ Instead of talking to Wizard for the second time:
 [Scene 3.5]
 		
 [Dirt Path2]
-Dirt Path2 is a room. It is north of Small Cottage. The printed name of Dirt Path2 is "Dirt Path".
-After going to Dirt Path2 when Dirt Path2 is unvisited:
-	say "Up ahead, you see looming stone mountains. The trail leads through the dark center of both of them."
+Dirt Path2 is a room. It is north of Small Cottage. The printed name of Dirt Path2 is "Dirt Path". "The dirt path continues on. To the north is Stone Valley Pass."
+Instead of going to Dirt Path2 when Dirt Path2 is unvisited:
+	say "Up ahead, you see looming stone mountains. The trail leads through the dark center of both of them.";
+	continue the action.
 
 [Stone Valley Pass]
 Stone Valley Pass1 is a room. It is north of Dirt Path2. The printed name is "Stone Valley Pass". "You approach Stone Valley Pass. There's a warning painted crudely on a wooden sign."
-Wooden Sign is scenery in Stone Valley Pass1. The description is "Beware, all ye who enter[line break]for the tales tell of tremendous beasts[line break]who crank and crunch and chomp little men like ye[line break]green like untrustfully slithering serpents[line break]ghastly and gruesome like gorgon.[line break]Beware, all ye who enter[line break]for the end is your boneyard."
+Wooden Sign is scenery in Stone Valley Pass1. Understand "warning" as Wooden Sign. The description is "Beware, all ye who enter[line break]for the tales tell of tremendous beasts[line break]who crank and crunch and chomp little men like ye[line break]green like untrustfully slithering serpents[line break]ghastly and gruesome and grave.[line break]Beware, all ye who test his guard[line break]for the end is ye boneyard."
 Stone Valley Pass2 is a room. It is north of Stone Valley Pass1. The printed name is "Stone Valley Pass". "You step through the mouth of the mountains."
 After going to Stone Valley Pass2 when Stone Valley Pass2 is unvisited:
 	if player has Wand:
@@ -1484,14 +1397,28 @@ After going to Stone Valley Pass2 when Stone Valley Pass2 is unvisited:
 	otherwise:
 		say "You carefully step past the sign into the impending darkness. Your footsteps fall on things that crunch beneath your feet. Soon, you are surrounded by darkness. You can't see anything. You're too scared to move forward without something to illuminate your way. You retrace your steps.";
 		now player is in Stone Valley Pass1.
-		
-Stone Valley Pass3 is a room. It is north of Stone Valley Pass2. The printed name of Stone Valley Pass3 is "Stone Valley Pass". "You continue along the path. [if ogre is in stone valley pass3]Up ahead looms the silhouette of a giant beast. The stench of rotting flesh and bad hygene assaults your nose[end if].[if dead ogre is in stone valley pass3]The corpse of the dead ogre fills up most of the path[end if]."
-Instead of going to Stone Valley Pass4:
+
+Small Bugs are scenery in Stone Valley Pass1. Understand "bugs" as Small Bugs. The description is "Small roaches and the like that scuttle over the rocks and around your feet."
+Frightful Rats are scenery in Stone Valley Pass1. Understand "rats" as Frightful Rats. The description is "Several, probably diseased, rats run away from your light."
+Instead of taking Small Bugs:
+	say "You're actually quite frightened of roaches."
+Instead of taking Frightful Rats:
+	say "Those look diseased. The last thing you need right now is some magic-rat disease."		
+
+Stone Valley Pass3 is a room. It is north of Stone Valley Pass2. The printed name of Stone Valley Pass3 is "Stone Valley Pass". "You continue along the path. [if ogre is in stone valley pass3]Up ahead looms the silhouette of a giant beast. The stench of rotting flesh and bad hygene assaults your nose.[end if][if dead ogre is in stone valley pass3]The corpse of the dead ogre fills up most of that path[end if]."
+Instead of going south to Stone Valley Pass4:
+	if ogre is in Stone Valley Pass3:
+		say "You approach the ogre, quietly.";
+		continue the action;
+	if dead ogre is in Stone Valley Pass3:
+		say "You enter the pass, careful to avoid the fallen ogre."
+Instead of going north to Stone Valley Pass4:
 	if ogre is in Stone Valley Pass3:
 		if lifeforce is in blackbox:
 			say "You quietly sneak past the sleeping ogre.";
+			now player is in Stone Valley Pass4;
 		otherwise:
-			say "You try to sneak around the giant ogre, but he bellow at you and blocks your path.";
+			say "You try to sneak around the giant ogre, but he bellows at you and blocks your path.";
 	otherwise:
 		continue the action.
 windful is a thing.
@@ -1502,7 +1429,7 @@ Understand "attack [animal] with [something]" or "hit [animal] with [something]"
 Ogre Tunic is scenery in Stone Valley Pass3.
 Instead of taking Ogre Tunic:
 	if dead ogre is in Stone Valley Pass3:
-		say "You bend over and pick up the head, grunting at its weight.";
+		say "You bend over and take the shreds of burlap, gaging at its putrid smell.";
 		now player has Ogre Tunic;
 	otherwise:
 		say "You have to slay the beast first!"
@@ -1512,6 +1439,9 @@ Check attackinganimal:
 		now lifeforce is in unicorn-box.
 Check attackinganimal:
 	if noun is ogre:
+		if second noun is axe:
+			say "You throw the axe at the ogre, but it just bounces off. Now you've lost your axe.";
+			now axe is off-stage;
 		if second noun is shield:
 			say "You throw the shield at the ogre, but it does little good. You quickly pick it back up.";
 		if second noun is pitchfork:
@@ -1535,27 +1465,30 @@ Check attackinganimal:
 		say "Why would you ever attack that?"
 		
 Stone Valley Pass4 is a room. It is north of Stone Valley Pass3. The printed name is "Stone Valley Pass". 
-After going to Stone Valley Pass4 when Stone Valley Pass4 is unvisited:
+Instead of going to Stone Valley Pass4 when Stone Valley Pass4 is unvisited:
 	say "Natural light creeps into the valley as you step back out onto the dirt path.";
-	now player is in Dirt Path3.
+	continue the action.
 Dirt Path3 is a room. It is north of Stone Valley Pass4. The printed name is "Dirt Path". "The end of the dirt path forks northeast and northwest."
-Northeast Path is a room. It is northeast of Dirt Path3.
-After going to Northeast Path when Northeast Path is unvisited:
-	say "You turn right onto the path and continue until you come upon a lake. The path seems to end here.";
-	now player is in Lake.
-Lake is a room. It is northeast of Northeast Path.
-Northwest Path is a room. It is northwest of Dirt Path3.
-After going to Northwest Path when Northwest Path is unvisited:
-	say "You turn left onto the path and continue until you come upon a giant Sphinx. She blocks your path. Her tail twitches."
-Northwest Path2 is a room. It is northwest of Northwest Path. "You continue along the path. The sphinx is to the southeast."
+Northeast Path is a room. It is northeast of Dirt Path3. "The lake is to the northeast while the path retreats to the southwest."
+
+Lake is a room. It is northeast of Northeast Path. "A beautiful lake stretches before you, but the path seems to end at its bank."
+Northwest Path is a room. It is northwest of Dirt Path3. "A continuation of the trail. The path continues northwest while it returns southeast."
+Instead of going to Northwest Path when Northwest Path is unvisited:
+	say "You turn left onto the path and continue until you come upon a giant Sphinx. She blocks your path. Her tail twitches.";
+	continue the action.
+Northwest Path2 is a room. It is northwest of Northwest Path. The printed name is "Northwest Path". "You continue along the path. The sphinx is to the southeast. The trail continues north."
 Answer1 is a thing.
 Answer2 is a thing.
 Answer3 is a thing.
 Instead of going to northwest path2:
 	if Answer1 is not in blackbox:
-		if Answer2 is not in blackbox:
-			if Answer3 is not in blackbox:
-				say "'You may not pass.' Booms the Sphinx."
+		say "'You may not pass.' Booms the Sphinx.";
+	else if Answer2 is not in blackbox:
+		say "'You may not pass.' Booms the Sphinx. 'Two more riddles.'";
+	else if Answer3 is not in blackbox:
+		say "'You may not pass.' Booms the Sphinx. 'One more riddle.'";
+	otherwise:
+		continue the action.
 [sphinx]
 Sphinx is a woman. She is in Northwest Path. The description is "She towers above you with the body of a huge lion and the head of a beautiful woman. Impressive wings are folded at her side."
 
@@ -1565,12 +1498,12 @@ Instead of talking to sphinx:
 	if Answer1 is not in blackbox:
 		say "'Um, hello?' The sphinx looks at you emotionlessly.[line break]'I have riddles of three,' she says. 'Answer them all, and ye shall be free.' [line break]'Well, okay-'[line break]'But, fail simply one, and ye shall be none.' Attempt her riddles?";
 		if player consents:
-			say "(answer questions: 'answer is …')";
+			say "(answer questions: 'answer …')";
 			say "[paragraph break]'Give me food, and I live. Give me drink, and I die. What am I?'";
 		otherwise:
 			say "You decline her invite.";
 	if Answer1 is in blackbox and Answer2 is not in blackbox:
-		say "'What force and strength cannot get through,[line break]I with a simple action I can do.[line break]Many a man would stand,[line break]barred from their abode,[line break]were I not held in their hand.'";
+		say "'What force and strength cannot get through,[line break]I with a simple action can do.[line break]Many a man would stand,[line break]barred from their abode,[line break]were I not held in their hand.'";
 	if Answer2 is in blackbox and Answer3 is not in blackbox:
 		say "'I always tell the truth. I show off everything that I see. I come in many shapes and sizes, but I am always flat. I hang and lean off of walls.'"
 		
@@ -1605,36 +1538,36 @@ Instead of answering sphinx that "a mirror":
 	
 [northeast path]
 [Northeast Path is a room. It is northeast of Dirt Path3.]
-After going to Northeast Path when Northeast Path is unvisited:
-	say "You turn right onto the path and continue until you come upon a lake. The path seems to end here.";
-	now player is in Lake.
-Lake is a room. It is northeast of Northeast Path.
-
-Witch is a woman. 
-After going to lake when lake is unvisited:
-	say  "You walk down the path towards the late and make your way over to the water, and look into its depths.";
-	now Witch is in Lake.
 	
 Instead of talking to witch:
-	say "You approach the witch. 'Excuse me, ma'am, but do you know where the path continues?' The woman looks you up and down. She's a younger woman, probably in her thirties.[line break]'Who's asking?' She says suspiciously.[line break]'My name is Wade. I'm not really from around here.' She keeps looking at you. 'Umm, the blacksmith sent me.'[line break]'Ah, yes, the simpleton,' she says. 'The path continues underwater, at the bottom of the lake.'[line break]'How am I supposed to get down there?'[line break]'A simple potion should do it,' she says slowly.[line break]'Do you have the recipe?' She pulls a wand out from the folds in her clothes and uses it to conjur up a piece of paper and a pen. When she's finished, she passes you the folded piece of paper. [line break]'There's a stand over there for your cauldron.'";
-	now player has List.
+	if player has Ogre Tunic:
+		say "'Ugh! How gross! Get that filthy garb away from me, you disgusting child!'";
+	if player has Breathing-Potion:
+		say "'Isn't your potion done yet?' The witch moves away from you.";
+	else if point0 is in unicorn-box:
+		say "'Go away, boy. I have things to do.'";
+	otherwise:
+		say "You approach the witch. 'Excuse me, ma'am, but do you know where the path continues?' The woman looks you up and down. She's a younger woman, probably in her thirties.[line break]'Who's asking?' She says suspiciously.[line break]'My name is Wade. I'm not really from around here.' She keeps looking at you. 'Umm, the blacksmith sent me.'[line break]'Ah, yes, the simpleton,' she says. 'The path continues underwater, at the bottom of the lake.'[line break]'How am I supposed to get down there?'[line break]'A simple potion should do it,' she says slowly.[line break]'Do you have the recipe?' [if player has Ingredients List][line break]'It looks like you already have the ingredients list,' she says, motioning her hand at the scroll sticking out of your pocket.[end if][if player does not have Ingredients List]She pulls a wand out from the folds in her clothes and uses it to conjur up a piece of paper and a pen. When she's finished, she passes you the folded piece of paper. [line break]'There's a stand over there for your cauldron.'";
+		now player has Ingredients List;
+		now Witch is off-stage.
 
 
-Cauldron Stand is a scenery supporter in Lake. The description is "A stand to fire a cauldron."
-List is a thing. 
-Instead of examining List: 
+Cauldron-Stand is a scenery supporter in Lake. The printed name is "Cauldron Stand". Understand "stand" or "cauldron stand" as Cauldron-Stand. The description is "A stand to fire a cauldron."
+Ingredients List is a thing. It is undescribed.
+Instead of examining Ingredients List: 
 	say "-copper cauldron[line break]-cat hair[line break]-caterpillar[line break]- crocodile heart[line break]-dragon claw[line break]-cat eye[line break]-frog brain[line break]- crystal phials".
-Breathing-Potion is a thing. The printed name is "Breathing Potion". It is edible. The description is "A thick purple potion in a crystal phial."
+Breathing-Potion is a thing. The printed name is "Breathing Potion". Understand "breathing potion" as Breathing-Potion. It is edible. The description is "A thick purple potion in a crystal phial."
 Breathing is a thing.
-Potion is scenery. The description is "A thick purple potion."
-Instead of putting Copper Cauldron on Cauldron Stand:
+Potion is a thing. It is undescribed. It is fixed in place. The description is "A thick purple potion."
+Instead of putting Copper Cauldron on Cauldron-Stand:
 	say "Glad to be rid of the weight, you put the cauldron onto the stand. Instantly a flame lights under the cauldron.";
-	continue the action;
+	now Copper Cauldron is on Cauldron-stand;
 	now Copper Cauldron is fixed in place.
 Flame is scenery in Lake. The description is "A small orange flame flickering under the copper cauldron."
 
+
 Every turn:
-	If Copper Cauldron is on Cauldron Stand:
+	If Copper Cauldron is on Cauldron-Stand:
 		if cat hair is in copper cauldron:
 			if caterpillar is in copper cauldron:
 				if crocodile heart is in copper cauldron:
@@ -1642,32 +1575,34 @@ Every turn:
 						if cat eye is in copper cauldron:
 							if frog brain is in copper cauldron:
 								say "You mix together the last of the ingredients. The potion is thick and deep purple.";
+								now dragon claw is off-stage;
 								now potion is in lake.
+								
+Instead of taking potion:
+	say "(first putting Potion into Crystal Phial)[paragraph break]You cork the phial, and turn the breathing potion around in your hands, watching the thick purple liquid roll around under the crystal.";
+	now Crystal Phials are off-stage;
+	now player has Breathing-Potion.
 
-Instead of drinking potion:
-	say "It's much too hot to drink the potion right out of the cauldron! You must put it into the crystal phials instead."
-Check putting:
-	if noun is Potion and second noun is Crystal Phials:
-		say "You dip the phials into your potion and cork them.";
-		now player has Breathing-Potion;
-		now Crystal Phials are off-stage.
 Instead of drinking Breathing-Potion:
 	say "'Here goes nothing,' you say, and tip the potion into your mouth. It tastes like a mix of raw octopus and chalk.";
-	now Breathing is in blackbox.
+	now Breathing is in blackbox;
+	now Breathing-Potion is off-stage.
 	
 [Mer City]
-Water1 is a room. It is north of Lake. The printed name is "water".
-Instead of entering water1 when breathing is not in blackbox:
-	say "You tread into the water, but you know you can't hold your breath for long so you return to the shore."
-Tunnel is a room. It is south of Water1.
-After going to Tunnel when tunnel is unvisited:
-	say "You swim down into a tunnel, following it until it spits you out into an underwater world."
+Water1 is a room. It is north of Lake. The printed name is "lake water". It is above Tunnel. "The lake water is dark. [if breathing is in blackbox] According to the witch, the path continues at the center of the lake, straight down.[otherwise]."
+Instead of going to water1 when breathing is not in blackbox:
+	say "You tread into the water, but you know you can't hold your breath for long so you return to the shore. Perhaps that potion will work.";
+	now Witch is in Lake.
+Witch is a woman. The description is "A younger woman in another of those long black cloaks."
+Tunnel is a room. It is below Water1. "The tunnel continues north. To go back to the lake, just swim up."
+
 Mer City is a room. It is north of Tunnel. "Mer City is beautiful. Mermen and merwomen swim around town as normal as if they were people on land. Each home has a small garden of kelp. The castle gate is north, and the castle lays just behind it."
-After going to Mer City when Mer City is unvisited:
-	say "You enter a city and are speachless. Mermaids are swimming around carelessly and small homes are settled on the floor of the lake, completely sumberged in a giant underwater cave. Glowing orbs line the streets, fill the homes, and adorn the cave walls, bringing a bright but artificial light to the city. A beautiful sandstone castle lays due north."
+Instead of going to Mer City when Mer City is unvisited:
+	say "You enter a city and are speachless. Mermaids are swimming around carelessly and small homes are settled on the floor of the lake, completely sumberged in a giant underwater cave. Glowing orbs line the streets, fill the homes, and adorn the cave walls, bringing a bright but artificial light to the city. A beautiful sandstone castle lays due north.";
+	continue the action.
 Mermaid Princess is a woman. Understand "merwoman" and "mermaid" as Mermaid Princess. The description is "A beautiful mermaid with a dark blue tail and a braid of brown hair." She is wearing Gold Bracelets. She is wearing Gold Tiara.
 Mer-Castle Gate is a room. The printed name is "Mer Castle Gate". It is north of Mer City. "The gate to Mer Castle is merely for show, as any creature could swim over the walls. Two guards draped in armor and holding spears are blocking the gate."
-Instead of entering Mer Castle:
+Instead of going north in Mer-Castle Gate:
 	if Point1 is in blackbox:
 		continue the action;
 	otherwise:
@@ -1688,83 +1623,92 @@ Instead of talking to Guard for the first time:
 	say "You are slightly intimidated by the guards, but you need their help. 'Hi,' you say to one of the guards. 'I'm from a far away land and I'm looking for a portal that will take me home. I need to speak to your king to see if he can, um, help me out with that.' The guards ignore you."
 Instead of talking to Guard for the second time:
 	say "You continue to try to get the guards' attention, but they ignore you. You've almost given up when a beautiful merwoman swims up the street towards you. She is wearing a gold tiara and the guards come to attention when she approaches.";
-	now Mermaid Princess is in Mer Castle Gate.
+	now Mermaid Princess is in Mer-Castle Gate.
 Instead of talking to Mermaid Princess:
-	if player is in Mer Castle Gate:
-		say "'Who are you?' The mermaid snaps.[line break]'Hi, I'm Wade.' No response. 'I'm from far away, from lands where there is no magic. Her composure instantly softens and she becomes very curious. [line break]'No magic? I've heard rumors, heard stories, but I never though.. could never believe.. why are you here?'[line break]'I'm tryin to find my way home. I was told there is a portal that will send me back.' The mermaid searches your face, as if trying to figure out if you are lying or not. [line break]'You must come with me,' she says, and swims toward the castle gate which opens before her. Follow the mermaid?";
+	if player is in Mer-Castle Gate:
+		say "'Who are you?' The mermaid snaps.[line break]'Hi, I'm Wade.' No response. 'I'm from far away, from lands where there is no magic.' Her composure instantly softens and she becomes very curious. [line break]'No magic? I've heard rumors, heard stories, but I never thought.. could never believe.. why are you here?'[line break]'I'm trying to find my way home. I was told there is a portal that will send me back.' The mermaid searches your face, as if trying to figure out if you are lying or not. [line break]'You must come with me,' she says, and swims toward the castle gate which opens before her. Follow the mermaid?";
 		if player consents:
 			say "You kick your legs and swim after her into Mer Castle.";
 			now player is in Mer Castle;
 			now Mermaid Princess is in Mer Castle;
-		otherwise:
-			say "Unnerved by your strage surroundings, you decide not to follow the beautiful mermaid."
-			
-[Mer Castle]
-Mer Castle is a room. It is north of Mer Castle Gate. "The castle is gorgeous. The walls reach high and the light orbs float through the water and hang from the ceiling. The floors are made of smooth sandstone and an elegant staircase spirals up to the next floor. There are several doors along either side of you."
-Instead of talking to Mermaid Princess:
-	if player is in Mer Castle:
-		say "'I'm just so interested in your story,' she says. 'You're just like the other land people. How are you down here? How can you breathe water if you're non-magic?'[line break]'I drank a potion. But I'm not here to talk, I'm sorry. I need to find the portal to get home.' The mermaid grabs a hold of your arm. [line break]'Don't leave, landman. Stay here, with me, and tell me of your world. You will be famous, you can write stories, stay here.'[line break]Forget your portal search and stay with her?";
-		if player consents:
-			say "'You know what, that does sound enticing. Perhaps I shall stay.'[line break] The mermaid lights up. 'Oh, that will be most fantastic! Come, follow me to the drawing room, and tell me your stories. We will print books of your stories. You will be famous!' Follow the mermaid and commit to a life of fame and fortune in Mer City?";
+			say "'I'm just so interested in your story,' she says. 'You're just like the other land people. How are you down here? How can you breathe water if you're non-magic?'[line break]'I drank a potion. But I'm not here to talk, I'm sorry. I need to find the portal to get home.' The mermaid grabs a hold of your arm. [line break]'Don't leave, landman. Stay here, with me, and tell me of your world. You will be famous, you can write stories, stay here.'[line break]Forget your portal search and stay with her?";
 			if player consents:
-				say "What about Elily? Are you sure you want this fortune?";
+				say "'You know what, that does sound enticing. Perhaps I shall stay.'[line break] The mermaid lights up. 'Oh, that will be most fantastic! Come, follow me to the drawing room, and tell me your stories. We will print books of your stories. You will be famous!' Follow the mermaid and commit to a life of fame and fortune in Mer City?";
 				if player consents:
-					say "'Right behind you!' You call to the mermaid, and follow her, your heart excited and your mind racing.";
-					end the game in victory;
+					say "What about Elily? Are you sure you want this fortune?";
+					if player consents:
+						say "'Right behind you!' You call to the mermaid, and follow her, your heart excited and your mind racing.";
+						end the game in victory;
+					otherwise:
+						say "'I'm sorry,' you say. 'I have to go home. I cannot stay here.' The mermaid sighs. [line break]'Just think about it, alright?' [line break]'I will. Is your father, or someone else who might be able to help me available?' Pouting slightly, the princess swims off. She returns quickly with a dignified merman draped in gold jewelry and a crown.";
+						now point1 is in blackbox;
+						now Mer King is in Mer Castle;
 				otherwise:
-					say "'I'm sorry,' you say. 'I have to go home. I cannot stay here.' The mermaid sighs. [line break]'Just think about it, alright?' [line break]'I will. Is your father, or someone else who might be able to help me available?' Pouting slightly, the princess swims off. She returns quickly with a dignified merman draped in gold jewelry and a crown.";
-					now point1 is in blackbox;
+					say "'I'm sorry,' you say. 'I have to go home. I cannot stay here.' The mermaid is obviously conflicted. [line break]'I'm the princess, here,' she says. 'I can promise you this fortune.' Are you sure you don't want her promised fortune?";
+					if player consents:
+						say "'I'm sorry, I have to decline. Is your father, or someone else who might be able to help me available?' Pouting slightly, the princess swims off. She returns quickly with a dignified merman draped in gold jewelry and a crown.";
+						now point1 is in blackbox;
+						now Mer King is in Mer Castle;
+					otherwise:
+						say "'You know what, that's a pretty fine offer. I think I shall stay.'";
+						end the game in victory;
 			otherwise:
-				say "'I'm sorry,' you say. 'I have to go home. I cannot stay here.' The mermaid is obviously conflicted. [line break]'I'm the princess, here,' she says. 'I can promise you this fortune.' Are you sure you don't want her promised fortune?";
+				say "'I'm sorry,' you say. 'I have to go home; I cannot stay here.' The mermaid is obviously conflicted.[line break]'I'm the princess here,' she says. 'I can promise you this fortune.' Are you sure you don't want her promised fortune?";
 				if player consents:
 					say "'I'm sorry, I have to decline. Is your father, or someone else who might be able to help me available?' Pouting slightly, the princess swims off. She returns quickly with a dignified merman draped in gold jewelry and a crown.";
 					now point1 is in blackbox;
+					now Mer King is in Mer Castle;
 				otherwise:
 					say "'You know what, that's a pretty fine offer. I think I shall stay.'";
 					end the game in victory;
 		otherwise:
-			say "'I'm sorry,' you say. 'I have to go home; I cannot stay here.' The mermaid is obviously conflicted.[line break]'I'm the princess here,' she says. 'I can promise you this fortune.' Are you sure you don't want her promised fortune?";
-			if player consents:
-				say "'I'm sorry, I have to decline. Is your father, or someone else who might be able to help me available?' Pouting slightly, the princess swims off. She returns quickly with a dignified merman draped in gold jewelry and a crown.";
-				now point1 is in blackbox;
-			otherwise:
-				say "'You know what, that's a pretty fine offer. I think I shall stay.'";
-				end the game in victory.
+			say "Unnerved by your strage surroundings, you decide not to follow the beautiful mermaid."
+			
+[Mer Castle]
+Mer Castle is a room. It is north of Mer-Castle Gate. "The castle is gorgeous. The walls reach high and the light orbs float through the water and hang from the ceiling. The floors are made of smooth sandstone and an elegant staircase spirals up to the next floor. There are several doors along either side of you."
+
 [Mer King]
-Mer King is a man. He is wearing Gold Jewelry and Gold Crown. The description of Mer King is "A stunningly regal merman who fills out his royal garb splendidly. He indimidates you."
+Mer King is a man. Understand "merman" as Mer King. He is wearing Gold Jewelry and Gold Crown. The description of Mer King is "A stunningly regal merman who fills out his royal garb splendidly. He indimidates you."
+Point0 is a thing. It is in blackbox.
 Point1 is a thing.
 Point2 is a thing.
-Instead of talking to Mer King:
-	say "'Your highness,' you say, trying your best to bow in the water.[line break]'Human. Stop flailing. What ever could you want so desperately as to draw me to listen to your simple, unimportant desires.' His voice booms through the water and you consider turning around and leaving.[line break]'Hayden sent me,' you say cautiously, hoping it will mean something to him. Apparently it does, as he roars in laughter.[line break]'Hayden? The simpleton? Ahaha! What a simple joke!' [line break]'Or, Hayden just let me know of this place. The blacksmith sent me in this direction,' you say hurridly, trying to fix your mistake.[line break]'There are many blacksmiths, fool. The closest landman who calls himself a blacksmith is just a fool simpleton like your friend Hayden. You are wasting my time, landman.'[line break]'No- wait. Please. I'm not from here. I'm from the non-magic world.' This caught his attention. 'My name is Wade, sir. Hayden sent me here to find something but I have no idea what. I'm just trying to find the portal back to my world.'[line break]'There is no portal here!'[line break]'As unfortunate as that is, I'm not surprised. I just wanted to know if you knew anything about the portal, if you could send me on the right track, give me a clue, anything…'[paragraph break]The Mer King studies you quietly for a few minutes. 'There is a gate on the path that you must take. It is locked. I have the key.'[line break]'Oh, that's great!' You are very excited. [line break]'But I want something of you before I give it. There is a giant ogre who lives in Stone Valley Pass. He often comes to the lake and 'frolics' in the water. His weight and stomping destroys the tunnel and our men have to work hard to fix it before we run out of oxygen. He polutes the water and diseases the fish. Bring me proof that you have slain this evil beast, and I shall give you your key.'";
-	now point2 is in blackbox.
-
 Point3 is a thing.
 Gate Key is a thing. It unlocks Steel Gate. The description is "An old and worn key."
 Instead of talking to Mer King:
-	if point2 is in blackbox:
+	if point0 is in blackbox:
+		say "'Your highness,' you say, trying your best to bow in the water.[line break]'Human. Stop flailing. What ever could you want so desperately as to draw me to listen to your simple, unimportant desires.' His voice booms through the water and you consider turning around and leaving.[line break]'Hayden sent me,' you say cautiously, hoping it will mean something to him. Apparently it does, as he roars in laughter.[line break]'Hayden? The simpleton? Ahaha! What a simple joke!' [line break]'Or, Hayden just let me know of this place. The blacksmith sent me in this direction,' you say hurridly, trying to fix your mistake.[line break]'There are many blacksmiths, fool. The closest landman who calls himself a blacksmith is just a fool simpleton like your friend Hayden. You are wasting my time, landman.'[line break]'No- wait. Please. I'm not from here. I'm from the non-magic world.' This caught his attention. 'My name is Wade, sir. Hayden sent me here to find something but I have no idea what. I'm just trying to find the portal back to my world.'[line break]'There is no portal here!'[line break]'As unfortunate as that is, I'm not surprised. I just wanted to know if you knew anything about the portal, if you could send me on the right track, give me a clue, anything…'[paragraph break]The Mer King studies you quietly for a few minutes. 'There is a gate on the path that you must take. It is locked. I have the key.'[line break]'Oh, that's great!' You are very excited. [line break]'But I want something of you before I give it. There is a giant ogre who lives in Stone Valley Pass. He often comes to the lake and 'frolics' in the water. His weight and stomping destroys the tunnel and our men have to work hard to fix it before we run out of oxygen. He polutes the water and diseases the fish. Bring me proof that you have slain this evil beast, and I shall give you your key.'";
+		now point2 is in blackbox;
+		now point0 is in unicorn-box;
+		now mermaid princess is in broken lighthouse;
+	if point2 is in blackbox and point3 is not in blackbox:
 		if player does not have Ogre Tunic:
 			say "The Mer King refuses to talk to you until you bring him proof that you have slain the ogre.";
 		if player has Ogre Tunic:
 			say "The king, full of joy, welcomes you back. 'You have done it, landman! Here, as promised.' He hands you the gate key.";
+			now Ogre Tunic is off-stage;
 			now point3 is in blackbox;
 			now player has Gate Key;
-	if point3 is in blackbox:
+	if point3 is in blackbox and point2 is in blackbox:
 		say "The Mer King is busy. He cannot speak to you now."
+	
 
-Instead of entering Tunnel:
+Instead of going south in Mer City:
 	if player has Gate Key:
 		say "'Wait!' Calls the mermaid princess, swimming after you. 'I hope you won't forget my offer,' she begins.[line break]'Don't worry, I won't.'[line break]'Here, you earned this.' She passes you a book. 'I see you're carrying a wand, but that's useless without knowing any real spells.' [line break]You thank her, and then continue on your way.";
 		continue the action;
-		now player has Advanced Spellbook.
+		now player has Advanced Spellbook;
+	otherwise:
+		continue the action.
 		
 
 [Cave]
 Cave is a room. It is north of Northwest Path2. "The cave mouth is rather large. It continues north, while the path is south."
-After going to Cave when Cave is unvisited:
-	say "As you climb higher up the path the trees around you start to thicken. To the north you see the mouth of a large cave."
+Instead of going to Cave when Cave is unvisited:
+	say "As you climb higher up the path the trees around you start to thicken. To the north you see the mouth of a large cave.";
+	continue the action.
 	
 [Cave2]
-Cave2 is a room. It is north of Cave. "Here you see a giant steel gate to the west."
+Cave2 is a room. It is north of Cave. The printed name is "Cave". "Here you see a giant steel gate to the west."
 After going to Cave2 when Cave2 is unvisited:
 	if player has Gate Key:
 		say "You continue into the darkness of the cave, and come upon a giant, floor-to-ceiling steel gate. This must be what the Mer King was talking about.";
@@ -1784,9 +1728,13 @@ Instead of opening steel gate:
 [Empty Room]
 Empty Room is a room. It is west of Steel Gate. "The gate opens up to a large, empty room. The walls are lined with flickering blue fire torches. To the north the shadow of a spiral staircase winds it's way into the darkness with only the flickering of the magic fire to light the steps. Each footfall echoes."
 Empty-Room Walls are scenery. Understand "walls" or "wall" as Empty-Room Walls. The description is "Very cold and slightly damp to the touch. Abandoned spiderwebs and moss cover the corners."
+Torches are scenery. Understand "torch" as torches. They are in Empty Room. The description is "Simple torches fixed to the walls by what must be magic. A ball of blue flames flickers slowly atop each torch."
 
 [Spiral Staircase]
-Spiral Staircase is a door. It is unlocked. It is north of Empty Room.
+Spiral Staircase is a door. It is open. It is north of Empty Room.
+Instead of going north in Empty Room:
+	say "You advance towards the staircase, daunted by the hundreds of steps.";
+	continue the action.
 Understand "staircase" as Spiral Staircase.
 Instead of examining Spiral Staircase:
 	say "Hundreds of old stone steps spiral tightly upward."
@@ -1801,7 +1749,7 @@ Instead of talking to Grand Wizard:
 	say "'What! Who are you?!' The wizard demands furiously.[line break]'Hi. I'm-' The wizard doesn't seem to care.[line break] 'Obstupefio!' He cries defiantly, his wand pointed straight at you. You feel your body grow stiff, and you fall backwards against the wall. You are temporarily paralyzed.[line break] The wizard returns to his potion and becomes visibly distressed, looking between his cauldron and his book, muttering under his breath. He turns slowly to look at you. 'Concalo pars' he says with a flick of his wand. Every potion related item that you're carrying flies towards him.";
 	now Glass Phials are off-stage;
 	now Crystal Phials are off-stage;
-	now Cabinet Key is off-stage;
+	now Cabinet-Key is off-stage;
 	now bat blood is off-stage;
 	now cat hair is off-stage;
 	now caterpillar is off-stage;
@@ -1848,7 +1796,7 @@ Check Accendo:
 	if player is in portal chamber:
 		if defeated is not in blackbox:
 			if a random chance of 1 in 3 succeeds:
-				say "Falls of fire shoot out from your wand, landing on and around the wizard. He screams and tries to put them out.";
+				say "Balls of fire shoot out from your wand, landing on and around the wizard. He screams and tries to put them out.";
 				now spell7 is in blackbox;
 			otherwise:
 				say "He easily deflects your fireballs, sending them down the staircase from which you came. He cries[one of] 'Detrahere Arma'! Your wand is thrown out of your hands and you scramble to reclaim it.[or] 'Conturbatus!' You're instantly confused, stumbling around trying to figure out where you are.[or]'Obstupefio!' Once again, you are temporarily paralyzed.[or]'Trudo!' You are forced by an invisible hand to the side with such force that you fall over.[or] 'Inerrans!' You are frozen in place temporarily while the wizard continues working on his potion.[or]'Accendo!' A stream of fire bubbles hutle themselves at you, burning your clothes and leaving black stains on the rock around you.[at random]";
@@ -1876,7 +1824,7 @@ Check Trudo:
 Check Oppilo:
 	if player is in Portal Chamber:
 		if Defeated is not in blackbox:
-			if a random chance of 1 in 20 succeeds:
+			if a random chance of 1 in 3 succeeds:
 				say "You successfuly manage to block his spell.";
 				now defeat2 is in safekeeping;
 				now spell4 is in blackbox;
@@ -1888,7 +1836,7 @@ Check Oppilo:
 Check Obstupefio:
 	if player is in Portal Chamber:
 		if Defeated is not in blackbox:
-			if a random chance of 1 in 3 succeeds:
+			if a random chance of 1 in 2 succeeds:
 				say "You remporarily paralyze the wizard, and are able to throw another spell in.";
 				now spell3 is in blackbox;
 			otherwise:
@@ -1897,7 +1845,7 @@ Check Obstupefio:
 Check Conturbatus:
 	if player is in Portal Chamber:
 		if Defeated is not in blackbox:
-			if a random chance of 1 in 4 succeeds:
+			if a random chance of 1 in 3 succeeds:
 				say "With a flick of your wand you cause the Grand Wizard to become disoriented. He stumbles around, trying to figure out where he is.";
 				now Spell1 is in blackbox;
 				now spell2 is in blackbox;
@@ -1908,7 +1856,7 @@ Check Disarming:
 	if player is in Portal Chamber:
 		if Defeated is not in blackbox:
 			if a random chance of 1 in 100 succeeds:
-				say "With a flick of your wand, you cause the Grand Wizard's wand to go flying. 'How did you..' he says, falling to his knees.[line break]'Obstupefio!' you cry, paralyzing him. The wizard falls to the ground, his eyes the only part of his body that moves. Around his neck is a thick chain with a beautiful red stone.";
+				say "With a flick of your wand, you cause the Grand Wizard's wand to go flying. 'How did you..' he says, falling to his knees.[line break]'Obstupefio!' you cry, paralyzing him. The wizard falls to the ground, his eyes the only part of his body that move. Around his neck is a thick chain with a beautiful red stone.";
 				now spell1 is in blackbox;
 				now spell2 is in blackbox;
 				now spell3 is in blackbox;
@@ -1929,7 +1877,10 @@ An every turn rule:
 						if spell6 is in blackbox:
 							if spell7 is in blackbox:
 								say "With your final spell you bring the wizard to his knees, defeated. 'How did you…' he says, falling onto his hands.[line break]'Obstupefio!' you cry, paralyzing him. The wizard falls to the ground, his eyes the only part of his body that moves. Around his neck is a thick chain with a beautiful red stone.";
-								now defeated is in Blackbox.
+								now defeated is in Blackbox;
+								now spell5 is off-stage;
+								now spell6 is off-stage;
+								now spell7 is off-stage.
 An every turn rule:
 	If defeat1 is in blackbox:
 		if defeat2 is in blackbox:
@@ -1970,11 +1921,11 @@ Instead of taking Red Stone:
 	otherwise:
 		say "You have to defeat the wizard before you can take that!"
 Defeated is a thing.
-Red Beryl is a thing. The description is "The most valuable stone known to man. Aka 'red emerald' or 'scarlet emerald', and chemically similar to both emerals and aquamarines though considerably more rare. This particular specimen appears to be about two carats worth; approximately 20 grand."
-Portal is a room. It is north of Portal Chamber.
+Red Beryl is a thing. The description is "The most valuable stone known to man. Aka 'red emerald' or 'scarlet emerald', and chemically similar to both emeralds and aquamarines though considerably more rare. This particular specimen appears to be about two carats worth; approximately 20 grand."
+Portal0 is a room. It is north of Portal Chamber. The printed name is "Portal".
 
 [entering portal]
-Instead of entering Portal:
+Instead of going north in Portal Chamber:
 	if Defeated is in BlackBox:
 		if player has Red Beryl:
 			say "The portal looms before you, yes. You have the Red Beryl and the possibility of forever with Elily, yes. But what about the Mer Princess? What about life with her- life in the Mer Kingdom. A life of fame and fourtune and respect. Are you sure you want to enter the portal and leave all of that behind, forever?";
@@ -1991,7 +1942,8 @@ Instead of entering Portal:
 				
 
 				
-[Scene 4][Scene Four]
+Part 4 - The Proposal
+
 [Abandoned Toolshed]
 Abandoned Toolshed is a room. "You fall face down onto the floor of the dirty floor of a tiny toolshed. The portal above you spins quickly before disappearing. There's barely anything in the toolshed except rotting wood and a door that leads south."
 Door1 is a door. It is south of Abandoned Toolshed. It is north of Abandoned Path. The printed name is "the door".
