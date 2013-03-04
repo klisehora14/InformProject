@@ -1,5 +1,8 @@
 "An Experience" by Kapri Lisehora
 
+USE MAX_OBJECTS of 700.
+
+
 The story headline is "The Beginning". The story genre is "Adventure". 
 
 When play begins: 
@@ -10,6 +13,7 @@ To say exit list:
 	repeat with way running through directions: 
 		let place be the room way from the location; 
 		if place is a room, say " [way]".
+
 
 Include Rideable Vehicles by Graham Nelson.
 
@@ -237,14 +241,17 @@ The Floor is the floor in the cabin. The description is "Your footfalls create a
 
 [The Outhouse]
 The outhouse is a room. The outhouse is east of the cabin. "You arrive at an old wooden outhouse. You notice an overturned wheelbarrow behind it. With a heavy push the door gives way to a small room full of stale air and forgotten spiderwebs. Up on a shelf is a toolbox. At your feet lies a trapdoor and the toilet function is nestled in the corner to your right."
+Instead of opening toolbox:
+	say "The toolbox is locked shut. It doesn't seem like you'll find anything in it, anyway."
 The toolbox is scenery in outhouse. The description is "A standard old toolbox covered in dark stains that you can't make out in your flashlight's feeble beam."
 After examining toolbox for the first time: increase score by 1.
 The toilet is scenery in outhouse. The description is "A crude replication of the luxury you use at home."
-The trapdoor is a door. It is closed and openable. It is below outhouse. The description is "A standard trapdoor; with a steel ring and everything."
+The trapdoor is a door. It is closed and openable. It is below outhouse. The description is "A standard trapdoor with a steel ring and everything."
 After examining toilet for the first time: increase score by 1.
 After examining trapdoor for the first time: increase score by 1.
 The hole is a room. The hole is below trapdoor. "You drop down into a dark hole. The blackness is extreme, and you have no idea how large the room is. It looks like one giant shadow."
 Shelf is scenery in outhouse. The description is "A simple, hand-made wooden shelf."
+Blackness is scenery in Hole. The description is "Complete and utter darkness."
 Instead of taking shelf:
 	say "You grip the shelf firmly with two hands and give it a tug. It doesn't budge. Shelf: 1 You: 0."
 Spiderwebs are scenery in outhouse. The description is "Have you ever played Minecraft? Those spiderwebs are a square meter. These spiderwebs put those to shame!"
@@ -270,7 +277,7 @@ Instead of opening the trapdoor when player is in outhouse:
 	if player consents:
 		say "Against your better judgement you lift the knarly trapdoor and make your way down the rickety ladder into a pit of darkness. The air is damp and reeks of mildew. Your flashlight cuts out and your foot lands on something crunchy.";
 		now the trapdoor is open;
-		move player to hole;
+		continue the action;
 		now the flashlight is switched off;
 	Otherwise:
 		say "You catch yourself about to climb down an unstable ladder into a pit of darkness. You shudder, and try not to think about what's down there. You close the latch and are thankful for the life you didn't just lose."
@@ -360,7 +367,7 @@ After going to stream when Stream is unvisited:
 	say "Within a few dozen paces you arrive at the stream."
 
 	
-Water is a thing in Stream. Water is undescribed. The description of water is "Cold and (hopefully) clean."
+Water is a thing in Stream. Water is undescribed. Understand "crick" as water. The description of water is "Cold and (hopefully) clean."
 Bottled water is an edible thing. The description of bottled water is "A clear plastic bottle full of stream water."
 
 
@@ -678,7 +685,7 @@ Instead of talking to Hayden:
 [Park]
 Tall Trees are scenery in Park. The description is "There are a couple black cherry trees and a willow tree."
 Black Cherry Trees are scenery in Park. The description is "There are only three of them. Their leaves are smooth and shiny."
-Willow Tree is scenery in Park. The description is "The willow tree is definately the oldest thing in the park. It's long leaves and branches brush the ground, and its trunk is scarred."
+Willow Tree is scenery in Park. The description is "The willow tree is definately the oldest thing in the park. Its long leaves and branches brush the ground, and its trunk is scarred."
 Leaves are scenery in Park. The description is "The light green leaves dust the ground like a natural broom."
 Trunk is scenery in Park. The description is "The trunk of the willow has been carved in by decades of teenagers. There are hearts with initials as well as curse words."
 Hearts are scenery. They are in Park. The description is "The most prominent heart contains a 'E+A'".
@@ -1082,6 +1089,15 @@ Instead of mounting:
 			move player to Broken Lighthouse;
 			now player has unicorn hair;
 			continue the action;
+			now Four Coin Piece is off-stage;
+			now Nine Coin Piece is off-stage;
+			now town map is off-stage;
+			now Three Coin Piece is off-stage;
+			now Two And A Half Coin Piece is off-stage;
+			now two-coin piece is off-stage;
+			now One and a Half Coin Piece is off-stage;
+			now One Coin Piece is off-stage;
+			now simple key is off-stage;
 		otherwise:
 			say "You cannot ride her without a bridle.";
 	otherwise:
@@ -1945,13 +1961,219 @@ Instead of going north in Portal Chamber:
 Part 4 - The Proposal
 
 [Abandoned Toolshed]
-Abandoned Toolshed is a room. "You fall face down onto the floor of the dirty floor of a tiny toolshed. The portal above you spins quickly before disappearing. There's barely anything in the toolshed except rotting wood and a door that leads south."
+Abandoned Toolshed is a room. "You fall face down onto the floor of a dirty and tiny toolshed. The portal above you spins quickly before disappearing. There's barely anything in the toolshed except rotting wood and a door that leads south."
 Door1 is a door. It is south of Abandoned Toolshed. It is north of Abandoned Path. The printed name is "the door".
 Abandoned Path is a room. It is south of Door1.
 After entering Abandoned Path when Abandoned Path is unvisited:
 	say "You cautiously step out of the toolshed. The air smells familiar, almost like home. The path stretches south to what could possibly be your home town. When you look back, you notice that the toolshed has vanished.";
 	now Abandoned Toolshed is off-stage;
 	now Door1 is off-stage.
+Main Street is a room. It is south of Abandoned Path. "The main street of your town. Your apartment complex is north, the jewelry store is west and the pet shop is south."
+
+[Jewelry Store]
+
+
+
+[Apartment Complex]
+Apartment Complex is a room. It is north of Main Street. "An eleven story building that's well kept and has good service. To the north is the elevator."
+Apartment Clerk is a man. He is in Apartment Complex. The description is "A young man in his early twenties. About your age- perhaps a year or two younger."
+The Elevator is a room. It is north of Apartment Complex. "A standard elevator. The doors open horizontally. Elily often comments about how they should open vertically- make things a little more interesting. There are eleven buttons in the elevator; 2-5 for each floor, and one that simply has an 'L' on it, for lobby."
+	
+[elevator buttons]
+Understand "press [something]" or "push [something]" as ButtonPushing. ButtonPushing is an action applying to one thing.
+Check ButtonPushing:
+	if player is in Elevator:
+		if noun is L:
+			say "You're already on the first floor!";
+		if noun is 2F:
+			say "You press the button, and the elevator heaves upward. You hear a ding, and the doors open.";
+			now player is in Elevator2;
+		if noun is 3F:
+			say "You press the button, and the elevator heaves upward. You hear a ding, and the doors open.";
+			now player is in Elevator3;
+		if noun is 4F:
+			say "You press the button, and the elevator heaves upward. You hear a ding, and the doors open.";
+			now player is in Elevator4;
+		if noun is 5F:
+			say "You press the button, and the elevator heaves upward. You hear a ding, and the doors open.";
+			now player is in Elevator5;
+	if player is in Elevator2:
+		if noun is L2:
+			say "You press the button, and the elevator heaves downward. You heard a ding, and the doors open.";
+			now player is in Elevator;
+		if noun is 2F2:
+			say "You're already on the second floor!";
+		if noun is 3F2:
+			say "You press the button, and the elevator heaves upward. You hear a ding, and the doors open.";
+			now player is in Elevator3;
+		if noun is 4F2:
+			say "You press the button, and the elevator heaves upward. You hear a ding, and the doors open.";
+			now player is in Elevator4;
+		if noun is 5F2:
+			say "You press the button, and the elevator heaves upward. You hear a ding, and the doors open.";
+			now player is in Elevator5;
+	if player is in Elevator3:
+		if noun is L3:
+			say "You press the button, and the elevator heaves downward. You hear a ding, and the doors open.";
+			now player is in Elevator;
+		if noun is 2F3:
+			say "You press the button, and the elevator heaves downward. You hear a ding, and the doors open.";
+			now player is in Elevator2;
+		if noun is 3F3:
+			say "You're already on the third floor!";
+		if noun is 4F3:
+			say "You press the button, and the elevator heaves upward. You hear a ding, and the doors open.";
+			now player is in Elevator4;
+		if noun is 5F3:
+			say "You press the button, and the elevator heaves upward. You hear a ding, and the doors open.";
+			now player is in Elevator5;
+	if player is in Elevator4:
+		if noun is L4:
+			say "You press the button, and the elevator heaves downward. You hear a ding, and the doors open.";
+			now player is in Elevator;
+		if noun is 2F4:
+			say "You press the button, and the elevator heaves downward. You hear a ding, and the doors open.";
+			now player is in Elevator2;
+		if noun is 3F4:
+			say "You press the button, and the elevator heaves downward. You hear a ding, and the doors open.";
+			now player is in Elevator3;
+		if noun is 4F4:
+			say "You're already on the fourth floor!";
+		if noun is 5F4:
+			say "You press the button, and the elevator heaves upward. You hear a ding, and the doors open.";
+			now player is in Elevator5; 
+	if player is in Elevator5:
+		if noun is L5:
+			say "You press the button, and the elevator heaves downward. You hear a ding, and the doors open.";
+			now player is in Elevator;
+		if noun is 2F5:
+			say "You press the button, and the elevator heaves downward. You hear a ding, and the doors open.";
+			now player is in Elevator2;
+		if noun is 3F5:
+			say "You press the button, and the elevator heaves downward. You hear a ding, and the doors open.";
+			now player is in Elevator3;
+		if noun is 4F5:
+			say "You press the button, and the elevator heaves downward. You hear a ding, and the door open.";
+			now player is in Elevator4;
+		if noun is 5F5:
+			say "You're already on the fifth floor!".
+	
+
+[elevator buttons]
+2F is scenery. It is in Elevator. The printed name is "2". Understand "2" as 2F. The description is "The button for the second floor.".
+3F is scenery. It is in Elevator. The printed name is "3". Understand "3" as 3F. The description is "The button for the third floor.".
+4F is scenery. It is in Elevator. The printed name is "4". Understand "4" as 4F. The description is "The button for the fourth floor.".
+5F is scenery. It is in Elevator. The printed name is "5". Understand "5" as 5F. The description is "The button for the fifth floor.".
+L is scenery. It is in Elevator. The description is "The button for the lobby, or the first floor.".
+[elevator2 buttons]
+2F2 is scenery. It is in Elevator2. The printed name is "2". Understand "2" as 2F2. The description is "The button for the second floor.".
+3F2 is scenery. It is in Elevator2. The printed name is "3". Understand "3" as 3F2. The description is "The button for the third floor.".
+4F2 is scenery. It is in Elevator2. The printed name is "4". Understand "4" as 4F2. The description is "The button for the fourth floor.".
+5F2 is scenery. It is in Elevator2. The printed name is "5". Understand "5" as 5F2. The description is "The button for the fifth floor.".
+L2 is scenery. It is in Elevator2. The printed name is "L". Understand "L" as L2. The description is "The button for the lobby, or the first floor.".
+[elevator3 buttons]
+2F3 is scenery. It is in Elevator3. The printed name is "2". Understand "2" as 2F3. The description is "The button for the second floor.".
+3F3 is scenery. It is in Elevator3. The printed name is "3". Understand "3" as 3F3. The description is "The button for the third floor.".
+4F3 is scenery. It is in Elevator3. The printed name is "4". Understand "4" as 4F3. The description is "The button for the fourth floor.".
+5F3 is scenery. It is in Elevator3. The printed name is "5". Understand "5" as 5F3. The description is "The button for the fifth floor.".
+L3 is scenery. It is in Elevator3. The printed name is "L". Understand "L" as L2. The description is "The button for the lobby, or the first floor.".
+[elevator4 buttons]
+2F4 is scenery. It is in Elevator4. The printed name is "2". Understand "2" as 2F4. The description is "The button for the second floor.".
+3F4 is scenery. It is in Elevator4. The printed name is "3". Understand "3" as 3F4. The description is "The button for the third floor.".
+4F4 is scenery. It is in Elevator4. The printed name is "4". Understand "4" as 4F4. The description is "The button for the fourth floor.".
+5F4 is scenery. It is in Elevator4. The printed name is "5". Understand "5" as 5F4. The description is "The button for the fifth floor.".
+L4 is scenery. It is in Elevator4. The printed name is "L". Understand "L" as L4. The description is "The button for the lobby, or the first floor.".
+[elevator5 buttons]
+2F5 is scenery. It is in Elevator5. The printed name is "2". Understand "2" as 2F5. The description is "The button for the second floor.".
+3F5 is scenery. It is in Elevator5. The printed name is "3". Understand "3" as 3F5. The description is "The button for the third floor.".
+4F5 is scenery. It is in Elevator5. The printed name is "4". Understand "4" as 4F5. The description is "The button for the fourth floor.".
+5F5 is scenery. It is in Elevator5. The printed name is "5". Understand "5" as 5F. The description is "The button for the fifth floor.".
+L5 is scenery. It is in Elevator5. The printed name is "L". Understand "L" as L5. The description is "The button for the lobby, or the first floor.".
+
+[elevators]
+[Elevator is a room]
+Elevator2 is a room. The printed name is "Elevator". "The second floor is south."
+Elevator3 is a room. The printed name is "Elevator". "The third floor is south."
+Elevator4 is a room. The printed name is "Elevator". "The fourth floor is south."
+Elevator5 is a room. The printed name is "Elevator". "The fifth floor is south."
+
+[floors]
+[Apartment Complex is a room.]
+Second Floor is a room. It is south of Elevator2. "Room 201 is to the east. Room 202 is to the west. The remaining rooms continue south."
+Second Floor2 is a room. It is south of Second Floor. The printed name is "Second Floor". "Room 203 is to the east. Room 204 is to the west. The remaining rooms continue south."
+Second Floor3 is a room. It is south of Second Floor2. The printed name is "Second Floor". "Room 205 is to the east. Room 206 is to the west."
+
+Third Floor is a room. It is south of Elevator3. "Room 301 is to the east. Room 302 is to the west. The remaining rooms continue south."
+Third Floor2 is a room. It is south of Third Floor. The printed name is "Third Floor". "Room 303 is to the east. Room 304 is to the west. The remaining rooms continue south."
+Third Floor3 is a room. It is south of Third Floor2. The printed name is "Third Floor". "Room 305 is to the east. Room 306 is to the west."
+
+Fourth Floor is a room. It is south of Elevator4. "Room 401 is to the east. Room 402 is to the west. The remaining rooms continue south."
+Fourth Floor2 is a room. It is south of Fourth Floor. The printed name is "Fourth Floor". "Room 403 is to the east. Room 404 is to the west. The remaining rooms continue south."
+Fourth Floor3 is a room. It is south of Fourth Floor2. The printed name is "Fourth Floor". "Room 405 is to the east. Room 406 is to the west."
+
+Fifth Floor is a room. It is south of Elevator5. "Room 501 is to the east. Room 502 is to the west. The remaining rooms continue south."
+Fifth Floor2 is a room. It is south of Fifth Floor. The printed name is "Fifth Floor". "Room 503 is to the east. Room 504 is to the west. The remaining rooms continue south."
+Fifth Floor3 is a room. It is south of Fifth Floor2. The printed name is "Fifth Floor". "Room 505 is to the east. Room 506 is to the west."
+
+
+
+[floor rooms]
+[second floor]
+201f is a door. It is locked. The printed name is "201". It is east of Second Floor. 
+202f is a door. It is locked. The printed name is "202". It is west of Second Floor.
+203f is a door. It is locked. The printed name is "203". It is east of Second Floor2.
+204f is a door. It is locked. The printed name is "204". It is west of Second Floor2.
+205f is a door. It is locked. The printed name is "205". It is east of Second Floor3.
+206f is a door. It is locked. The printed name is "206". It is west of Second Floor3.
+[third floor]
+301f is a door. It is locked. The printed name is "301". It is east of Third Floor. 
+302f is a door. It is locked. The printed name is "302". It is west of Third Floor.
+303f is a door. It is locked. The printed name is "303". It is east of Third Floor2.
+304f is a door. It is locked. The printed name is "304". It is west of Third Floor2.
+305f is a door. It is locked. The printed name is "305". It is east of Third Floor3.
+306f is a door. It is locked. The printed name is "306". It is west of Third Floor3.
+[fourth floor]
+401f is a door. It is locked. The printed name is "401". It is east of Fourth Floor. 
+402f is a door. It is locked. The printed name is "402". It is west of Fourth Floor.
+403f is a door. It is locked. The printed name is "403". It is east of Fourth Floor2.
+404f is a door. It is locked. The printed name is "404". It is west of Fourth Floor2.
+405f is a door. It is locked. The printed name is "405". It is east of Fourth Floor3.
+406f is a door. It is locked. The printed name is "406". It is west of Fourth Floor3.
+[fifth floor]
+501f is a door. It is locked. The printed name is "501". It is east of Fifth Floor. 
+502f is a door. It is locked. The printed name is "502". It is west of Fifth Floor.
+503f is a door. It is locked. The printed name is "503". It is east of Fifth Floor2.
+504f is a door. It is locked. The printed name is "504". It is west of Fifth Floor2.
+505f is a door. It is locked. The printed name is "505". It is east of Fifth Floor3.
+506f is a door. It is locked. The printed name is "506". It is west of Fifth Floor3.
+
+
+[Pet Shop]
+
+
+
+
+[Train to Hot Air Balloon]
+
+
+
+[Hot Air Balloon]
+
+
+
+[Path to Beach]
+
+
+
+[Beach]
+
+
+
+[Limo to Italian Restaurant]
+
+
+
+[Italian Restaurant]
 
 
 
