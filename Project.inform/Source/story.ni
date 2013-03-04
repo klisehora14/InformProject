@@ -1967,18 +1967,110 @@ Abandoned Path is a room. It is south of Door1.
 After entering Abandoned Path when Abandoned Path is unvisited:
 	say "You cautiously step out of the toolshed. The air smells familiar, almost like home. The path stretches south to what could possibly be your home town. When you look back, you notice that the toolshed has vanished.";
 	now Abandoned Toolshed is off-stage;
-	now Door1 is off-stage.
+	now Door1 is off-stage;
+	now Credit Card is in Wallet.
 Main Street is a room. It is south of Abandoned Path. "The main street of your town. Your apartment complex is north, the jewelry store is west and the pet shop is south."
+Credit Card is a thing. The description is "A silver credit card."
 
 [Jewelry Store]
+Jewerly Store is a room. It is west of Main Street. "You enter the jewelry store, and a bell dings. All around you are cases of sparkling pieces of jewelry."
+Cases-of-Jewelry are scenery. They are in Jewelry Store. Understand "cases" or "jewelry" or "cases of jewelry" as Cases-of-Jewelry. The description is "Beautiful rings, necklaces, bracelets, and more are displayed elegantly inside glass cases."
+Jeweler is a man. He is in Jewelry Store. The description is "A middle aged man who owns the store. He's fairly trustworthy and loves his job."
+Consult1 is a thing.
+Consult2 is a thing.
+WhiteGold is a thing.
+YellowGold is a thing.
+Platinum is a thing.
+Instead of talking to Jeweler:
+	if player has Red Beryl:
+		say "'Hello,' you say, stepping up to the counter where the man is rearranging necklaces.[line break]'Good morning, sir. How may I help you?' You reach into your pocket, and pull out the Red Beryl. The man's eyes widen slightly, as if he's assuming what you're holding is what he thinks it is. [line break]'I'd like to have this set in a ring.' The man extends his hand, and you give him the Red Beryl. [line break]'This is an incredible stone, sir. I would advise three metals of which to set it in. White gold, yellow gold, and platinum. Which would you like?' (answer in the format 'answer …')";
+		now Red Beryl is off-stage.
+Solitaire is a thing in Jewelry Store. It is fixed in place. It is undescribed. The description is "'Ah, the solitaire. It's very simple, but still incredibly elegant. A slender band with the stone in the center."
+Three-Stone is a thing in Jewelry Store. It is fixed in place. It is undescribed. The description is "'Your Red Beryl will be in the center, here, with two smaller diamonds on either side."
+Split-Shank is a thing in Jewelry Store. It is fixed in place. It is undescribed. The description is "'A thick band that splits around the stone, with smaller diamonds set in the split. This is by far the most extravagent setting, sir.'"
+	
+Instead of answering Jeweler that "white gold":
+	say "The jeweler nods. 'An excellent choice.' He marks it down on an order form. 'Now, there are a few different styles that you can choose. The solitaire, the three-stone, and the split-shank.' He pulls an example of each from his cases and sets them ontop of the counter for you to examine.";
+	now WhiteGold is in blackbox;
+	now Consult1 is in blackbox.
+Instead of answering Jeweler that "yellow gold":
+	say "The jeweler nods. 'An excellent choice.' He marks it down on an order form. 'Now, there are a few different styles that you can choose. The solitaire, the three-stone, and the split-shank.' He pulls an example of each from his cases and sets them ontop of the counter for you to examine.";
+	now YellowGold is in blackbox;
+	now Consult1 is in blackbox.
+Instead of answering Jeweler that "platinum":
+	say "The jeweler nods. 'An excellent choice.' He marks it down on an order form. 'Now, there are a few different styles that you can choose. The solitaire, the three-stone, and the split-shank.' He pulls an example of each from his cases and sets them ontop of the counter for you to examine.";
+	now Platinum is in blackbox;
+	now Consult1 is in blackbox.
+	
+Instead of answering Jeweler that "solitaire":
+	say "The jeweler smiles. 'A simple and elegant girl you must have. I will get right to it.' The man bids you farewell, and scurries to the back of his store to make the ring.";
+	now Solitaire is in blackbox;
+	now Consult2 is in blackbox.
+Instead of answering Jeweler that "three-stone":
+	say "The jeweler smiles. 'A beautiful ring this will be. Quite a girl she must be. I will get right to it.' The man bids you farewell, and scurries to the back of his store to make the ring.";
+	now three-stone is in blackbox;
+	now Consult2 is in blackbox.
+Instead of answering Jeweler that "split-shank":
+	say "The jeweler smiles. 'A wonderful choice, sir. This girl must be very special to you. I will get right to it.' The man bids you farewell, and scurries to the back of his store to make the thing.";
+	now split-shank is in blackbox;
+	now Consult2 is in blackbox.
+	
+[engagement rings]
+WhiteGoldSolitaire is a thing.
+WhiteGoldThreeStone is a thing.
+WhiteGoldSplitShank is a thing.
+YellowGoldSolitaire is a thing.
+YellowGoldThreeStone is a thing.
+YellowGoldSplitShank is a thing.
+PlatinumSolitaire is a thing.
+PlatinumThreeStone is a thing.
+PlatinumSplitShank is a thing.
+Every Turn:
+	if WhiteGold is in blackbox:
+		if Solitaire is in blackbox:
+			now WhiteGoldSolitaire is in blackbox;
+			now WhiteGold is in Unicorn-Box;
+		if Three-Stone is in blackbox:
+			now WhiteGoldThreeStone is in blackbox;
+			now WhiteGold is in Unicorn-Box;
+		if Split-Shank is in blackbox:
+			now WhiteGoldSplitShank is in blackbox;
+			now WhiteGold is in Unicorn-Box;
+	if YellowGold is in blackbox:
+		if Solitaire is in blackbox:
+			now YellowGoldSolitaire is in blackbox;
+			now YellowGold is in Unicorn-Box;
+		if Three-Stone is in blackbox:
+			now YellowGoldThreeStone is in blackbox;
+			now YellowGold is in Unicorn-Box;
+		if Split-Shank is in blackbox:
+			now YellowGoldSplitShank is in blackbox;
+			now YellowGold is in Unicorn-Box;
+	if Platinum is in blackbox:
+		if Solitaire is in blackbox:
+			now PlatinumSolitaire is in blackbox;
+			now Platinum is in Unicorn-Box;
+		if Three-Stone is in blackbox:
+			now PlatinumThreeStone is in blackbox;
+			now Platinum is in Unicorn-Box;
+		if Split-Shank is in blackbox:
+			now PlatinumSplitShank is in blackbox;
+			now Platinum is in Unicorn-Box.
 
 
 
 [Apartment Complex]
-Apartment Complex is a room. It is north of Main Street. "An eleven story building that's well kept and has good service. To the north is the elevator."
+Apartment Complex is a room. It is north of Main Street. "An eleven story building that's well kept and has good service. To the north is the elevator, and to the west is the lobby."
+Lobby is a room. It is west of Apartment Complex.
+Bertha is a woman. She is in Lobby. The description is "An older woman who lives in room 302, and has been there, by the looks of it, easily since before the building was even constructed. She lives alone with hoards of cats, and never leaves her room without one of them. She wears drabby, large, unshapely, floor-length floral dresses or what must be a polyester/cotten mix."
 Apartment Clerk is a man. He is in Apartment Complex. The description is "A young man in his early twenties. About your age- perhaps a year or two younger."
 The Elevator is a room. It is north of Apartment Complex. "A standard elevator. The doors open horizontally. Elily often comments about how they should open vertically- make things a little more interesting. There are eleven buttons in the elevator; 2-5 for each floor, and one that simply has an 'L' on it, for lobby."
-	
+Room Key is a thing. It unlocks 502f. The description is "Your apartment room key. Room 502."
+Instead of entering Elevator:
+	if player does not have Room Key:
+		say "There are many rooms up there. Without your key, you won't be able to get into a single one. You seem to have misplaced it- perhaps the clerk has a spare?";
+		continue the action.
+
 [elevator buttons]
 Understand "press [something]" or "push [something]" as ButtonPushing. ButtonPushing is an action applying to one thing.
 Check ButtonPushing:
@@ -2115,8 +2207,6 @@ Fifth Floor is a room. It is south of Elevator5. "Room 501 is to the east. Room 
 Fifth Floor2 is a room. It is south of Fifth Floor. The printed name is "Fifth Floor". "Room 503 is to the east. Room 504 is to the west. The remaining rooms continue south."
 Fifth Floor3 is a room. It is south of Fifth Floor2. The printed name is "Fifth Floor". "Room 505 is to the east. Room 506 is to the west."
 
-
-
 [floor rooms]
 [second floor]
 201f is a door. It is locked. The printed name is "201". It is east of Second Floor. 
@@ -2141,12 +2231,125 @@ Fifth Floor3 is a room. It is south of Fifth Floor2. The printed name is "Fifth 
 406f is a door. It is locked. The printed name is "406". It is west of Fourth Floor3.
 [fifth floor]
 501f is a door. It is locked. The printed name is "501". It is east of Fifth Floor. 
-502f is a door. It is locked. The printed name is "502". It is west of Fifth Floor.
+502f is a door. It is locked and lockable. The printed name is "502". It is west of Fifth Floor. [apartment room]
 503f is a door. It is locked. The printed name is "503". It is east of Fifth Floor2.
 504f is a door. It is locked. The printed name is "504". It is west of Fifth Floor2.
 505f is a door. It is locked. The printed name is "505". It is east of Fifth Floor3.
 506f is a door. It is locked. The printed name is "506". It is west of Fifth Floor3.
+[Your Apartment]
+Your Apartment is a room. It is west of 502f. "You've had this apartment for the last two years, and Elily moved in about a year ago. Here, in the living room, is a leather couch, a TV, and a lovely shag rug. The bathroom is north, the kitchen is northwest, and the bedroom is west. There's a small veranda west of the bedroom."
+Leather Couch is an enterable scenery supporter in Your Apartment. The description is "A white leather couch that you and Elily got for a great deal from a store that was going out of business. Sometimes you fall asleep on it; it's just that comfortable."
+TV1 is a device in Your Apartment. It is undescribed. Understand "TV" as TV1. The printed name is "TV". The description is "A relatively nice flatscreen that your parents gave you as a 'yay-you-graduated-from-college-without-flunking-out' present.[if switched on] An older gentleman in a grey suit drones on about the wonderfully sunny day."
+Understand "turn on [TV1]" or "watch [TV1]" as switching on.
+Understand "turn off [TV1]" as switching off.
+Check switching on TV1:
+	say "You turn the TV on, and plop yourself down on the couch. Oh, it's so good to be home!";
+	now player is on Leather Couch.
+Shag Rug is scenery in Your Apartment. The description is "A white and brown shag rug that stretches from under the couch to under the TV. Besides your bed and the couch, it's the most comfortable thing in your apartment."
+[the bathroom]
+The Bathroom is a room. It is north of Your Apartment. "A small bathroom with a shower-and-bath in one, a toilet, and a sink with a mirror."
+Shower-and-Bath is an enterable scenery supporter in Bathroom. Understand "shower" or "bath" or "shower and bath" as Shower-and-Bath. The description is "A sliding glass door either opens up or closes in a white tiled shower that rains into a white ceramic tub."
+Instead of entering Shower-and-Bath:
+	say "You step into the shower, and sit down. It's not as comfortable as your couch.";
+	continue the action.
+The toilet1 is an enterable scenery supporter in Bathroom. Understand "toilet" as toilet1. The printed name is "toilet". The description is "A white ceramic toilet with a wooden seat and lid."
+Seat-and-Lid is scenery in Bathroom. Understand "seat" or "lid" as Seat-and-Lid. The description is "A dark wooden toilet seat and toilet lid."
+Sink is a device in Bathroom. It is undescribed. The description is "A glass countertop that dips down to form the bowl of the sink. A silver spout juts over it."
+Understand "turn on [sink]" as switching on.
+Understand "turn off [sink]" as switching off.
+Check switching on sink:
+	say "You turn on the sink, and run your hands under the water."
+Check switching off sink:
+	say "You turn off the sink."
+Instead of going south in Bathroom:
+	if sink is switched on:
+		say "You can't leave the sink on!";
+	otherwise:
+		continue the action.
+Mirror is scenery in Bathroom. The description is "You look at yourself, smile, strike a pose, and then lose interest."
+[the kitchen]
+The Kitchen is a room. It is northwest of Your Apartment. "It's a small kitchen with a breakfast table for two, a fridge, a sink, some cabinets, a stove, an oven,  and some counterspace."
+Breakfast Table is an enterable scenery supporter in Kitchen. "A small round table with two chairs on either side."
+Chairs2 are an enterable scenery supporter in kitchen. The printed name is "two chairs". Understand "chair" or "chairs" as Chairs2. The description is "Two wooden chairs."
+Fridge is a container in Kitchen. It is undescribed. The description is "A silver fridge."
+Milk is a thing in Fridge. It is edible. The description is "A gallon of fat free milk."
+MISC food is a thing in Fridge. It is fixed in place. The description is "Assorted foods and beverages."
+Sink1 is a device in Kitchen. It is undescribed. The printed name is "sink". Understand "sink" as Sink1. The description is "A two basin sink. It's currently empty- Elily must have washed the dishes."
+Check switching on sink1:
+	say "You turn on the sink, and run your hands under the water."
+Check switching off sink1:
+	say "You turn off the sink."
+Instead of going southeast in kitchen:
+	if sink1 is switched on:
+		say "You can't leave the sink on!";
+	otherwise:
+		continue the action.
+Cabinets are a Container in Kitchen. They are undescribed. Understand "cabinet" as cabinets. The description is "Wooden cabinets above the counter, sink, and stove."
+Plates1 are a thing in Cabinets. They are fixed in place. The printed name is "plates". Understand "plates" as Plates1. The description is "A couple different plates in a few different sizes."
+Bowls are a thing in Cabinets. They are fixed in place. The description is "A couple different bowls in a few different sizes."
+Glasses are a thing in Cabinets. They are fixed in place. The description is "A couple different glasses in a few different sizes."
+Silverware is a thing in Cabinets. It is fixed in place. The description is "A nicely assorted collection of forks, knives, spoons, and other serving utensils."
+Stove is a device in Kitchen. It is undescribed. The description is "A glasstop stove with four burners."
+Understand "turn on [stove]" as switching on.
+Understand "turn off [stove]" as switching off.
+Check switching on stove:
+	say "You turn the dial, and the burner lights up. You stare at the red light, but you have nothing to cook."
+Instead of going southeast in kitchen:
+	if stove is switched on:
+		say "Don't forget to turn the stove off! You don't want to burn the whole building down.";
+	otherwise:
+		continue the action.
+Oven is a container in Kitchen. It is undescribed. The description is "A simple oven that often yields delicious cookies and other baked goods."
+Counterspace is an enterable scenery supporter in kitchen. Understand "counter" as counterspace. The description is "A smooth counter that runs between the fridge and the stove, then continues on the other side of the stove to the wall, with a slight interruption for the sink."
+[the bedroom]
+The Bedroom is a room. It is west of Your Apartment. "A cozy bedroom with a bed, two bedside tables (hers and his), a dresser, and a glass door leading out to the small veranda."
+Bed is an enterable scenery supporter in Bedroom. The description is "A superwarm and comfortable bed."
+Bedside Tables are scenery in Bedroom. The description is "Two wooden bedside tables, each with a lamp."
+Lamp is scenery in Bedroom. The description is "A nice lamp that you got at the mall over a year ago."
+Dresser is a container in Bedroom. It is undescribed. The description is "A medium stained wooden dresser."
+Clothes are a thing in Dresser. They are fixed in place. The description is "Folded shirts and shorts."
+Glass Door is a door. It is west of Bedroom and east of Veranda.
+[Elily]
+SleepingGirl is a thing. It is in Blackbox.
+Elily is a woman. She is on Bed. The description is "A beautiful girl with wavy, dark red hair.[if sleepinggirl is in blackbox] She is currently taking a nap on the bed."
+Instead of talking to Elily:
+	if SleepingGirl is in blackbox:
+		say "Elily is currently napping. It would be rude to disturb her."
+Instead of kissing Elily:
+	if SleepingGirl is in blackbox:
+		say "You lean forward and kiss Elily's forehead. She smiles in her sleep."
+[veranda]
+Veranda is a room. It is west of Glass Door. "A small veranda with a chair. It overlooks main street, which is usually pretty calm."
+Chair3 is an enterable scenery supporter in Veranda. The printed name is "chair". Understand "chair" as Chair3. The description is "A reclining chair."
 
+	
+[getting Room Key]
+ID Card is a thing. The description is "Your driving liscence. What a handsome guy in that picture! 'Wade Crow'[line break]'DOB 2/17/88'[line break]'6'0''[line break]'brown hair, green eyes'".
+Instead of talking to Apartment Clerk:
+	if player does not have Room Key and scream is not in blackbox:
+		say "'Hey, Mr. Crow!' The overly enthusiastic employee says when you approach him.[line break]'Oh, hello there, um,' you narrow your eyes, inspecting his name card. 'John. Hello. I seem to have lost my room key, would you happen to have a spare?'[line break]'Oh, oh of course, Mr. Crow. Unfortunately, even though I know who you are, I can't issue you a key unless you can prove in two ways who you are.' Exhasperated, you look around. There are no pictures of you framed on the wall- you haven't done anything important. Yet. You will be CEO of something, someday. Maybe. [line break]'What sort of identification do you need, John?'[line break]'Well an ID and confirmation from another building resident would be fine.'";
+		now ID card is in Wallet;
+		now player has Wallet;
+	if Scream is in blackbox and player does not have Room Key:
+		if player has ID Card:
+			say "'Here, John,' you say, passing over your ID card. 'All of this good enough to vouch for who I am?'[line break] 'Yes, yes it is, Mr. Crow. Here is your room key. Have a good day!'";
+			now player has Room Key;
+		otherwise:
+			say "'I'm going to need your ID card as well, Mr. Crow.'";
+	if player has Room Key:
+		say "'Hello again, Mr. Crow! I hope you're having a lovely day?'";
+		if player consents:
+			say "'Fantastic! The weather is looking nice, too. So long!'";
+		otherwise:
+			say "'Oh, that's too bad! But the weather is nice, so hopefully you turn around!'"
+Scream is a thing.
+Instead of talking to Bertha:
+	if player does not have Room Key and scream is not in blackbox:
+		say "'Hey, Bertha.' The woman looks up from her intent task of betting a tabby.[line break]'Oh. Hi. What do you want.'[line break]'I've lost my room key-'[line break]'Stupid kid'[line break]'-and I need someone to vouch for me as being who I say I am.'[line break]'Don't you have a stupid ID in your wallet, or something.'[line break]'I'll check, but I need a person, too…' Bertha glares at you. She shifts her weight around under her giant shapeless floral dress and opens her mouth. [line break] 'CLERK!' She bellows. Your ears flinch. The young man hurries over, alarmed. 'This is Wade Crow.' [line break]'Very well,' says the clerk, obviously unsettled by the woman. [line break]'Now leave me alone!'";
+		now Scream is in blackbox;
+	if Scream is in blackbox:
+		say "The woman looks up, sees that it's you, and sends you a terrible glare. You decide to let her be."
+	
 
 [Pet Shop]
 
