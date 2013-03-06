@@ -53,7 +53,7 @@ A thing can be broken or unbroken.
 [Starting the game]
 The Campfire is a room. "It's night, but the fire just burned out and you both are getting cold. Your tent is in a grassy clearing. To the north are the woods, to the east a stream, and the west a rocky cliff. A mysterious cabin is to your south. In your tent there's a cooler, a backpack, and two sleeping bags."
 The cooler is a container in the Campfire. It is closed and openable. It is fixed in place. The description is "The cooler contains [list of things in cooler]."
-Bottles are a thing. Bottles are inside the cooler.
+Bottles are a thing. Bottles are inside the cooler. The description is "Some empty water bottles."
 The backpack is a container in the Campfire. It is closed and openable. It is portable. The description is "A simple bag that's seen better days. Nevertheless, you managed to stuff it with necessities and bring it on the trip."
 Grassy Clearing is scenery in Campfire. The description is "A worn down patch of grass. There's nothing that special about it."
 Fire is scenery in Campfire.
@@ -382,7 +382,7 @@ After examining Bottled Water for the first time: increase score by 1.
 
 Instead of going west from stream:
 	if player is carrying bottles:
-		if bottled water is in bottles:
+		if player has Bottled Water:
 			say "You make your way back to the campsite with an armful of bottled water.";
 	continue the action.
 	
@@ -413,6 +413,7 @@ After of opening wallet:
 		continue the action;
 	otherwise:
 		continue the action.
+After opening wallet for the first time: increase score by 1.
 An every turn rule:
 	if the player is full:
 		if the player is quenched:
@@ -432,7 +433,8 @@ An every turn rule:
 			now backpack is off-stage;
 			now player has wallet;
 			now the player is hungry;
-			now the player is thirsty.
+			now the player is thirsty;
+			increase score by 5.
 [Marketplace Rooms]
 General Store is a room. It is northwest of Marketplace. "The General Store was here first. It has several little things on the front desk."
 
@@ -483,6 +485,7 @@ Instead of taking Town Map:
 			say "You hand over the coin in exchange for a map.";
 			now Five Coin Piece is off-stage;
 			now player has Town Map;
+			increase score by 1;
 		Otherwise:
 			say "You decide to hold onto your money. How confusing can the town be?";
 	Otherwise:
@@ -494,15 +497,20 @@ Mr Mason is a man. He is in Italian Bistro. The description is "Mr. Mason is the
 Instead of giving Wooden Crate to Mr Mason:
 	say "'Hey, Mr. Mason?' You say, approaching the manager.[paragraph break]'Yes? Ah,' he says, seeing the crate. 'Thank you,' he says as he takes the crate from you. 'Here, be sure to give this to Ms. Baker.' He hands you a check and takes the crate to he back of the store.";
 	now Wooden Crate is off-stage;
+	increase score by 1;
 	now player has Payment Check.
 Instead of talking to Mr Mason:
 	if player has Wooden Crate:
 		say "'Hey, Mr. Mason?' You say, approaching the manager.[paragraph break]'Yes? Ah,' he says, seeing the crate. 'Thank you,' he says as he takes the crate from you. 'Here, be sure to give this to Ms. Baker.' He hands you a check and takes the crate to he back of the store.";
 		now Wooden Crate is off-stage;
+		increase score by 1;
 		now player has Payment Check;
 	otherwise:
 		say "Mr. Mason is a busy man. You shouldn't bother him unless it's important."
 Round Table is an enterable scenery supporter in Italian Bistro. The description is "A solid wood table with carvings on the leg. There are chairs around each table."
+After examining Round Table for the first time: increase score by 1.
+After examining Brown Sofa for the first time: increase score by 1.
+After examining Chair for the first time: increase score by 1.
 Chair is an enterable scenery supporter in Italian Bistro. The description is "A simple wooden chair."
 Instead of going when the player is on Round Table:
 	say "(First getting off the table).";
@@ -560,6 +568,7 @@ Instead of taking Breakfast Pizza:
 			say "You hand over the coin in exchange for the pizza.";
 			now Nine Coin Piece is in Blackbox;
 			now player has Yummy-Breakfast Pizza;
+			increase score by 1;
 		Otherwise:
 			say "You decide that you're not that hungry and pass up the pizza.";
 	Otherwise:
@@ -571,6 +580,7 @@ Instead of taking Belgian Waffle:
 			say "You hand over the coin in exchange for the waffle.";
 			now Six Coin Piece is in Blackbox;
 			now player has Yummy-Belgian Waffle;
+			increase score by 1;
 		Otherwise:
 			say "You decide that you're not that hungry and pass up the waffle.";
 	Otherwise:
@@ -582,6 +592,7 @@ Instead of taking Curry Chicken Salad:
 			say "You hand over the coin in exchange for the salad.";
 			now Seven Coin Piece is in Blackbox;
 			now player has Yummy-Curry Chicken Salad;
+			increase score by 1;
 		Otherwise:
 			say "You decide that you're not that hungry and pass up the salad.";
 	Otherwise:
@@ -593,6 +604,7 @@ Instead of taking Turkey Cranberry Sandwich:
 			say "You hand over the coin in exchange for the pizza.";
 			now Eight Coin Piece is in Blackbox;
 			now player has Yummy-Turkey Cranberry Sandwich;
+			increase score by 1;
 		Otherwise:
 			say "You decide that you're not that hungry and pass up the sandwich.";
 	Otherwise:
@@ -604,6 +616,7 @@ Instead of taking Our Famous Joe:
 			say "You hand over the coin in exchange for the coffee.";
 			now One Coin Piece is in Blackbox;
 			now player has Yummy-Famous Joe;
+			increase score by 1;
 		Otherwise:
 			say "You decide that you're not that thirsty and pass up the coffee.";
 	Otherwise:
@@ -615,6 +628,7 @@ Instead of taking Cold Brewed Coffee:
 			say "You hand over the coin in exchange for the coffee.";
 			now Two-Coin Piece is in Blackbox;
 			now player has Delightful-Cold Brewed Coffee;
+			increase score by 1;
 		Otherwise:
 			say "You decide that you're not that thirsty and pass up the coffee.";
 	Otherwise:
@@ -626,6 +640,7 @@ Instead of taking Espresso Machiato:
 			say "You hand over the coin in exchange for the espresso.";
 			now Two And A Half Coin Piece is in Blackbox;
 			now player has Extra-Kick Machiato;
+			increase score by 1;
 		Otherwise:
 			say "You decide that you're not that thirsty and pass up the espresso.";
 	Otherwise:
@@ -637,6 +652,7 @@ Instead of taking Americano:
 			say "You hand over the coin in exchange for the coffee.";
 			now One And A Half Coin Piece is in Blackbox;
 			now player has Steaming-Americano;
+			increase score by 1;
 		Otherwise:
 			say "You decide that you're not that thirsty and pass up the coffee.";
 	Otherwise:
@@ -648,6 +664,7 @@ Instead of taking Italian Cream Soda:
 			say "You hand over the coin in exchange for the coffee.";
 			now Three Coin Piece is in Blackbox;
 			now player has Tasty Italian Soda;
+			increase score by 1;
 		Otherwise:
 			say "You decide that you're not that thirsty and pass up the coffee.";
 	Otherwise:
@@ -656,10 +673,12 @@ Instead of taking Italian Cream Soda:
 [Hayden]
 Paper is a thing.
 Hayden is a man. He is in Italian Bistro. The description is "Hayden is an interesting man. He wanders around in the forest and under the willow tree in the park. He's rarely seen in any establishments. Dressed always in a black trenchcoat, the man hides his obvious old age in the shadow of his clothes." Hayden is wearing a black trenchcoat. 
+After examining Hayden for the first time: increase score by 1.
 Instead of talking to Hayden for the first time:
 	say "'Hello, Hayden.' You sit down on the sofa next to him. He continues to look into his coffee mug.[paragraph break]'Wade,' he acknowledges.[paragraph break]'How do you know my-' Hayden looks up at you. 'Never mind.' Hayden holds your gaze for another second, then drops it to his mug and takes a sip.[paragraph break]'Anyone can buy a girl flowers, Wade.' He says. You become uncomfortable. 'I think you should do something a little more special for her, Wade. She's worth more than flowers.' You shift in your seat.[paragraph break]'Well, I have other ideas, too-'[paragraph break]'Ah.'[paragraph break]'Do you have a better idea, sir?' Hayden chuckles.[paragraph break]'I'm no 'sir'. But yes. I do. A beautiful girl like Elily? Flowers are silly. Would you like to know of my idea?'";
 	if player consents:
 		say "'Ahh, yes. Have you ever been to the forest, Wade? It's just northeast of the park.'[paragraph break]'I've biked the trails a time or two, yes.'[paragraph break]'There is a wonderful creature, in those trees, Wade. She sparkles and glistens and flies like the wind,' his voice trails. 'You must find her, Wade. And you must tame her. And she will take you to wonderous places.'[paragraph break]'What, what do you mean?' Hayden has completely lost you. 'A flying creature that I can tame and ride? What are you talking about.' Hayden smiles.[paragraph break]'I'm rather hungry, Wade. Why don't you buy me a Curry Chicken Salad, and we can talk about it.'";
+		increase score by 1;
 	otherwise:
 		say "'No, actually. I think my gift will be perfect for her.'[paragraph break]'Mm, I thought you'd say that.'[paragraph break] You stand up, and walk over the the counter and examine the menus. But Hayden's words ring through your head, teasing your curiosity. 'I don't have to listen to his idea,' you reason with yourself. 'But I'd still like to know what he's thinking.' You return to the sofa.[paragraph break]'I changed my mind, Hayden. What is your idea?'";
 		say "'Ahh, yes. Have you ever been to the forest, Wade? It's just northeast of the park.'[paragraph break]'I've biked the trails a time or two, yes.'[paragraph break]'There is a wonderful creature, in those trees, Wade. She sparkles and glistens and flies like the wind,' his voice trails. 'You must find her, Wade. And you must tame her. And she will take you to wonderous places.'[paragraph break]'What, what do you mean?' Hayden has completely lost you. 'A flying creature that I can tame and ride? What are you talking about.' Hayden smiles.[paragraph break]'I'm rather hungry, Wade. Why don't you buy me a Curry Chicken Salad, and we can talk about it.'";
@@ -675,6 +694,7 @@ Instead of talking to Hayden:
 		if player has Yummy-Curry Chicken Salad:
 			say "You hand over the salad.[paragraph break]Hayden takes a bite. 'Delicious.'[paragraph break]'Hayden. This animal?'[paragraph break]'Ah. She is beautiful, Wade.'[paragraph break]'What is she? How would I even train her?'[paragraph break]'She is a unicorn, Wade. A beautiful, beautiful unicorn. She's very special to me.' You stare at the man, appalled. A unicorn? Those didn't exist! 'Oh Wade, so naive. They do exist. Go find her, Wade. She will take you to a wonderful place. There, you will be able to find something worthy for Elily.' You stare at the man speechlessly  He takes another bite of curry.[paragraph break]'Okay, Hayden. Let's say I believe you. How would I even tame her?' Hayden became quiet. He turns and his eyes lock with yours. You're too scared to break the connection.[paragraph break]'She is very special to me, Wade. You cannot speak of her to a single soul. Or anything soulless, for that matter. Understood?' You nod hastily. The tension dissipates and Hayden picks his plate back up. 'Just make your way down to the Tack Shop, it's south of the Appliance Store. Talk to the sales associate there.' You nod, still trying to process what you just learned. You couldn't make yourself believe that there was actually a unicorn in the forest, but you couldn't resist looking. 'Oh- Wade. You'll need this.' Hayden hands you a 200CP, and returns to his meal.";
 			now player has 200-Coin Piece;
+			increase score by 1;
 			now Yummy-Curry Chicken Salad is in Bistro Box;
 		otherwise:
 			say "You look at Hayden, but he ignores you and your abscence of Curry Chicken Salad."
@@ -685,12 +705,17 @@ Instead of talking to Hayden:
 [Park]
 Tall Trees are scenery in Park. The description is "There are a couple black cherry trees and a willow tree."
 Black Cherry Trees are scenery in Park. The description is "There are only three of them. Their leaves are smooth and shiny."
+After examining Black Cherry Trees for the first time: increase score by 1.
 Willow Tree is scenery in Park. The description is "The willow tree is definately the oldest thing in the park. Its long leaves and branches brush the ground, and its trunk is scarred."
+After examining Willow Tree for the first time: increase score by 1.
 Leaves are scenery in Park. The description is "The light green leaves dust the ground like a natural broom."
 Trunk is scenery in Park. The description is "The trunk of the willow has been carved in by decades of teenagers. There are hearts with initials as well as curse words."
 Hearts are scenery. They are in Park. The description is "The most prominent heart contains a 'E+A'".
+After examining Hearts for the first time: increase score by 2.
 Curse Words is scenery in Park. The description is "You look closely, but you see no curse words that you don't already know. Not that it matters, because Elily doesn't like it when you 'say bad words'."
+After examining Curse Words for the first time: increase score by 1.
 Scars are scenery in Park. The description is "The scars are from knives and other blunt objects that people used to carve into the wood."
+After examining Scars for the first time: increase score by 1.
 Bench is an enterable scenery supporter in Park. The description is "A wooden picnic bench."
 Instead of going when the player is on Bench:
 	say "(First getting off the picnic bench)";
@@ -699,10 +724,12 @@ The Picnic is scenery. It is in Park. The description is "It appears as if a fam
 Picnic-Basket is a container.
 Instead of taking Basket:
 	say "You pick up the basket.";
+	increase score by 1;
 	now player has Picnic-Basket;
 	now Basket is off-stage.
 Basket is scenery in Park. The description is "You open the lid of the picnic basket to reveal an untouched cheesecake."
 Fancy-Cheesecake is food. It is cooked.
+After eating Fancy-Cheesecake: increase score by 1.
 Cheesecake is scenery. It is in Park. The description is "It looks fancy! The sticker says 'Fruit Sampler (strawberry, cherry, pineapple, blueberry)'."
 Instead of taking Cheesecake:
 	say "You look over your shoulder to make sure no one is around, and take the cheesecake.";
@@ -713,15 +740,18 @@ Sandwich Bags are scenery. They are in Park. The description is "There are a few
 Sandwich Bag is a thing.
 Instead of taking Sandwich Bags:
 	say "You pick up the bags and stuff them in your pockets. You don't condone littering.";
+	increase score by 1;
 	now player has Sandwich Bag.
 Forks are scenery. They are in Park. The description is "Three white-plastic forks. They've obviously been used; one even has the bite marks of a small child on the handle."
 Used Forks are a thing.
 Instead of taking Forks:
 	say "For some reason you decide that used forks could be useful to you, and you pick them up.";
+	increase score by 1;
 	now player has Used Forks.
 Tablecloth is scenery. It is in Park. The description is "A standard red-and-white checkered picnic blanket."
 Picnic Blanket is a thing.
 Simple Key is a thing. The description is "Your lost key!"
+After examining Simple Key for the first time: increase score by 1.
 Instead of taking Tablecloth:
 	say "You fold up the blanket and throw it over your shoulder. As you do so, a key falls out from between the folds.";
 	now player has Picnic Blanket;
@@ -736,6 +766,7 @@ Instead of taking Wildflowers:
 		say "Wildflowers cost a Two-Coin Piece. Purchase?";
 		if player consents:
 			now Two-Coin Piece is off-stage;
+			increase score by 1;
 			continue the action;
 	otherwise:
 		say "You can't steal that! It costs a Two-Coin Piece."
@@ -744,6 +775,7 @@ Instead of taking Azaleas:
 		say "Azaleas cost a Two-Coin Piece. Purchase?";
 		if player consents:
 			now Two-Coin Piece is off-stage;
+			increase score by 1;
 			continue the action;
 	otherwise:
 		say "You can't steal that! It costs a Two-Coin Piece."
@@ -752,6 +784,7 @@ Instead of taking Pink Lilies:
 		say "Pink Lilies cost a Two-Coin Piece. Purchase?";
 		if player consents:
 			now Two-Coin Piece is off-stage;
+			increase score by 1;
 			continue the action;
 	otherwise:
 		say "You can't steal that! It costs a Two-Coin Piece."
@@ -760,6 +793,7 @@ Instead of taking White Lilies:
 		say "White Lilies cost a Two-Coin Piece. Purchase?";
 		if player consents:
 			now Two-Coin Piece is off-stage;
+			increase score by 1;
 			continue the action;
 	otherwise:
 		say "You can't steal that! It costs a Two-Coin Piece."
@@ -768,6 +802,7 @@ Instead of taking Daffodils:
 		say "Daffodils cost a Two-Coin Piece. Purchase?";
 		if player consents:
 			now Two-Coin Piece is off-stage;
+			increase score by 1;
 			continue the action;
 	otherwise:
 		say "You can't steal that! It costs a Two-Coin Piece."
@@ -776,6 +811,7 @@ Instead of taking Irises:
 		say "Irises cost a Two-Coin Piece. Purchase?";
 		if player consents:
 			now Two-Coin Piece is off-stage;
+			increase score by 1;
 			continue the action;
 	otherwise:
 		say "You can't steal that! It costs a Two-Coin Piece."
@@ -784,6 +820,7 @@ Instead of taking Jasmine Blossoms:
 		say "Jasmine Blossoms cost a Two-Coin Piece. Purchase?";
 		if player consents:
 			now Two-Coin Piece is off-stage;
+			increase score by 1;
 			continue the action;
 	otherwise:
 		say "You can't steal that! It costs a Two-Coin Piece."
@@ -792,6 +829,7 @@ Instead of taking Marigolds:
 		say "Marigolds cost a Two-Coin Piece. Purchase?";
 		if player consents:
 			now Two-Coin Piece is off-stage;
+			increase score by 1;
 			continue the action;
 	otherwise:
 		say "You can't steal that! It costs a Two-Coin Piece."
@@ -800,11 +838,13 @@ Instead of taking Daisies:
 		say "Daisies cost a Two-Coin Piece. Purchase?";
 		if player consents:
 			now Two-Coin Piece is off-stage;
+			increase score by 1;
 			continue the action;
 	otherwise:
 		say "You can't steal that! It costs a Two-Coin Piece."
 Vending Cart is scenery. It is in Flower Vendor. The description is "A rather nice wooden cart with metal supports. Bushels of flowers are gathered in dozens along the cart's shelves."
 Bushels of Flowers are scenery. They are in Flower Vendor. The description is "There are: wildflowers, azaleas, pink and white lilies, daffodils, irises, jasmine blossoms, marigolds, and daisies. Each dozen costs a Two-Coin Piece."
+After examining Bushels of Flowers for the first time: increase score by 1.
 Wildflowers are a thing. They are in Flower Vendor. The description is "A dozen different flowers bunched together."
 Different Flowers are scenery. They are in Flower Vendor. The description is "You don't know what they're called, but they sure are pretty!"
 Azaleas are a thing. They are in Flower Vendor. The description is "A white flower with five long petals that curl down."
@@ -815,7 +855,15 @@ Irises are a thing. They are in Flower Vendor. The description is "These irises 
 Jasmine Blossoms are a thing. They are in Flower Vendor. The description is "Small, four-petal white flowers."
 Marigolds are a thing. They are in Flower Vendor. The description is "A ball of orange and red petals."
 Daisies are a thing. They are in Flower Vendor. The description is "A beautiful and simple flower with a yellow center and many slender long white petals."
-
+After examining Wildflowers for the first time: increase score by 1.
+After examining Azaleas for the first time: increase score by 1.
+After examining Pink Lilies for the first time: increase score by 1.
+After examining White Lilies for the first time: increase score by 1.
+After examining Daffodils for the first time: increase score by 1.
+After examining Irises for the first time: increase score by 1.
+After examining Jasmine Blossoms for the first time: increase score by 1.
+After examining Marigolds for the first time: increase score by 1.
+After examining Daisies for the first time: increase score by 1.
 
 [Garden]
 Bistro Box is a container.
@@ -829,13 +877,15 @@ Instead of talking to Ms Baker:
 		say "'Oh, Wade, dear, you're still lugging that crate around? Please hurry and take it to Mr. Mason.'";
 	if Picnic Blanket is in Baker Box:
 		say "'Anything else I can do for you, Ms. Baker?' [paragraph break]'Oh, I'm alright for now, sweety. You've been very helpful though, as always. Here, have something extra- get something for Elily.' She hands you a seven coin piece.";
-		now player has Seven Coin Piece.;
+		now player has Seven Coin Piece;
+		increase score by 1;
 	otherwise:
 		if Payment Check is in Baker Box:
 			say "'Oh, Wade, I'm so glad you're here. Can you run over to the Park and get my picnic blanket? I forgot it there earlier.'";
 			if player has Picnic Blanket:
 				say "You hand over the picnic blanket. 'Here you are, Ms. Baker.'[paragraph break]'Oh, thank you. So very helpful of you. Here, for your troubles.' She hands you a four coin piece.";
 				now player has Four Coin Piece;
+				increase score by 1;
 				now Picnic Blanket is in Baker Box;
 	if Payment Check is in Bistro Box:
 		say "'Hey, Ms. Baker. How are you?' You say laoudly as you approach the older woman. She looks up and beams at you.[paragraph break]'Wade! It's so nice to see you again!' She brushes her hands off on her apron and gives you a hug. 'I'm doing just fine, sweety.'[paragraph break]'Well, I'm very glad to hear that, Ms. Baker. Is there anything I can help you with?'[paragraph break]'Hmm,' she says as she puts her left hand on her hip. 'Actually, there is. Do you think that you could take this crate of vegetables to Mr. Mason in the Italian Bistro? Make sure to bring back the check he gives you, and I'll have something special for you.' She leads you to a wooden crate. With a grunt, you pick it up.[paragraph break]'Thanks again, dear.'[paragraph break]'No problem, Ms. Baker. I'll be right back.'";
@@ -843,7 +893,8 @@ Instead of talking to Ms Baker:
 	if player has Payment Check:
 		say "'Here, Ms. Baker.' You hand over the check.[paragraph break]'Oh, thank you dear! And here's a little something for you.' Ms. Baker hands you a nine coin piece.";
 		now player has Nine Coin Piece;
-		now Payment Check is in Baker Box;	
+		increase score by 1;
+		now Payment Check is in Baker Box.
 	
 
 
@@ -855,6 +906,7 @@ Instead of taking Steve Jobs:
 		if player consents:
 			say "You buy the cutout. Perhaps you should gift it; Elily isn't a Mac fan.";
 			now player has Steve Jobs;
+			increase score by 1;
 			now Ten Coin Piece is off-stage;
 	otherwise:
 		say "[if Steve Jobs is in school] You can't take a gift back![Otherwise]You can't steal that! The Steve Job cutout costs a Ten Coin Piece. Perhaps you have the money in the bank."
@@ -897,6 +949,38 @@ Extension cord is a forple. It is scenery. It is in Appliance store.
 Beats are a forple. It is scenery. It is in Appliance store. Understand "beats by dre" as Beats.
 Screen Protectors are a forple. It is scenery. It is in Appliance store. 
 
+[After LookingFor iPod Touch for the first time: increase score by 1.
+After LookingFor Music Player for the first time: increase score by 1.
+After LookingFor iPad for the first time: increase score by 1.
+After LookingFor Camera for the first time: increase score by 1.
+After LookingFor Phone for the first time: increase score by 1.
+After LookingFor TV for the first time: increase score by 1.
+After LookingFor GPS for the first time: increase score by 1.
+After LookingFor Headphones for the first time: increase score by 1.
+After LookingFor Blue-Ray Player for the first time: increase score by 1.
+After LookingFor Charger for the first time: increase score by 1.
+After LookingFor CD for the first time: increase score by 1.
+After LookingFor DVD for the first time: increase score by 1.
+After LookingFor VCR for the first time: increase score by 1.
+After LookingFor Remote for the first time: increase score by 1.
+After LookingFor X-Box for the first time: increase score by 1.
+After LookingFor Playstion for the first time: increase score by 1.
+After LookingFor DS for the first time: increase score by 1.
+After LookingFor Gameboy for the first time: increase score by 1.
+After LookingFor PS3 for the first time: increase score by 1.
+After LookingFor Computer Mouse for the first time: increase score by 1.
+After LookingFor Computer for the first time: increase score by 1.
+After LookingFor Speakers for the first time: increase score by 1.
+After LookingFor Light Bulb for the first time: increase score by 1.
+After LookingFor Watch for the first time: increase score by 1.
+After LookingFor Keyboard for the first time: increase score by 1.
+After LookingFor Ethernet Cable for the first time: increase score by 1.
+After LookingFor Cable Modem for the first time: increase score by 1.
+After LookingFor Power Adapter for the first time: increase score by 1.
+After LookingFor Extension Cord for the first time: increase score by 1.
+After LookingFor Beats for the first time: increase score by 1.
+After LookingFor Screen Protectors for the first time: increase score by 1.]
+
 [School]
 Rule for printing the name of Mr DK: say "Mr. DK".
 Mr DK is a man. He is in School. He is wearing dark slacks, black shoes, and an Aloha shirt.
@@ -920,10 +1004,12 @@ Instead of giving Steve Jobs to Mr DK:
 After going to Bank when Bank is unvisited:
 	say "You climb the stone steps and enter the bank, looking around. The teller looks up at you."
 The teller is a man. He is in Bank. The description is "A simple fellow appearing to be about 35. He's wearing a blue collard shirt and a paisley tie." He is wearing a blue shirt. He is wearing a paisley tie.
+After examining Teller for the first time: increase score by 1.
 Instead of talking to The Teller:
 	if player has Simple Key:
 		say "'Hello, I'm Wade-'[paragraph break]'I know who you are. Do you have your key?' You rummage through your pockets and pull out the key you found at the park. 'Ah, very good, sir. Right this way.' The teller leads you to your vault, 'vault 316,' then returns to the front of the bank.";
 		now Vault 316 is in Bank;
+		 increase score by 1;
 	otherwise:
 		say "Hello, I'm Wade-'[paragraph break]'I know who you are. Do you have your key?' You rummage through your pockets, but come up empty. 'No, I must have dropped it in the park or something.' The teller is unamused. 'I can't open your vault unless you have the key. Come back after you find it.'"
 
@@ -943,9 +1029,9 @@ Two And A Half Coin Piece is a Monetary. It is in Vault 316.
 Three Coin Piece is a Monetary. It is in Vault 316.
 Four Coin Piece is a Monetary. [quest for Ms. Baker]
 Five Coin Piece is a Monetary. It is in Vault 316.
-Six Coin Piece is a Monetary.
+Six Coin Piece is a Monetary. It is in Vault 316.
 Seven Coin Piece is a Monetary.[quest for Ms. Baker]
-Eight Coin Piece is a Monetary.
+Eight Coin Piece is a Monetary. It is in Vault 316.
 Nine Coin Piece is a Monetary. [quest for Ms. Baker][need for bistro man (unicorn)]
 Ten Coin Piece is a Monetary. It is in Vault 316.
 200-Coin Piece is a Monetary.
@@ -963,6 +1049,7 @@ Instead of talking to a sales associate:
 		say "'Umm, hey,' you say, walking up to the sales associate. She looks up at you.[paragraph break]'Can I help you with something?' She says curtly.[paragraph break]'Yes, actually. I'm looking to buy a saddle and a bridle.'[paragraph break]'Yeah, how specific.'[paragraph break]'Pardon?'[paragraph break]'Nothing. Here, let me just go grab some.' She marches off in a huff, leaving you standing next to horse mannequins and a mini-fridge of carrots.[paragraph break]She returns with a simple black leather bridal over her shoulder and a saddle on her hip. 'This work for you, kid?'[paragraph break]'Yeah, I suppose.' She rings them up. 'I'm going to give you these carrots for free, too. That'll be 200CP.'[paragraph break]'Oh, okay.' She hands the items to you and you struggle to hold them all. She snorts a laugh, and walks to the other side of the room.";
 		now 200-Coin Piece is off-stage;
 		now player has Carrots;
+		 increase score by 3;
 		now player has Saddle;
 		now player has Bridle;
 	otherwise:
@@ -980,13 +1067,16 @@ Instead of going to Forest:
 	If player has Saddle:
 		say "You have no idea where the unicorn could be, and the trails are all a maze. You better start looking.";
 		now player is in forest;
+		say "You walk through the park to the entrance to the forest. The main trail is one trail that goes in and splits into many others. It is directly north. There's a note pinned to the tree. Read it?";
+		if player consents:
+			say "You lean forward to examine the note. It just gives a warning to the complexity of the trails and advises you to make a map as you go along.";
+			 increase score by 1;
+		otherwise:
+			say "A warning is a warning, right? Who needs those!";
 	otherwise:
 		say "You don't feel like going for a hike right now, so you return to the park.";
 		now player is in park.
-After going to Forest when Forest is unvisited:
-	say "You walk through the park to the entrance to the forest. The main trail is one trail that goes in and splits into many others. It is directly north. There's a note pinned to the tree. Read it?";
-	if player consents:
-		say "You lean forward to examine the note. It just gives a warning to the complexity of the trails and advises you to make a map as you go along (use a pen and paper to mark your progress so you don't get lost)."
+
 [Forest Maze]
 [Main Trail1]
 MainTrail1 is a room. It is north of Forest. The printed name of MainTrail1 is "Main Trail". "You step onto the main trail. To the west, is the first trail. To the north, the main trail continues on."
@@ -995,25 +1085,21 @@ T1-1 is a room. It is south of First Trail. The printed name is "First Trail". "
 T1-2 is a room. It is west of T1-1. The printed name is "First Trail". "You come to a dead end with only one way to turn."
 T1-3 is a room. It is north of T1-2. The printed name is "First Trail". "You come to a dead end with only one way to turn."
 T1-4 is a room. It is east of T1-3. The printed name is "First Trail". "You come to a dead end."
+After going to T1-4 for the first time: increase score by 1.
 
 [main trail2]
 MainTrail2 is a room. It is north of MainTrail1. The printed name of MainTrail2 is "Main Trail". "You continue along the main trail, and see the second trail to the east."
 SecondTrail is a room. It is east of MainTrail2. The printed name is "Second Trail". "You turn east off of the main trail onto the second trail."
 T2-0 is a room. It is north of SecondTrail. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
 T2-1 is a room. It is south of SecondTrail. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
-T2-2 is a room. It is east of T2-1. The printed name is "Second Trail". "You can either continue forward here, or turn."
-T2-2-1 is a room. It is east of T2-2. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
-T2-3 is a room. It is south of T2-2. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
-T2-3-1 is a room. It is east of T2-3. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
-T2-3-2 is a room. It is south of T2-3-1. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
-T2-3-3 is a room. It is east of T2-3-2. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
-T2-3-4 is a room. It is north of T2-3-3. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
-T2-3-5 is a room. It is east of T2-3-4. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
-T2-3-6 is a room. It is south of T2-3-5. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
-T2-3-7 is a room. It is west of T2-3-6. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
-T2-2-2 is a room. It is west of T2-2. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
-T2-2-3 is a room. It is north of T2-2-2. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
-T2-2-4 is a room. It is east of T2-2-3. The printed name is "Second Trail". "You come to a dead end."
+T2-2 is a room. It is east of T2-1. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
+T2-3 is a room. It is east of T2-2. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
+T2-4 is a room. It is south of T2-3. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
+T2-5 is a room. It is east of T2-4. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
+T2-6 is a room. It is south of T2-4. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
+T2-7 is a room. It is east of T2-5. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
+T2-8 is a room. It is east of T2-2-3. The printed name is "Second Trail". "You come to a dead end."
+After going to T2-8 for the first time: increase score by 1.
 
 [main trail3]
 MainTrail3 is a room. It is north of MainTrail2. The printed name of MainTrail3 is "Main Trail". "You continue along the main trail. Two trails turn off: one to the east and one to the west. The main trail continues north."
@@ -1025,6 +1111,8 @@ T3-4 is a room. It is west of T3-3. The printed name is "Third Trail". "You come
 FourthTrail is a room. It is east of MainTrail3. The printed name is "Fourth Trail". "You turn east off of the main trail onto the fourth trail."
 T4-1 is a room. It is south of FourthTrail. The printed name is "Third Trail". "You come to a dead end with only one way to turn."
 T4-2 is a room. It is east of T4-1. The printed name is "Third Trail". "You come to a dead end."
+After going to T3-4 for the first time: increase score by 1.
+After going to T4-2 for the first time: increase score by 1.
 
 [order of main trail 4 and 5 switched to make the flow easier to code and read][so the unicorn is the last thing instead of the sixth trail]
 
@@ -1040,44 +1128,40 @@ T6-1-4 is a room. It is north of T6-1-3. The printed name is "Sixth Trail". "You
 T6-1-5 is a room. It is east of T6-1-4. The printed name is "Sixth Trail". "You come to a dead end with only one way to turn."
 T6-1-6 is a room. It is south of T6-1-5. The printed name is "Sixth Trail". "You come to a dead end with only one way to turn."
 T6-1-7 is a room. It is west of T6-1-6. The printed name is "Sixth Trail". "You come to a dead end."
+After going to T6-1-7 for the first time: increase score by 1.
 
 [main trail4]
 MainTrail4 is a room. It is north of MainTrail3. The printed name of MainTrail4 is "Main Trail". "You continue along the main trail. The fifth trail turns off to the west."
 FifthTrail is a room. It is west of MainTrail4. The printed name is "Fifth Trail". "You turn west off of the main trail onto the fifth trail."
-T5-1 is a room. It is north of FifthTrail. The printed name is "Fifth Trail". "You turn and hit a fork."
-T5-1-1 is a room. It is west of T5-1. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
-T5-1-2 is a room. It is north of T5-1-1. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
-T5-1-3 is a room. It is east of T5-1-2. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
-T5-1-4 is a room. It is north of T5-1-3. The printed name is "Fifth Trail". "You turn and hit a dead end."
-T5-1-1-1 is a room. It is east of T5-1. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
-T5-1-1-2 is a room. It is south of T5-1-1-1. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
-T5-1-1-3 is a room. It is east of T5-1-1-2. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
-T5-2 is a room. It is west of FifthTrail. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
-T5-3 is a room. It is south of T5-2. The printed name is "Fifth Trail". "You turn. A trail turns off to the side, or you can continue south."
-T5-3-1 is a room. It is west of T5-3. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
-T5-3-2 is a room. It is south of T5-3-1. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
-T5-3-3 is a room. It is east of T5-3-2. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
-T5-3-4 is a room. It is south of T5-3-3. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
-T5-3-5 is a room. It is west of T5-3-4. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
-T5-3-6 is a room. It is north of T5-3-5. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
+T5-1 is a room. It is north of FifthTrail. The printed name is "Fifth Trail". "You turn and hit a dead end."
+T5-2 is a room. It is south of T5-1. The printed name is "Fifth Trail". "You turn and hit a dead end."
+T5-3 is a room. It is east of T5-2. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
 T5-4 is a room. It is south of T5-3. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
 T5-5 is a room. It is east of T5-4. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
 T5-6 is a room. It is north of T5-5. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
-T5-7 is a room. It is east of T5-6. The printed name is "Fifth Trail". "You turn and hit a dead end."
+T5-7 is a room. It is west of T5-6. The printed name is "Fifth Trail". "You turn. You come to a dead end with only one way to turn."
+T5-8 is a room. It is north of T5-7. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
+T5-9 is a room. It is west of T5-8. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
+T5-10 is a room. It is south of T5-9. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
+T5-11 is a room. It is east of T5-10. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
+T5-12 is a room. It is north of T5-11. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
 [finding the unicorn]
-T5-3-7 is a room. It is west of T5-3-6. The printed name is "Fifth Trail". "You turn west and stumble into a clearing. There's a small pond and nibbling at the grass around it is a glistening silver unicorn. You move towards the unicorn. She spies you, and whips her head up in alert. You halt instantly, not wanting to scare her away. 'Hey, pretty girl,' you say, and reach for a carrot. She watches you intently. You hold the carrot out. 'Hey girl, do you want a treat?' She paws at the ground. You take another step forward. Then another. And another. Finally, your outstretched arm holding the carrot is just infront of her head. She reaches forward, and takes the carrot. You give her another.";
+After going to T5-13 for the first time: increase score by 1.
+T5-13 is a room. It is west of T5-12. The printed name is "Fifth Trail". "You turn west and stumble into a clearing. There's a small pond and nibbling at the grass around it is a glistening silver unicorn. You move towards the unicorn. She spies you, and whips her head up in alert. You halt instantly, not wanting to scare her away. 'Hey, pretty girl,' you say, and reach for a carrot. She watches you intently. You hold the carrot out. 'Hey girl, do you want a treat?' She paws at the ground. You take another step forward. Then another. And another. Finally, your outstretched arm holding the carrot is just infront of her head. She reaches forward, and takes the carrot. You give her another.";
 	now carrots are in Unicorn-Box.
 Unicorn-Box is a container.
-Unicorn is a rideable animal. Understand "Amara" as unicorn. Unicorn is in T5-3-7. The description is "A beautiful, stunningly white, unicorn. Her mane and tail are whiter than snow and are accented by sparkling silver streaks. Her long white horn is twisted beautifully, and her eyes are the deep blue of the ocean depths. Black hooves make little sound upon the ground they walk upon.[if saddle is in unicorn-box] She has a brown leather saddle on her back[end if].[if bridle is in unicorn-box] There is a black leather bridle on her head.[end if]". 
+Unicorn is a rideable animal. Understand "Amara" as unicorn. Unicorn is in T5-13. The description is "A beautiful, stunningly white, unicorn. Her mane and tail are whiter than snow and are accented by sparkling silver streaks. Her long white horn is twisted beautifully, and her eyes are the deep blue of the ocean depths. Black hooves make little sound upon the ground they walk upon.[if saddle is in unicorn-box] She has a brown leather saddle on her back[end if].[if bridle is in unicorn-box] There is a black leather bridle on her head.[end if]". 
 
 Instead of giving carrots to Unicorn:
 	say "Not all at once!"
 
 Instead of putting saddle on unicorn:
 	say "You offer the unicorn another carrot, and while she is chewing you throw the saddle over her back. She doesn't seem to mind, as if this is nothing new. Her muzzle pushes into your pocket, looking for more carrots.";
+	 increase score by 1;
 	now saddle is in Unicorn-box.
 Instead of putting bridle on unicorn:
 	say "You stroke the unicorn's neck, then slip the bridle over her head. She protests a little, but gives in quickly. She doesn't seem to mind much, as if this is nothing new.";
+	 increase score by 1;
 	now bridle is in Unicorn-Box.
 Unicorn Hair is a thing. The description is "Hair from Amara's mane that ripped out in your hands."
 Instead of mounting:
@@ -1086,6 +1170,7 @@ Instead of mounting:
 			say "You step forward, and mount the unicorn.";
 			say "'Hey, beautiful. Wow. I can't believe this is real.'[paragraph break]'Hayden said you were coming,' says a bell-like voice in your head. You nearly fall off the unicorn. 'You're so silly,' the voice continues. 'My name is Amara.' You look down at your mount.[paragraph break]'Are you the unicorn?' The bell-like voice chimes a laugh in your head.[paragraph break]'Yea, I am. So, I hear that we have somewhere special to go!'";
 			say "Amara picks up a trot, and heads north. At about fifty yards away from the trees she hastens her pace, and leaps into the air. You clutch desperately at her soft white mane in an effort to stay on.[paragraph break]You look behind you as she climbs ever higher. You can see the town. A man in a black coat stands in the center of the marketplace, and seems to be watching you. But a blink later and he's gone. 'Where are we going, Amara?'[paragraph break]'Oh, you'll see.'";
+			 increase score by 5;
 			move player to Broken Lighthouse;
 			now player has unicorn hair;
 			continue the action;
@@ -1104,12 +1189,12 @@ Instead of mounting:
 		say "You cannot ride her without a saddle."
 		
 [Unicorn Test]
-Understand "take me to amara" as aMazing. aMazing is an action out of world.
+[Understand "take me to amara" as aMazing. aMazing is an action out of world.
 Carry out aMazing:
-	move player to T5-3-7;
+	move player to T5-13;
 	move saddle to player;
 	move bridle to player;
-	move carrots to player.
+	move carrots to player.]
 		
 	
 [End Scene Two]
@@ -1130,10 +1215,11 @@ Small Cottage is a room. It is north of Dirt Path. "A small one or two room cott
 
 [Broken Lighthouse]
 Instead of going to Broken Lighthouse when Broken Lighthouse is unvisited:
-	say "After flying over the clouds for what seemed to be hours, Amara lands on the bank of some great ocean next to a broken lighthouse. Stretching north is an old and worn cobblestone bath. You shiver.";
+	say "After flying over the clouds for what seemed to be hours, Amara lands on the bank of some great ocean next to a broken lighthouse. Stretching north is an old and worn cobblestone path. You shiver.";
 	continue the action.
 Light-house is scenery. The printed name is "lighthouse". Understand "lighthouse" as light-house. It is in Broken Lighthouse. The description is "A tall dilapidated stone lighthouse that towers backwards like haunted buildings do in old horror movies. You half expect black clouds to form and lighting to strike. On the lighthouse are two large double doors."
 Double Doors are scenery in Broken Lighthouse. The description is "Two heavy wooden door with iron reinforcements dripped in rust."
+After examining Double Doors for the first time: increase score by 1.
 Instead of opening Double Doors:
 	say "You tug at the rusty handles, but they're locked shut."
 	
@@ -1153,21 +1239,27 @@ The Counter is a thing in One Stop Alchemist. It is fixed in place. The descript
 Instead of looking under the Counter:
 	if player has Shopping List:
 		say "You rummage under the counter and find a key.";
+		 increase score by 1;
 		now player has Cabinet-Key;
 	else if Code is in Blackbox:
 		say "You rummage under the counter and find a key.";
+		 increase score by 1;
 		now player has Cabinet-Key;
 	else if player has gold coins:
 		say "You rumage under the counter and find a key.";
+		 increase score by 1;
 		now player has Cabinet-Key;
 	otherwise:
 		say "You're pretty sure that the ancient woman will curse you into space if you go near her counter. Her eyes follow you everywhere you go. You decide to check back later."
 Potions Shopkeeper is a woman. She is wearing a long black coat. Understand "woman" or "shopkeeper" as Potions Shopkeeper. She is in One Stop Alchemist. The description is "A woman who appears to be over a hundred and fifteen years old."
 Instead of talking to Potions Shopkeeper:
 	say "The woman refuses to talk to you. Instead, she mutters something under her breath about 'meddlesome kids' and 'not really buying anything'."
+After talking to Potions Shopkeeper for the first time: increase score by 1.
 If Code is in Blackbox then Potions Shopkeeper is off-stage.
 Display Table is a scenery supporter in One Stop Alchemist. It is fixed in place. The description is "A wooden shelfed table. It displays [list of things on Display Table].".
 Silver Cauldron is a thing. It is fixed in place. It is undescribed. It is on Display Table. The description is "A medium sized silver cauldron."
+After examining Silver Cauldron for the first time: increase score by 1.
+After examining Copper Cauldron for the first time: increase score by 1.
 Brass Cauldron is a thing. It is fixed in place. It is undescribed. It is on Display Table. The description is "A medium sized brass cauldron." 
 Copper Cauldron is a container. It is on Display Table. It is undescribed. The description is "A medium sized copper cauldron."
 Glass Phials are a thing. They are in Ingredients Cabinet. The description is "A box of twelve glass phials."
@@ -1190,13 +1282,29 @@ rose thorn is a thing. It is in Ingredients Cabinet. The description is "A small
 salamander blood is a thing. It is in Ingredients Cabinet. The description is "A cylindrical glass bottle full of a thick red liquid.".
 turtle shell is a thing. It is in Ingredients Cabinet. The description is "A medium sized turtle shell.".
 Gold Coins are a thing. The description is "A sack of gold coins."
+After examining bat blood for the first time: increase score by 1.
+After examining Cat Hair for the first time: increase score by 1.
+After examining Caterpillar for the first time: increase score by 1.
+After examining Crocodile Heart for the first time: increase score by 1.
+After examining Dragon Claw for the first time: increase score by 1.
+After examining Cat Eye for the first time: increase score by 1.
+After examining Fairy Wings for the first time: increase score by 1.
+After examining Frog Brain for the first time: increase score by 1.
+After examining Griffin Claw for the first time: increase score by 1.
+After examining Leech Juice for the first time: increase score by 1.
+After examining Octopus Powder for the first time: increase score by 1.
+After examining Peacock Feathers for the first time: increase score by 1.
+After examining Rose Thorn for the first time: increase score by 1.
+After examining Salamander Blood for the first time: increase score by 1.
+After examining Turtle Shell for the first time: increase score by 1.
+
 Instead of taking silver cauldron:
 	if player has gold coins:
 		say "Do you wish to purchase this silver cauldron?";
 		if player consents:
 			say "Very well. You hand over the money and pick up the bulky cauldron.";
 			now player has silver cauldron;
-			now gold coins are off-stage;
+			 increase score by 1;
 	say "You can't just steal that. Come back when you have the money."
 Instead of taking brass cauldron:
 	if player has gold coins:
@@ -1204,7 +1312,7 @@ Instead of taking brass cauldron:
 		if player consents:
 			say "Very well. You hand over the money and pick up the bulky cauldron.";
 			now player has brass cauldron;
-			now gold coins are off-stage;
+			 increase score by 1;
 	say "You can't just steal that. Come back when you have the money."
 Instead of taking copper cauldron:
 	if player has gold coins:
@@ -1227,6 +1335,8 @@ Instead of talking to Burly Man:
 		now Weapons Case is unlocked;
 	otherwise:
 		say "'Go away, boy! You are too puny to handle any of these weapons!'"
+After talking to Burly Man for the first time: increase score by 1.
+After talking to Burly Man for the second time: increase score by 1.
 Weapons Case is a container. It is in Armory. It is locked and lockable. It is fixed in place. The description is "A floor-to-ceiling wooden display case with a glass door. Inside, supported by racks, are many different weapons: [list of things in Weapons Case].".
 Sword is a thing. It is in Weapons Case. The description is "A polished steel sword with a gorgeous hilt. This is truely the sword of a champion. [if Sword is in Weapons Case]It is supported by four protruding hooks."
 Blunt Weapon is a thing. It is in Weapons Case. The description is "A huge stone tethered to the end of a slick. It looks heavy, but with a strong arm behind it, it could easily take someone out.[if Blunt Weapon is in Weapons Case] It stands erect at the bottom of the weapons case.".
@@ -1235,6 +1345,9 @@ Axe is a thing. It is in Weapons Case. The description is "A one sided axe. The 
 Shield is a thing. It is in Weapons Case. The description is "It almost looks like the Ferrari shield, except with a dragon instead of a horse and made of a shimmering metal. It looks very heavy. [if Shield is in Weapons Case]It's tip rests on the bottom of the case and leans against the back."
 A cannon is a thing. It is in Armory. It is fixed in place. The description is "A small cast iron cannon mounted ontop of a wheeled wooden holder.[if Cannon is in Weapons Case] It stands paralled to the wall to the right of the weapons case."
 A pitchfork is a thing. It is in Armory. It is fixed in place. The description is "A sharp four pronged metal pitchfork mounted ontop of a long wooden shaft.[if pitchfork is in Armory] It is leaning to the left of the weapons case."
+After examining sword for the first time: increase score by 1.
+After examining cannon for the first time: increase score by 1.
+After examining pitchfork for the first time: increase score by 1.
 
 
 [Blacksmith]
@@ -1250,8 +1363,10 @@ After going to Blacksmith when Blacksmith is unvisited:
 		say "You knock on the closed, apparently windowless, blacksmith shop. The blacksmith opens the door for you. He looks at you gruffyly. 'What do you want.'[line break]'I'm new in town… I'm not really from around these parts.' The gruff man looks you up and down.[line break]'Obviously.' He becons you in, and steps aside. You enter one giant room with a door to the north and a door to the east, which seems to lead to his private quarters. 'Did a unicorn bring you?' You nod, amazed that you're still finding things suprising today. The man nods in response, and kicks a stool at you. 'I got a few words to say to you, boy. Got a minute?'";
 		if player consents:
 			say "You nod, adjusting your weight on the rocking rickety stool.";
+			increase score by 1;
 		otherwise:
-			say "You consider telling the man no, but your'e too intimidated to say otherwise. You nod.";
+			say "You consider telling the man no, but you're too intimidated to say otherwise. You nod.";
+			increase score by 1;
 		say "'I used to be like you, kid.'[line break]'Wade.'[line break]'What?. I used to live down south where the normal people live. I used to go to restaurants and buy flowers for all the girls in my life. I used to be a real charmer, you know. But I met a man named Hayden. That must have been fifty years ago. Amara brought me here.'[line break]'Well, that all sounds familiar.'[line break]'Hayden sent me here for a personal quest of my own, but I was just overtaken by this land, boy. This world is beyond your most glorious imaginations. Sure, it snows ninety perfect of the time, but the air smells of magic and I fell in love. I'm warning you now, boy. This world will steal your heart away. If you truly want to go home, then you must find your way. But if you decide to stay, I could help you along.' You look at the man, and think of Elily. You had to return to her. Right? [line break]'Mr. Blacksmith,' you say. 'How might I find my way out of here?'[line break] The man sighs. 'There's a dirt path behind my shop that leads north to the mountains. I've heard tale of a magic portal up there. I'm sure that could get you back home.'[paragraph break]'Wait, kid. Look, it gets dangerous up there. Go to the armory and pick up some weapons.'";
 		now Convinced is in blackbox;
 		now speak1 is in blackbox.
@@ -1262,6 +1377,7 @@ Buckets are scenery. They are in Wand-Shop. The description is "Several buckets 
 Wand is a device. 
 Instead of examining Wand:
 	say "A wand made of long, polished, dark wood. You don't know much about it other than that."
+After examining Wand for the first time: increase score by 1.
 Long Boxes are scenery in Wand-Shop. The description is "You assume these boxes all contain wands."
 Instead of taking Long Boxes:
 	say "I'd advise against stealing magic items from people who could probably kill you without even touching you."
@@ -1303,9 +1419,11 @@ Check Somnus:
 		if player is in Stone Valley Pass3:
 			say "You flick the wand and confidently cast the spell at the ogre, who falls heavily to the ground with echoing snores.";
 			now LifeForce is in blackbox;
+			increase score by 1;
 		if player is in Mer-Castle Gate:
 			if noun is Guard:
 				say "The sleeping spell just bounces off of the guard. He seems a little upset now, though.";
+				increase score by 1;
 		otherwise:
 			say "Why would you put that to sleep?";
 	otherwise:
@@ -1315,11 +1433,13 @@ Check Invado:
 		if player is in Stone Valley Pass3:
 			if noun is Ogre:
 				say "You flick the wand, throwing an attack spell at the ogre. But it bounces right off of him. Magic cannot defeat this beast.";
+				increase score by 1;
 			otherwise:
 				say "Why would you attack [noun]?";
 		if player is in Mer-Castle Gate:
 			if noun is Guard:
 				say "You throw an attack spell at the guard, but it only bounces off. He seems a little upset now, too. Smooth.";
+				increase score by 1;
 		otherwise:
 			say "Why would you attack [noun]?";
 	otherwise:
@@ -1348,6 +1468,7 @@ Instead of going to Small Cottage when Small Cottage is unvisited:
 	say "You rap on the door. An old man, unged in a floor length black cloak answers the door.[line break]'Oh, lovely. You're here. Come, come.' the man hobbles back into his home. Follow him?";
 	if player consents:
 		say "'Um, sure,' you mutter to yourself and step into the cottage. Humble furnature compliments the interior of the modest living space. In the center of the room, resting on a nest of unprotected blue flames sits a large cast iron cauldron. The blue fire licks the floor and surrounding furnature but doesn't leave a mark. The wizard looks over into the cauldron.".;
+		increase score by 1;
 		continue the action;
 	otherwise: 
 		say "You step away from the house and its weird occupant. You make your way around the house and continue north along the dirt path.";
@@ -1358,6 +1479,7 @@ Instead of talking to Wizard for the first time:
 	say "'Hey, did you need me for something?'[line break]'Ah, yes, m'boy. Look. I'm an old fellow.' You look. He spoke an obvious truth. 'I need a few things from the potions store. I will pay you when you return. Can you do that for me?'";
 	if player consents:
 		say "'Sure.. I think I can handle that. What do you need?'[line break]'Here's a list. Thanks, son.' the wizard hands you a piece of partchment written on in medieval caligraphy.";
+		increase score by 1;
 		now player has Shopping List;
 		now Potions Shopkeeper is in Broken Lighthouse;
 	otherwise:
@@ -1370,8 +1492,10 @@ Instead of talking to Wizard for the second time:
 			if player has octopus powder:
 				if player has rose thorn:
 					say "'Hey, mister…' you let yourself into the cottage. The man is slaving away over his cauldron. You can see the sweat drenching his face. A drop falls into the potion which then gives off a tremendous hiss. He curses, then sees you.[paragraph break]'Oh, thank Merlin you're here. Come, come, give me those.' He snatches the ingredients from your hands.[line break]Watch the deranged man make his potion?";
+					increase score by 1;
 					if player consents:
 						say "You watch, memorized, as the wizard dashes in the octopus powder, mixing it in by swirling his hands over the cauldron. He adds a drop of bat blood and the potion begins to boil, emitting a purple steam.[line break]'Careful not to breathe this,' he coughs at you. The fairy wings go in next ,and he mixes them in until the potion turns white and comes to a simmer, then throws in a handful of rose thorns. 'One extra for good luck, eh?' He winks at you, flicking one last thorn into the cauldron. The potion lights up the room with a bang, blinding you. When your sight returns, you're standing alone on the dirt path.";
+						increase score by 1;
 						now player is in Dirt Path2;
 						now Wizard is in Broken Lighthouse;
 						now the description of Small cottage is "The charred remains of a small one or two room cottage.";
@@ -1405,6 +1529,7 @@ After going to Stone Valley Pass2 when Stone Valley Pass2 is unvisited:
 		if player has Spellbook:
 			if Wand is switched off:
 				say "You carefully step past the sign into the impending darkness. Your footsteps fall on things that crunch beneath your feet. Soon, you're surrounded by darkness. You can't see anything. You decide to try to illuminate the darkness.";
+				increase score by 1;
 			otherwise:
 				say "You carefuly step past the sign into the stone valley pass. You hold your wand up high, trying to illuminate as much of the dark ground as you can. Shadows dart in and out, but the only creatures you see are small bugs and frightful rats.";
 		otherwise:
@@ -1415,6 +1540,8 @@ After going to Stone Valley Pass2 when Stone Valley Pass2 is unvisited:
 		now player is in Stone Valley Pass1.
 
 Small Bugs are scenery in Stone Valley Pass1. Understand "bugs" as Small Bugs. The description is "Small roaches and the like that scuttle over the rocks and around your feet."
+After examining Small Bugs for the first time: increase score by 1.
+After examining Frightful Rats for the first time: increase score by 1.
 Frightful Rats are scenery in Stone Valley Pass1. Understand "rats" as Frightful Rats. The description is "Several, probably diseased, rats run away from your light."
 Instead of taking Small Bugs:
 	say "You're actually quite frightened of roaches."
@@ -1446,17 +1573,20 @@ Ogre Tunic is scenery in Stone Valley Pass3.
 Instead of taking Ogre Tunic:
 	if dead ogre is in Stone Valley Pass3:
 		say "You bend over and take the shreds of burlap, gaging at its putrid smell.";
+		increase score by 1;
 		now player has Ogre Tunic;
 	otherwise:
 		say "You have to slay the beast first!"
 Check attackinganimal:
 	if lifeforce is in blackbox:
 		say "You attack the sleeping ogre. He springs to life with fury and starts swinging at you.";
+		increase score by 1;
 		now lifeforce is in unicorn-box.
 Check attackinganimal:
 	if noun is ogre:
 		if second noun is axe:
 			say "You throw the axe at the ogre, but it just bounces off. Now you've lost your axe.";
+			increase score by 1;
 			now axe is off-stage;
 		if second noun is shield:
 			say "You throw the shield at the ogre, but it does little good. You quickly pick it back up.";
@@ -1468,11 +1598,13 @@ Check attackinganimal:
 			if a random chance of 1 in 3 succeeds:
 				say "You club at the knees of the giant ogre, avoiding his return blows. His legs give out, and he falls towards the ground. He continues to flail at you, roaring in hatrid and anguish.";
 				now windful is in blackbox;
+				increase score by 3;
 			otherwise:
 				say "You club at the knees of the giant ogre. He bellows in anger and pain.";
 		if second noun is sword:
 			if windful is in blackbox:
 				say "You step breavey up to the fallen ogre, brandishing your sword over your head. With all of your strength you bring the sword down on the ogre. He falls to the ground.";
+				increase score by 5;
 				now ogre is off-stage;
 				now dead ogre is in Stone Valley Pass3;
 			otherwise:
@@ -1525,31 +1657,47 @@ Instead of talking to sphinx:
 		
 [riddle responses and answers]
 Instead of answering sphinx that "fire":
-	say "The sphinx looks at you. 'Yes.' She says simply.";
-	now Answer1 is in blackbox.
+	if Answer1 is not in blackbox:
+		say "The sphinx looks at you. 'Yes.' She says simply.";
+		increase score by 1;
+		now Answer1 is in blackbox.
 Instead of answering sphinx that "flame":
-	say "The sphinx looks at you. 'Yes.' She says simply.";
-	now Answer1 is in blackbox.
+	if Answer1 is not in blackbox:
+		say "The sphinx looks at you. 'Yes.' She says simply.";
+		increase score by 1;
+		now Answer1 is in blackbox.
 Instead of answering sphinx that "a flame":
-	say "The sphinx looks at you. 'Yes.' She says simply.";
-	now Answer1 is in blackbox.
+	if Answer1 is not in blackbox:
+		say "The sphinx looks at you. 'Yes.' She says simply.";
+		increase score by 1;
+		now Answer1 is in blackbox.
 Instead of answering sphinx that "a fire":
-	say "The sphinx looks at you. 'Yes.' She says simply.";
-	now Answer1 is in blackbox.
+	if Answer1 is not in blackbox:
+		say "The sphinx looks at you. 'Yes.' She says simply.";
+		increase score by 1;
+		now Answer1 is in blackbox.
 
 Instead of answering sphinx that "a key":
-	say "The sphinx remains motionless. 'Yes.'";
-	now Answer2 is in blackbox.
+	if Answer2 is not in Blackbox:
+		say "The sphinx remains motionless. 'Yes.'";
+		increase score by 1;
+		now Answer2 is in blackbox.
 Instead of answering sphinx that "key":
-	say "The sphinx remains motionless. 'Yes.'";
-	now Answer2 is in blackbox.
+	if Answer2 is not in Blackbox:
+		say "The sphinx remains motionless. 'Yes.'";
+		increase score by 1;
+		now Answer2 is in blackbox.
 
 Instead of answering sphinx that "mirror":
-	say "'Yes.' She says. She stands up, ruffles her wings, and walks to the side of the path, allowing you to pass through.";
-	now Answer3 is in blackbox.
+	if Answer3 is not in blackbox:
+		say "'Yes.' She says. She stands up, ruffles her wings, and walks to the side of the path, allowing you to pass through.";
+		increase score by 1;
+		now Answer3 is in blackbox.
 Instead of answering sphinx that "a mirror":
-	say "'Yes.' She says. She stands up, ruffles her wings, and walks to the side of the path, allowing you to pass through.";
-	now Answer3 is in blackbox.
+	if Answer3 is not in Blackbox:
+		say "'Yes.' She says. She stands up, ruffles her wings, and walks to the side of the path, allowing you to pass through.";
+		increase score by 1;
+		now Answer3 is in blackbox.
 	
 	
 [northeast path]
@@ -1564,6 +1712,7 @@ Instead of talking to witch:
 		say "'Go away, boy. I have things to do.'";
 	otherwise:
 		say "You approach the witch. 'Excuse me, ma'am, but do you know where the path continues?' The woman looks you up and down. She's a younger woman, probably in her thirties.[line break]'Who's asking?' She says suspiciously.[line break]'My name is Wade. I'm not really from around here.' She keeps looking at you. 'Umm, the blacksmith sent me.'[line break]'Ah, yes, the simpleton,' she says. 'The path continues underwater, at the bottom of the lake.'[line break]'How am I supposed to get down there?'[line break]'A simple potion should do it,' she says slowly.[line break]'Do you have the recipe?' [if player has Ingredients List][line break]'It looks like you already have the ingredients list,' she says, motioning her hand at the scroll sticking out of your pocket.[end if][if player does not have Ingredients List]She pulls a wand out from the folds in her clothes and uses it to conjur up a piece of paper and a pen. When she's finished, she passes you the folded piece of paper. [line break]'There's a stand over there for your cauldron.'";
+		increase score by 1;
 		now player has Ingredients List;
 		now Witch is off-stage.
 
@@ -1573,6 +1722,8 @@ Ingredients List is a thing. It is undescribed.
 Instead of examining Ingredients List: 
 	say "-copper cauldron[line break]-cat hair[line break]-caterpillar[line break]- crocodile heart[line break]-dragon claw[line break]-cat eye[line break]-frog brain[line break]- crystal phials".
 Breathing-Potion is a thing. The printed name is "Breathing Potion". Understand "breathing potion" as Breathing-Potion. It is edible. The description is "A thick purple potion in a crystal phial."
+After examining Breathing-Potion for the first time: increase score by 1.
+After examining Potion for the first time: increase score by 1.
 Breathing is a thing.
 Potion is a thing. It is undescribed. It is fixed in place. The description is "A thick purple potion."
 Instead of putting Copper Cauldron on Cauldron-Stand:
@@ -1580,7 +1731,7 @@ Instead of putting Copper Cauldron on Cauldron-Stand:
 	now Copper Cauldron is on Cauldron-stand;
 	now Copper Cauldron is fixed in place.
 Flame is scenery in Lake. The description is "A small orange flame flickering under the copper cauldron."
-
+After examining Flame for the first time: increase score by 1.
 
 Every turn:
 	If Copper Cauldron is on Cauldron-Stand:
@@ -1591,16 +1742,19 @@ Every turn:
 						if cat eye is in copper cauldron:
 							if frog brain is in copper cauldron:
 								say "You mix together the last of the ingredients. The potion is thick and deep purple.";
+								increase score by 2;
 								now dragon claw is off-stage;
 								now potion is in lake.
 								
 Instead of taking potion:
 	say "(first putting Potion into Crystal Phial)[paragraph break]You cork the phial, and turn the breathing potion around in your hands, watching the thick purple liquid roll around under the crystal.";
+	increase score by 1;
 	now Crystal Phials are off-stage;
 	now player has Breathing-Potion.
 
 Instead of drinking Breathing-Potion:
 	say "'Here goes nothing,' you say, and tip the potion into your mouth. It tastes like a mix of raw octopus and chalk.";
+	increase score by 1;
 	now Breathing is in blackbox;
 	now Breathing-Potion is off-stage.
 	
@@ -1615,6 +1769,7 @@ Tunnel is a room. It is below Water1. "The tunnel continues north. To go back to
 Mer City is a room. It is north of Tunnel. "Mer City is beautiful. Mermen and merwomen swim around town as normal as if they were people on land. Each home has a small garden of kelp. The castle gate is north, and the castle lays just behind it."
 Instead of going to Mer City when Mer City is unvisited:
 	say "You enter a city and are speachless. Mermaids are swimming around carelessly and small homes are settled on the floor of the lake, completely sumberged in a giant underwater cave. Glowing orbs line the streets, fill the homes, and adorn the cave walls, bringing a bright but artificial light to the city. A beautiful sandstone castle lays due north.";
+	increase score by 1;
 	continue the action.
 Mermaid Princess is a woman. Understand "merwoman" and "mermaid" as Mermaid Princess. The description is "A beautiful mermaid with a dark blue tail and a braid of brown hair." She is wearing Gold Bracelets. She is wearing Gold Tiara.
 Mer-Castle Gate is a room. The printed name is "Mer Castle Gate". It is north of Mer City. "The gate to Mer Castle is merely for show, as any creature could swim over the walls. Two guards draped in armor and holding spears are blocking the gate."
@@ -1632,19 +1787,23 @@ Report attacking it with:
 Instead of attacking guard with for the first time:
 		say "You lash out at the guards, but they quickly overpower you."
 Instead of attacking guard for the second time:	
-	say "One again you go for the guards, but it looks like they only gave you one chance.";
+	say "Once again you go for the guards, but it looks like they only gave you one chance.";
+	decrease score by 5;
 	end the game in death.
 	
 Instead of talking to Guard for the first time:
-	say "You are slightly intimidated by the guards, but you need their help. 'Hi,' you say to one of the guards. 'I'm from a far away land and I'm looking for a portal that will take me home. I need to speak to your king to see if he can, um, help me out with that.' The guards ignore you."
+	say "You are slightly intimidated by the guards, but you need their help. 'Hi,' you say to one of the guards. 'I'm from a far away land and I'm looking for a portal that will take me home. I need to speak to your king to see if he can, um, help me out with that.' The guards ignore you.";
+	increase score by 1.
 Instead of talking to Guard for the second time:
 	say "You continue to try to get the guards' attention, but they ignore you. You've almost given up when a beautiful merwoman swims up the street towards you. She is wearing a gold tiara and the guards come to attention when she approaches.";
+	increase score by 2;
 	now Mermaid Princess is in Mer-Castle Gate.
 Instead of talking to Mermaid Princess:
 	if player is in Mer-Castle Gate:
 		say "'Who are you?' The mermaid snaps.[line break]'Hi, I'm Wade.' No response. 'I'm from far away, from lands where there is no magic.' Her composure instantly softens and she becomes very curious. [line break]'No magic? I've heard rumors, heard stories, but I never thought.. could never believe.. why are you here?'[line break]'I'm trying to find my way home. I was told there is a portal that will send me back.' The mermaid searches your face, as if trying to figure out if you are lying or not. [line break]'You must come with me,' she says, and swims toward the castle gate which opens before her. Follow the mermaid?";
 		if player consents:
 			say "You kick your legs and swim after her into Mer Castle.";
+			increase score by 1;
 			now player is in Mer Castle;
 			now Mermaid Princess is in Mer Castle;
 			say "'I'm just so interested in your story,' she says. 'You're just like the other land people. How are you down here? How can you breathe water if you're non-magic?'[line break]'I drank a potion. But I'm not here to talk, I'm sorry. I need to find the portal to get home.' The mermaid grabs a hold of your arm. [line break]'Don't leave, landman. Stay here, with me, and tell me of your world. You will be famous, you can write stories, stay here.'[line break]Forget your portal search and stay with her?";
@@ -1654,28 +1813,34 @@ Instead of talking to Mermaid Princess:
 					say "What about Elily? Are you sure you want this fortune?";
 					if player consents:
 						say "'Right behind you!' You call to the mermaid, and follow her, your heart excited and your mind racing.";
+						increase score by 10;
 						end the game in victory;
 					otherwise:
 						say "'I'm sorry,' you say. 'I have to go home. I cannot stay here.' The mermaid sighs. [line break]'Just think about it, alright?' [line break]'I will. Is your father, or someone else who might be able to help me available?' Pouting slightly, the princess swims off. She returns quickly with a dignified merman draped in gold jewelry and a crown.";
+						increase score by 1;
 						now point1 is in blackbox;
 						now Mer King is in Mer Castle;
 				otherwise:
 					say "'I'm sorry,' you say. 'I have to go home. I cannot stay here.' The mermaid is obviously conflicted. [line break]'I'm the princess, here,' she says. 'I can promise you this fortune.' Are you sure you don't want her promised fortune?";
 					if player consents:
 						say "'I'm sorry, I have to decline. Is your father, or someone else who might be able to help me available?' Pouting slightly, the princess swims off. She returns quickly with a dignified merman draped in gold jewelry and a crown.";
+						increase score by 1;
 						now point1 is in blackbox;
 						now Mer King is in Mer Castle;
 					otherwise:
 						say "'You know what, that's a pretty fine offer. I think I shall stay.'";
+						increase score by 10;
 						end the game in victory;
 			otherwise:
 				say "'I'm sorry,' you say. 'I have to go home; I cannot stay here.' The mermaid is obviously conflicted.[line break]'I'm the princess here,' she says. 'I can promise you this fortune.' Are you sure you don't want her promised fortune?";
 				if player consents:
 					say "'I'm sorry, I have to decline. Is your father, or someone else who might be able to help me available?' Pouting slightly, the princess swims off. She returns quickly with a dignified merman draped in gold jewelry and a crown.";
+					increase score by 1;
 					now point1 is in blackbox;
 					now Mer King is in Mer Castle;
 				otherwise:
 					say "'You know what, that's a pretty fine offer. I think I shall stay.'";
+					increase score by 10;
 					end the game in victory;
 		otherwise:
 			say "Unnerved by your strage surroundings, you decide not to follow the beautiful mermaid."
@@ -1693,6 +1858,7 @@ Gate Key is a thing. It unlocks Steel Gate. The description is "An old and worn 
 Instead of talking to Mer King:
 	if point0 is in blackbox:
 		say "'Your highness,' you say, trying your best to bow in the water.[line break]'Human. Stop flailing. What ever could you want so desperately as to draw me to listen to your simple, unimportant desires.' His voice booms through the water and you consider turning around and leaving.[line break]'Hayden sent me,' you say cautiously, hoping it will mean something to him. Apparently it does, as he roars in laughter.[line break]'Hayden? The simpleton? Ahaha! What a simple joke!' [line break]'Or, Hayden just let me know of this place. The blacksmith sent me in this direction,' you say hurridly, trying to fix your mistake.[line break]'There are many blacksmiths, fool. The closest landman who calls himself a blacksmith is just a fool simpleton like your friend Hayden. You are wasting my time, landman.'[line break]'No- wait. Please. I'm not from here. I'm from the non-magic world.' This caught his attention. 'My name is Wade, sir. Hayden sent me here to find something but I have no idea what. I'm just trying to find the portal back to my world.'[line break]'There is no portal here!'[line break]'As unfortunate as that is, I'm not surprised. I just wanted to know if you knew anything about the portal, if you could send me on the right track, give me a clue, anything…'[paragraph break]The Mer King studies you quietly for a few minutes. 'There is a gate on the path that you must take. It is locked. I have the key.'[line break]'Oh, that's great!' You are very excited. [line break]'But I want something of you before I give it. There is a giant ogre who lives in Stone Valley Pass. He often comes to the lake and 'frolics' in the water. His weight and stomping destroys the tunnel and our men have to work hard to fix it before we run out of oxygen. He polutes the water and diseases the fish. Bring me proof that you have slain this evil beast, and I shall give you your key.'";
+		increase score by 1;
 		now point2 is in blackbox;
 		now point0 is in unicorn-box;
 		now mermaid princess is in broken lighthouse;
@@ -1701,6 +1867,7 @@ Instead of talking to Mer King:
 			say "The Mer King refuses to talk to you until you bring him proof that you have slain the ogre.";
 		if player has Ogre Tunic:
 			say "The king, full of joy, welcomes you back. 'You have done it, landman! Here, as promised.' He hands you the gate key.";
+			increase score by 2;
 			now Ogre Tunic is off-stage;
 			now point3 is in blackbox;
 			now player has Gate Key;
@@ -1712,6 +1879,7 @@ Instead of going south in Mer City:
 	if player has Gate Key:
 		say "'Wait!' Calls the mermaid princess, swimming after you. 'I hope you won't forget my offer,' she begins.[line break]'Don't worry, I won't.'[line break]'Here, you earned this.' She passes you a book. 'I see you're carrying a wand, but that's useless without knowing any real spells.' [line break]You thank her, and then continue on your way.";
 		continue the action;
+		increase score by 1;
 		now player has Advanced Spellbook;
 	otherwise:
 		continue the action.
@@ -1738,6 +1906,7 @@ Instead of opening steel gate:
 		say "You rattle the cold bars, but the gate is locked.";
 	if steel gate is unlocked:
 		say "With a heave you push the heavy gate open. Flakes of rust fall down around you.";
+		increase score by 1;
 		now player is in Empty Room.
 
 
@@ -1745,6 +1914,7 @@ Instead of opening steel gate:
 Empty Room is a room. It is west of Steel Gate. "The gate opens up to a large, empty room. The walls are lined with flickering blue fire torches. To the north the shadow of a spiral staircase winds it's way into the darkness with only the flickering of the magic fire to light the steps. Each footfall echoes."
 Empty-Room Walls are scenery. Understand "walls" or "wall" as Empty-Room Walls. The description is "Very cold and slightly damp to the touch. Abandoned spiderwebs and moss cover the corners."
 Torches are scenery. Understand "torch" as torches. They are in Empty Room. The description is "Simple torches fixed to the walls by what must be magic. A ball of blue flames flickers slowly atop each torch."
+After examining Torches for the first time: increase score by 1.
 
 [Spiral Staircase]
 Spiral Staircase is a door. It is open. It is north of Empty Room.
@@ -1779,6 +1949,7 @@ Instead of talking to Grand Wizard:
 	now peacock feathers is off-stage;
 	now salamander blood is off-stage;
 	now turtle shell is off-stage.
+After talking to Grand Wizard for the first time: increase score by 2.
 
 [Spells]
 [Advanced Spellbook]
@@ -1814,6 +1985,7 @@ Check Accendo:
 			if a random chance of 1 in 3 succeeds:
 				say "Balls of fire shoot out from your wand, landing on and around the wizard. He screams and tries to put them out.";
 				now spell7 is in blackbox;
+				increase score by 1;
 			otherwise:
 				say "He easily deflects your fireballs, sending them down the staircase from which you came. He cries[one of] 'Detrahere Arma'! Your wand is thrown out of your hands and you scramble to reclaim it.[or] 'Conturbatus!' You're instantly confused, stumbling around trying to figure out where you are.[or]'Obstupefio!' Once again, you are temporarily paralyzed.[or]'Trudo!' You are forced by an invisible hand to the side with such force that you fall over.[or] 'Inerrans!' You are frozen in place temporarily while the wizard continues working on his potion.[or]'Accendo!' A stream of fire bubbles hutle themselves at you, burning your clothes and leaving black stains on the rock around you.[at random]";
 				now defeat7 is in blackbox.
@@ -1823,6 +1995,7 @@ Check Inerrans:
 			if a random chance of 1 in 3 succeeds:
 				say "You render the wizard immobile, and are able to throw another spell at him.";
 				now spell6 is in blackbox;
+				increase score by 1;
 			otherwise:
 				say "The wizard laughs at your incompitence. He cries[one of] 'Detrahere Arma'! Your wand is thrown out of your hands and you scramble to reclaim it.[or] 'Conturbatus!' You're instantly confused, stumbling around trying to figure out where you are.[or]'Obstupefio!' Once again, you are temporarily paralyzed.[or]'Trudo!' You are forced by an invisible hand to the side with such force that you fall over.[or] 'Inerrans!' You are frozen in place temporarily while the wizard continues working on his potion.[or]'Accendo!' A stream of fire bubbles hutle themselves at you, burning your clothes and leaving black stains on the rock around you.[at random]";
 				now defeat6 is in blackbox.
@@ -1832,6 +2005,7 @@ Check Trudo:
 			if a random chance of 1 in 3 succeeds:
 				say "The wizard is shoved to the side by your spell.";
 				now spell4 is in blackbox;
+				increase score by 1;
 				now spell5 is in blackbox;
 			otherwise:
 				say "The wizard easily blocks your attack. He cries[one of] 'Detrahere Arma'! Your wand is thrown out of your hands and you scramble to reclaim it.[or] 'Conturbatus!' You're instantly confused, stumbling around trying to figure out where you are.[or]'Obstupefio!' Once again, you are temporarily paralyzed.[or]'Trudo!' You are forced by an invisible hand to the side with such force that you fall over.[or] 'Inerrans!' You are frozen in place temporarily while the wizard continues working on his potion.[or]'Accendo!' A stream of fire bubbles hutle themselves at you, burning your clothes and leaving black stains on the rock around you.[at random]";
@@ -1843,6 +2017,7 @@ Check Oppilo:
 			if a random chance of 1 in 3 succeeds:
 				say "You successfuly manage to block his spell.";
 				now defeat2 is in safekeeping;
+				increase score by 1;
 				now spell4 is in blackbox;
 			otherwise:
 				say "You try to deflect his attack, but you miss. He cries[one of] 'Detrahere Arma'! Your wand is thrown out of your hands and you scramble to reclaim it.[or] 'Conturbatus!' You're instantly confused, stumbling around trying to figure out where you are.[or]'Obstupefio!' Once again, you are temporarily paralyzed.[or]'Trudo!' You are forced by an invisible hand to the side with such force that you fall over.[or] 'Inerrans!' You are frozen in place temporarily while the wizard continues working on his potion.[or]'Accendo!' A stream of fire bubbles hutle themselves at you, burning your clothes and leaving black stains on the rock around you.[at random]";
@@ -1855,6 +2030,7 @@ Check Obstupefio:
 			if a random chance of 1 in 2 succeeds:
 				say "You remporarily paralyze the wizard, and are able to throw another spell in.";
 				now spell3 is in blackbox;
+				increase score by 1;
 			otherwise:
 				say "You try to paralyze the Grand wizard, but he easily deflects it. He cries[one of] 'Detrahere Arma'! Your wand is thrown out of your hands and you scramble to reclaim it.[or] 'Conturbatus!' You're instantly confused, stumbling around trying to figure out where you are.[or]'Obstupefio!' Once again, you are temporarily paralyzed.[or]'Trudo!' You are forced by an invisible hand to the side with such force that you fall over.[or] 'Inerrans!' You are frozen in place temporarily while the wizard continues working on his potion.[or]'Accendo!' A stream of fire bubbles hutle themselves at you, burning your clothes and leaving black stains on the rock around you.[at random]";
 				now Defeat3 is in blackbox.
@@ -1864,6 +2040,7 @@ Check Conturbatus:
 			if a random chance of 1 in 3 succeeds:
 				say "With a flick of your wand you cause the Grand Wizard to become disoriented. He stumbles around, trying to figure out where he is.";
 				now Spell1 is in blackbox;
+				increase score by 1;
 				now spell2 is in blackbox;
 			otherwise:
 				say "You throw a jinx at the wizard, but he easily deflects it. He cries[one of] 'Detrahere Arma'! Your wand is thrown out of your hands and you scramble to reclaim it.[or] 'Conturbatus!' You're instantly confused, stumbling around trying to figure out where you are.[or]'Obstupefio!' Once again, you are temporarily paralyzed.[or]'Trudo!' You are forced by an invisible hand to the side with such force that you fall over.[or] 'Inerrans!' You are frozen in place temporarily while the wizard continues working on his potion.[or]'Accendo!' A stream of fire bubbles hutle themselves at you, burning your clothes and leaving black stains on the rock around you.[at random]";
@@ -1873,6 +2050,7 @@ Check Disarming:
 		if Defeated is not in blackbox:
 			if a random chance of 1 in 100 succeeds:
 				say "With a flick of your wand, you cause the Grand Wizard's wand to go flying. 'How did you..' he says, falling to his knees.[line break]'Obstupefio!' you cry, paralyzing him. The wizard falls to the ground, his eyes the only part of his body that move. Around his neck is a thick chain with a beautiful red stone.";
+				increase score by 10;
 				now spell1 is in blackbox;
 				now spell2 is in blackbox;
 				now spell3 is in blackbox;
@@ -1893,6 +2071,7 @@ An every turn rule:
 						if spell6 is in blackbox:
 							if spell7 is in blackbox:
 								say "With your final spell you bring the wizard to his knees, defeated. 'How did you…' he says, falling onto his hands.[line break]'Obstupefio!' you cry, paralyzing him. The wizard falls to the ground, his eyes the only part of his body that moves. Around his neck is a thick chain with a beautiful red stone.";
+								increase score by 5;
 								now defeated is in Blackbox;
 								now spell5 is off-stage;
 								now spell6 is off-stage;
@@ -1932,6 +2111,7 @@ Understand "stone" as Red Stone. The description of Red Stone is "A gorgeous red
 Instead of taking Red Stone:
 	if defeated is in blackbox:
 		say "You reach forward, ignoring the spazzing eyes of the wizard. You pry the stone from the setting, admiring it. 'This must be a red beryl,' you whisper to yourself, then slip it into your pocket.";
+		increase score by 1;
 		now Red Stone is off-stage;
 		now player has Red Beryl;
 	otherwise:
@@ -1939,6 +2119,7 @@ Instead of taking Red Stone:
 Defeated is a thing.
 Red Beryl is a thing. The description is "The most valuable stone known to man. Aka 'red emerald' or 'scarlet emerald', and chemically similar to both emeralds and aquamarines though considerably more rare. This particular specimen appears to be about two carats worth; approximately 20 grand."
 Portal0 is a room. It is north of Portal Chamber. The printed name is "Portal".
+After examining Red Beryl for the first time: increase score by 1.
 
 [entering portal]
 Instead of going north in Portal Chamber:
@@ -1947,9 +2128,11 @@ Instead of going north in Portal Chamber:
 			say "The portal looms before you, yes. You have the Red Beryl and the possibility of forever with Elily, yes. But what about the Mer Princess? What about life with her- life in the Mer Kingdom. A life of fame and fourtune and respect. Are you sure you want to enter the portal and leave all of that behind, forever?";
 			if player consents:
 				say "Pushing aside your thoughts of Mer City you step forward and into the swirling purple and silver portal. It feels cold on your skin, and suddenly you feel yourself in a vaccuum, gasping for air that isn't there.";
+				increase score by 1;
 				now player is in Abandoned Toolshed;
 			otherwise:
 				say "You hesitate at the portal's edge, but decide against it. The Mer Kingdom has so much more to offer you! You make your way down the mountain towards Mer City.";
+				increase score by 1;
 				now player is in Lake;
 		otherwise:
 			say "You've come all of this way. Why would you leave without the special something for Elily?";
@@ -1963,18 +2146,20 @@ Part 4 - The Proposal
 [Abandoned Toolshed]
 Abandoned Toolshed is a room. "You fall face down onto the floor of a dirty and tiny toolshed. The portal above you spins quickly before disappearing. There's barely anything in the toolshed except rotting wood and a door that leads south."
 Door1 is a door. It is south of Abandoned Toolshed. It is north of Abandoned Path. The printed name is "the door".
-Abandoned Path is a room. It is south of Door1.
-After entering Abandoned Path when Abandoned Path is unvisited:
-	say "You cautiously step out of the toolshed. The air smells familiar, almost like home. The path stretches south to what could possibly be your home town. When you look back, you notice that the toolshed has vanished.";
+Abandoned Path is a room. It is south of Door1. "The path continues south, or you can return to the toolshed."
+Instead of going south in Abandoned Toolshed:
+	say "You cautiously step out of the toolshed. The air smells familiar, almost like home. The path stretches south to what could possibly be your home town.";
+	continue the action;
 	now Abandoned Toolshed is off-stage;
 	now Door1 is off-stage;
 	now Credit Card is in Wallet.
-Main Street is a room. It is south of Abandoned Path. "The main street of your town. Your apartment complex is north, the jewelry store is west and the pet shop is south."
+Main Street is a room. It is south of Abandoned Path. "The main street of your town. Your apartment complex is north, the jewelry store is west and the pet shop is south. The train to the Hot Air Balloon company is northeast, the pathway to the beach is east, and the road to the Italian Restaurant is southwest."
 Credit Card is a thing. The description is "A silver credit card."
 
 [Jewelry Store]
-Jewerly Store is a room. It is west of Main Street. "You enter the jewelry store, and a bell dings. All around you are cases of sparkling pieces of jewelry."
-Cases-of-Jewelry are scenery. They are in Jewelry Store. Understand "cases" or "jewelry" or "cases of jewelry" as Cases-of-Jewelry. The description is "Beautiful rings, necklaces, bracelets, and more are displayed elegantly inside glass cases."
+Jewelry Store is a room. It is west of Main Street. "You enter the jewelry store, and a bell dings. All around you are cases of sparkling pieces of jewelry."
+Cases-of-Jewelry are scenery. They are in Jewelry Store. Understand "cases" or "jewelry" or "cases of jewelry" as Cases-of-Jewelry. The description of Cases-of-Jewelry is "Beautiful rings, necklaces, bracelets, and more are displayed elegantly inside glass cases."
+After examining Cases-of-Jewelry for the first time: increase score by 1.
 Jeweler is a man. He is in Jewelry Store. The description is "A middle aged man who owns the store. He's fairly trustworthy and loves his job."
 Consult1 is a thing.
 Consult2 is a thing.
@@ -1984,47 +2169,113 @@ Platinum is a thing.
 Instead of talking to Jeweler:
 	if player has Red Beryl:
 		say "'Hello,' you say, stepping up to the counter where the man is rearranging necklaces.[line break]'Good morning, sir. How may I help you?' You reach into your pocket, and pull out the Red Beryl. The man's eyes widen slightly, as if he's assuming what you're holding is what he thinks it is. [line break]'I'd like to have this set in a ring.' The man extends his hand, and you give him the Red Beryl. [line break]'This is an incredible stone, sir. I would advise three metals of which to set it in. White gold, yellow gold, and platinum. Which would you like?' (answer in the format 'answer …')";
-		now Red Beryl is off-stage.
-Solitaire is a thing in Jewelry Store. It is fixed in place. It is undescribed. The description is "'Ah, the solitaire. It's very simple, but still incredibly elegant. A slender band with the stone in the center."
-Three-Stone is a thing in Jewelry Store. It is fixed in place. It is undescribed. The description is "'Your Red Beryl will be in the center, here, with two smaller diamonds on either side."
+		increase score by 1;
+		now Red Beryl is off-stage;
+	if Consult2 is in blackbox :
+		say "'Ah, good evening sir. I have your finished ring in the back.' The jeweler retreats to the back of his store, and when he returns, he is bearing a beautiful ring box. He opens it for you. 'Gorgeous, isn't it? Perfect choice.'";
+		now EngagementRing is in blackbox.
+Solitaire is a thing in Jewelry Store. It is fixed in place. It is undescribed. The description is "'Ah, the solitaire. It's very simple, but still incredibly elegant. A slender band with the stone in the center.'"
+Three-Stone is a thing in Jewelry Store. It is fixed in place. It is undescribed. The description is "'Your Red Beryl will be in the center, here, with two smaller diamonds on either side.'"
 Split-Shank is a thing in Jewelry Store. It is fixed in place. It is undescribed. The description is "'A thick band that splits around the stone, with smaller diamonds set in the split. This is by far the most extravagent setting, sir.'"
 	
 Instead of answering Jeweler that "white gold":
-	say "The jeweler nods. 'An excellent choice.' He marks it down on an order form. 'Now, there are a few different styles that you can choose. The solitaire, the three-stone, and the split-shank.' He pulls an example of each from his cases and sets them ontop of the counter for you to examine.";
-	now WhiteGold is in blackbox;
-	now Consult1 is in blackbox.
+	if Consult1 is not in blackbox:
+		say "The jeweler nods. 'An excellent choice.' He marks it down on an order form. 'Now, there are a few different styles that you can choose. The solitaire, the three-stone, and the split-shank.' He pulls an example of each from his cases and sets them ontop of the counter for you to examine.";
+		now WhiteGold is in blackbox;
+		now Consult1 is in blackbox.
 Instead of answering Jeweler that "yellow gold":
-	say "The jeweler nods. 'An excellent choice.' He marks it down on an order form. 'Now, there are a few different styles that you can choose. The solitaire, the three-stone, and the split-shank.' He pulls an example of each from his cases and sets them ontop of the counter for you to examine.";
-	now YellowGold is in blackbox;
-	now Consult1 is in blackbox.
+	if Consult1 is not in blackbox:
+		say "The jeweler nods. 'An excellent choice.' He marks it down on an order form. 'Now, there are a few different styles that you can choose. The solitaire, the three-stone, and the split-shank.' He pulls an example of each from his cases and sets them ontop of the counter for you to examine.";
+		now YellowGold is in blackbox;
+		now Consult1 is in blackbox.
 Instead of answering Jeweler that "platinum":
-	say "The jeweler nods. 'An excellent choice.' He marks it down on an order form. 'Now, there are a few different styles that you can choose. The solitaire, the three-stone, and the split-shank.' He pulls an example of each from his cases and sets them ontop of the counter for you to examine.";
-	now Platinum is in blackbox;
-	now Consult1 is in blackbox.
+	if Consult1 is not in blackbox:
+		say "The jeweler nods. 'An excellent choice.' He marks it down on an order form. 'Now, there are a few different styles that you can choose. The solitaire, the three-stone, and the split-shank.' He pulls an example of each from his cases and sets them ontop of the counter for you to examine.";
+		now Platinum is in blackbox;
+		now Consult1 is in blackbox.
 	
 Instead of answering Jeweler that "solitaire":
-	say "The jeweler smiles. 'A simple and elegant girl you must have. I will get right to it.' The man bids you farewell, and scurries to the back of his store to make the ring.";
-	now Solitaire is in blackbox;
-	now Consult2 is in blackbox.
+	if Consult2 is not in blackbox:
+		say "The jeweler smiles. 'A simple and elegant girl you must have. I will get right to it.' The man bids you farewell, and scurries to the back of his store to make the ring.";
+		now Solitaire is in blackbox;
+		now Consult2 is in blackbox.
 Instead of answering Jeweler that "three-stone":
-	say "The jeweler smiles. 'A beautiful ring this will be. Quite a girl she must be. I will get right to it.' The man bids you farewell, and scurries to the back of his store to make the ring.";
-	now three-stone is in blackbox;
-	now Consult2 is in blackbox.
+	if Consult2 is not in blackbox:
+		say "The jeweler smiles. 'A beautiful ring this will be. Quite a girl she must be. I will get right to it.' The man bids you farewell, and scurries to the back of his store to make the ring.";
+		now three-stone is in blackbox;
+		now Consult2 is in blackbox.
 Instead of answering Jeweler that "split-shank":
-	say "The jeweler smiles. 'A wonderful choice, sir. This girl must be very special to you. I will get right to it.' The man bids you farewell, and scurries to the back of his store to make the thing.";
-	now split-shank is in blackbox;
-	now Consult2 is in blackbox.
+	if Consult2 is not in blackbox:
+		say "The jeweler smiles. 'A wonderful choice, sir. This girl must be very special to you. I will get right to it.' The man bids you farewell, and scurries to the back of his store to make the thing.";
+		now split-shank is in blackbox;
+		now Consult2 is in blackbox.
+		
+Every Turn:
+	if EngagementRing is in Blackbox:
+		if Note1 is in blackbox:
+			increase score by 1;
+			if WhiteGoldSolitaire is in blackbox:
+				now player has Engagement Ring1;
+				now Note1 is in Unicorn-Box;
+			if WhiteGoldThreeStone is in blackbox:
+				now player has Engagement Ring2;
+				now Note1 is in Unicorn-Box;
+			if WhiteGoldSplitShank is in blackbox:
+				now player has Engagement Ring3;
+				now Note1 is in Unicorn-Box;
+			if YellowGoldSolitaire is in blackbox:
+				now player has Engagement Ring4;
+				now Note1 is in Unicorn-Box;
+			if YellowGoldThreeStone is in blackbox:
+				now player has Engagement Ring5;
+				now Note1 is in Unicorn-Box;
+			if YellowGoldSplitShank is in blackbox:
+				now player has Engagement Ring6;
+				now Note1 is in Unicorn-Box;
+			if PlatinumSolitaire is in blackbox:
+				now player has Engagement Ring7;
+				now Note1 is in Unicorn-Box;
+			if PlatinumThreeStone is in blackbox:
+				now player has Engagement Ring8;
+				now Note1 is in Unicorn-Box;
+			if PlatinumSplitShank is in blackbox:
+				now player has Engagement Ring9;
+				now Note1 is in Unicorn-Box;
+			
+		
 	
 [engagement rings]
-WhiteGoldSolitaire is a thing.
-WhiteGoldThreeStone is a thing.
-WhiteGoldSplitShank is a thing.
-YellowGoldSolitaire is a thing.
-YellowGoldThreeStone is a thing.
-YellowGoldSplitShank is a thing.
-PlatinumSolitaire is a thing.
-PlatinumThreeStone is a thing.
-PlatinumSplitShank is a thing.
+EngagementRing is a thing.
+Note1 is a thing. It is in blackbox.
+WhiteGoldSolitaire is a thing. [1]
+WhiteGoldThreeStone is a thing. [2]
+WhiteGoldSplitShank is a thing. [3]
+YellowGoldSolitaire is a thing. [4]
+YellowGoldThreeStone is a thing. [5]
+YellowGoldSplitShank is a thing. [6]
+PlatinumSolitaire is a thing. [7]
+PlatinumThreeStone is a thing. [8]
+PlatinumSplitShank is a thing. [9]
+
+Engagement Ring1 is a thing. The printed name is "Engagement Ring." Understand "engagement ring" as Engagement Ring1. The description is "A beautiful white gold ring with the solitaire style: a slender band with the gorgeous Red Beryl."
+Engagement Ring2 is a thing. The printed name is "Engagement Ring." Understand "engagement ring" as Engagement Ring2. The description is "A beautiful white gold ring with the three stone style: the gorgeous Red Beryl inbetween two smaller diamonds."
+Engagement Ring3 is a thing. The printed name is "Engagement Ring." Understand "engagement ring" as Engagement Ring3. The description is "A beautiful white gold ring with the split shank style: a thick band that splits around the gorgeous Red Beryl and decorated with diamonds."
+Engagement Ring4 is a thing. The printed name is "Engagement Ring." Understand "engagement ring" as Engagement Ring4. The description is "A beautiful yellow gold ring with the solitaire style: a slender band with the gorgeous Red Beryl."
+Engagement Ring5 is a thing. The printed name is "Engagement Ring." Understand "engagement ring" as Engagement Ring5. The description is "A beautiful yellow gold ring with the three stone style: the gorgeous Red Beryl inbetween two smaller diamonds."
+Engagement Ring6 is a thing. The printed name is "Engagement Ring." Understand "engagement ring" as Engagement Ring6. The description is "A beautiful yellow gold ring with the split shank style: a thick band that splits around the gorgeous Red Beryl and decorated with diamonds."
+Engagement Ring7 is a thing. The printed name is "Engagement Ring." Understand "engagement ring" as Engagement Ring7. The description is "A beautiful platinum ring with the solitaire style: a slender band with the gorgeous Red Beryl."
+Engagement Ring8 is a thing. The printed name is "Engagement Ring." Understand "engagement ring" as Engagement Ring8. The description is "A beautiful platinum ring with the three stone style: the gorgeous Red Beryl inbetween two smaller diamonds."
+Engagement Ring9 is a thing. The printed name is "Engagement Ring." Understand "engagement ring" as Engagement Ring9. The description is "A beautiful platinum ring with the split shank style: a thick band that splits around the gorgeous Red Beryl and decorated with diamonds."
+After examining Engagement Ring1 for the first time: increase score by 1.
+After examining Engagement Ring2 for the first time: increase score by 1.
+After examining Engagement Ring3 for the first time: increase score by 1.
+After examining Engagement Ring4 for the first time: increase score by 1.
+After examining Engagement Ring5 for the first time: increase score by 1.
+After examining Engagement Ring6 for the first time: increase score by 1.
+After examining Engagement Ring7 for the first time: increase score by 1.
+After examining Engagement Ring8 for the first time: increase score by 1.
+After examining Engagement Ring9 for the first time: increase score by 1.
+
 Every Turn:
 	if WhiteGold is in blackbox:
 		if Solitaire is in blackbox:
@@ -2064,7 +2315,7 @@ Apartment Complex is a room. It is north of Main Street. "An eleven story buildi
 Lobby is a room. It is west of Apartment Complex.
 Bertha is a woman. She is in Lobby. The description is "An older woman who lives in room 302, and has been there, by the looks of it, easily since before the building was even constructed. She lives alone with hoards of cats, and never leaves her room without one of them. She wears drabby, large, unshapely, floor-length floral dresses or what must be a polyester/cotten mix."
 Apartment Clerk is a man. He is in Apartment Complex. The description is "A young man in his early twenties. About your age- perhaps a year or two younger."
-The Elevator is a room. It is north of Apartment Complex. "A standard elevator. The doors open horizontally. Elily often comments about how they should open vertically- make things a little more interesting. There are eleven buttons in the elevator; 2-5 for each floor, and one that simply has an 'L' on it, for lobby."
+The Elevator is a room. It is north of Apartment Complex. "A standard elevator. The doors open horizontally. Elily often comments about how they should open vertically- make things a little more interesting. There are five levers in the elevator; 2-5 for each floor, and one that simply has an 'L' on it, for lobby."
 Room Key is a thing. It unlocks 502f. The description is "Your apartment room key. Room 502."
 Instead of entering Elevator:
 	if player does not have Room Key:
@@ -2072,8 +2323,9 @@ Instead of entering Elevator:
 		continue the action.
 
 [elevator buttons]
-Understand "press [something]" or "push [something]" as ButtonPushing. ButtonPushing is an action applying to one thing.
-Check ButtonPushing:
+Understand "press [lever]" or "push [lever]" as ButtonPushing. ButtonPushing is an action applying to one visible thing.
+
+Instead of pulling:
 	if player is in Elevator:
 		if noun is L:
 			say "You're already on the first floor!";
@@ -2152,42 +2404,47 @@ Check ButtonPushing:
 	
 
 [elevator buttons]
-2F is scenery. It is in Elevator. The printed name is "2". Understand "2" as 2F. The description is "The button for the second floor.".
-3F is scenery. It is in Elevator. The printed name is "3". Understand "3" as 3F. The description is "The button for the third floor.".
-4F is scenery. It is in Elevator. The printed name is "4". Understand "4" as 4F. The description is "The button for the fourth floor.".
-5F is scenery. It is in Elevator. The printed name is "5". Understand "5" as 5F. The description is "The button for the fifth floor.".
-L is scenery. It is in Elevator. The description is "The button for the lobby, or the first floor.".
+ButtonBoard is a thing. It is in Elevator. It is undescribed. It is fixed in place.
+2F lever is a part of ButtonBoard. The printed name is "2". Understand "2" as 2F. The description is "The button for the second floor.".
+3F lever is a part of ButtonBoard. The printed name is "3". Understand "3" as 3F. The description is "The button for the third floor.".
+4F lever is a part of ButtonBoard. The printed name is "4". Understand "4" as 4F. The description is "The button for the fourth floor.".
+5F lever is a part of ButtonBoard. The printed name is "5". Understand "5" as 5F. The description is "The button for the fifth floor.".
+L lever is a part of ButtonBoard. The description is "The button for the lobby, or the first floor.".
 [elevator2 buttons]
-2F2 is scenery. It is in Elevator2. The printed name is "2". Understand "2" as 2F2. The description is "The button for the second floor.".
-3F2 is scenery. It is in Elevator2. The printed name is "3". Understand "3" as 3F2. The description is "The button for the third floor.".
-4F2 is scenery. It is in Elevator2. The printed name is "4". Understand "4" as 4F2. The description is "The button for the fourth floor.".
-5F2 is scenery. It is in Elevator2. The printed name is "5". Understand "5" as 5F2. The description is "The button for the fifth floor.".
-L2 is scenery. It is in Elevator2. The printed name is "L". Understand "L" as L2. The description is "The button for the lobby, or the first floor.".
+ButtonBoard2 is a thing. It is in Elevator2. It is undescribed. It is fixed in place.
+2F2 lever is a part of ButtonBoard2. The printed name is "2". Understand "2" as 2F2. The description is "The button for the second floor.".
+3F2 lever is a part of ButtonBoard2. The printed name is "3". Understand "3" as 3F2. The description is "The button for the third floor.".
+4F2 lever is a part of ButtonBoard2. The printed name is "4". Understand "4" as 4F2. The description is "The button for the fourth floor.".
+5F2 lever is a part of ButtonBoard2. The printed name is "5". Understand "5" as 5F2. The description is "The button for the fifth floor.".
+L2 lever is a part of ButtonBoard2. The printed name is "L". Understand "L" as L2. The description is "The button for the lobby, or the first floor.".
 [elevator3 buttons]
-2F3 is scenery. It is in Elevator3. The printed name is "2". Understand "2" as 2F3. The description is "The button for the second floor.".
-3F3 is scenery. It is in Elevator3. The printed name is "3". Understand "3" as 3F3. The description is "The button for the third floor.".
-4F3 is scenery. It is in Elevator3. The printed name is "4". Understand "4" as 4F3. The description is "The button for the fourth floor.".
-5F3 is scenery. It is in Elevator3. The printed name is "5". Understand "5" as 5F3. The description is "The button for the fifth floor.".
-L3 is scenery. It is in Elevator3. The printed name is "L". Understand "L" as L2. The description is "The button for the lobby, or the first floor.".
+ButtonBoard3 is a thing. It is in Elevator3. It is undescribed. It is fixed in place.
+2F3 lever is a part of ButtonBoard3. The printed name is "2". Understand "2" as 2F3. The description is "The button for the second floor.".
+3F3 lever is a part of ButtonBoard3. The printed name is "3". Understand "3" as 3F3. The description is "The button for the third floor.".
+4F3 lever is a part of ButtonBoard3. The printed name is "4". Understand "4" as 4F3. The description is "The button for the fourth floor.".
+5F3 lever is a part of ButtonBoard3. The printed name is "5". Understand "5" as 5F3. The description is "The button for the fifth floor.".
+L3 lever is a part of ButtonBoard3. The printed name is "L". Understand "L" as L2. The description is "The button for the lobby, or the first floor.".
 [elevator4 buttons]
-2F4 is scenery. It is in Elevator4. The printed name is "2". Understand "2" as 2F4. The description is "The button for the second floor.".
-3F4 is scenery. It is in Elevator4. The printed name is "3". Understand "3" as 3F4. The description is "The button for the third floor.".
-4F4 is scenery. It is in Elevator4. The printed name is "4". Understand "4" as 4F4. The description is "The button for the fourth floor.".
-5F4 is scenery. It is in Elevator4. The printed name is "5". Understand "5" as 5F4. The description is "The button for the fifth floor.".
-L4 is scenery. It is in Elevator4. The printed name is "L". Understand "L" as L4. The description is "The button for the lobby, or the first floor.".
+ButtonBoard4 is a thing. It is in Elevator4. It is undescribed. It is fixed in place.
+2F4 lever is a part of ButtonBoard4. The printed name is "2". Understand "2" as 2F4. The description is "The button for the second floor.".
+3F4 lever is a part of ButtonBoard4. The printed name is "3". Understand "3" as 3F4. The description is "The button for the third floor.".
+4F4 lever is a part of ButtonBoard4. The printed name is "4". Understand "4" as 4F4. The description is "The button for the fourth floor.".
+5F4 lever is a part of ButtonBoard4. The printed name is "5". Understand "5" as 5F4. The description is "The button for the fifth floor.".
+L4 lever is a part of ButtonBoard4. The printed name is "L". Understand "L" as L4. The description is "The button for the lobby, or the first floor.".
 [elevator5 buttons]
-2F5 is scenery. It is in Elevator5. The printed name is "2". Understand "2" as 2F5. The description is "The button for the second floor.".
-3F5 is scenery. It is in Elevator5. The printed name is "3". Understand "3" as 3F5. The description is "The button for the third floor.".
-4F5 is scenery. It is in Elevator5. The printed name is "4". Understand "4" as 4F5. The description is "The button for the fourth floor.".
-5F5 is scenery. It is in Elevator5. The printed name is "5". Understand "5" as 5F. The description is "The button for the fifth floor.".
-L5 is scenery. It is in Elevator5. The printed name is "L". Understand "L" as L5. The description is "The button for the lobby, or the first floor.".
+ButtonBoard5 is a thing. It is in Elevator5. It is undescribed. It is fixed in place.
+2F5 lever is a part of ButtonBoard5. The printed name is "2". Understand "2" as 2F5. The description is "The button for the second floor.".
+3F5 lever is a part of ButtonBoard5. The printed name is "3". Understand "3" as 3F5. The description is "The button for the third floor.".
+4F5 lever is a part of ButtonBoard5. The printed name is "4". Understand "4" as 4F5. The description is "The button for the fourth floor.".
+5F5 lever is a part of ButtonBoard5. The printed name is "5". Understand "5" as 5F. The description is "The button for the fifth floor.".
+L5 lever is a part of ButtonBoard5. The printed name is "L". Understand "L" as L5. The description is "The button for the lobby, or the first floor.".
 
 [elevators]
 [Elevator is a room]
-Elevator2 is a room. The printed name is "Elevator". "The second floor is south."
-Elevator3 is a room. The printed name is "Elevator". "The third floor is south."
-Elevator4 is a room. The printed name is "Elevator". "The fourth floor is south."
-Elevator5 is a room. The printed name is "Elevator". "The fifth floor is south."
+Elevator2 is a room. The printed name is "Elevator". "The second floor is south. There are five levers in the elevator; 2-5 for each floor, and one that simply has an 'L' on it, for lobby."
+Elevator3 is a room. The printed name is "Elevator". "The third floor is south. There are five levers in the elevator; 2-5 for each floor, and one that simply has an 'L' on it, for lobby."
+Elevator4 is a room. The printed name is "Elevator". "The fourth floor is south. There are five levers in the elevator; 2-5 for each floor, and one that simply has an 'L' on it, for lobby."
+Elevator5 is a room. The printed name is "Elevator". "The fifth floor is south. There are five levers in the elevator; 2-5 for each floor, and one that simply has an 'L' on it, for lobby."
 
 [floors]
 [Apartment Complex is a room.]
@@ -2231,7 +2488,7 @@ Fifth Floor3 is a room. It is south of Fifth Floor2. The printed name is "Fifth 
 406f is a door. It is locked. The printed name is "406". It is west of Fourth Floor3.
 [fifth floor]
 501f is a door. It is locked. The printed name is "501". It is east of Fifth Floor. 
-502f is a door. It is locked and lockable. The printed name is "502". It is west of Fifth Floor. [apartment room]
+502f is a door. It is locked and lockable. The printed name is "502". Understand "502" or "door" as 502f. It is west of Fifth Floor. [apartment room]
 503f is a door. It is locked. The printed name is "503". It is east of Fifth Floor2.
 504f is a door. It is locked. The printed name is "504". It is west of Fifth Floor2.
 505f is a door. It is locked. The printed name is "505". It is east of Fifth Floor3.
@@ -2240,11 +2497,12 @@ Fifth Floor3 is a room. It is south of Fifth Floor2. The printed name is "Fifth 
 Your Apartment is a room. It is west of 502f. "You've had this apartment for the last two years, and Elily moved in about a year ago. Here, in the living room, is a leather couch, a TV, and a lovely shag rug. The bathroom is north, the kitchen is northwest, and the bedroom is west. There's a small veranda west of the bedroom."
 Leather Couch is an enterable scenery supporter in Your Apartment. The description is "A white leather couch that you and Elily got for a great deal from a store that was going out of business. Sometimes you fall asleep on it; it's just that comfortable."
 TV1 is a device in Your Apartment. It is undescribed. Understand "TV" as TV1. The printed name is "TV". The description is "A relatively nice flatscreen that your parents gave you as a 'yay-you-graduated-from-college-without-flunking-out' present.[if switched on] An older gentleman in a grey suit drones on about the wonderfully sunny day."
+After switching on TV1 for the first time: increase score by 1.
 Understand "turn on [TV1]" or "watch [TV1]" as switching on.
 Understand "turn off [TV1]" as switching off.
 Check switching on TV1:
-	say "You turn the TV on, and plop yourself down on the couch. Oh, it's so good to be home!";
-	now player is on Leather Couch.
+	say "You turn the TV on, and plop yourself down on the couch. Oh, it's so good to be home!"
+After examining Shag Rug for the first time: increase score by 1.
 Shag Rug is scenery in Your Apartment. The description is "A white and brown shag rug that stretches from under the couch to under the TV. Besides your bed and the couch, it's the most comfortable thing in your apartment."
 [the bathroom]
 The Bathroom is a room. It is north of Your Apartment. "A small bathroom with a shower-and-bath in one, a toilet, and a sink with a mirror."
@@ -2253,8 +2511,11 @@ Instead of entering Shower-and-Bath:
 	say "You step into the shower, and sit down. It's not as comfortable as your couch.";
 	continue the action.
 The toilet1 is an enterable scenery supporter in Bathroom. Understand "toilet" as toilet1. The printed name is "toilet". The description is "A white ceramic toilet with a wooden seat and lid."
+After entering Shower-and-Bath for the first time: increase score by 1.
+After entering Toilet1 for the first time: increase score by 1.
 Seat-and-Lid is scenery in Bathroom. Understand "seat" or "lid" as Seat-and-Lid. The description is "A dark wooden toilet seat and toilet lid."
 Sink is a device in Bathroom. It is undescribed. The description is "A glass countertop that dips down to form the bowl of the sink. A silver spout juts over it."
+After switching on Sink for the first time: increase score by 1.
 Understand "turn on [sink]" as switching on.
 Understand "turn off [sink]" as switching off.
 Check switching on sink:
@@ -2267,14 +2528,17 @@ Instead of going south in Bathroom:
 	otherwise:
 		continue the action.
 Mirror is scenery in Bathroom. The description is "You look at yourself, smile, strike a pose, and then lose interest."
+After examining Mirror for the first time: increase score by 1.
 [the kitchen]
 The Kitchen is a room. It is northwest of Your Apartment. "It's a small kitchen with a breakfast table for two, a fridge, a sink, some cabinets, a stove, an oven,  and some counterspace."
 Breakfast Table is an enterable scenery supporter in Kitchen. "A small round table with two chairs on either side."
 Chairs2 are an enterable scenery supporter in kitchen. The printed name is "two chairs". Understand "chair" or "chairs" as Chairs2. The description is "Two wooden chairs."
 Fridge is a container in Kitchen. It is undescribed. The description is "A silver fridge."
 Milk is a thing in Fridge. It is edible. The description is "A gallon of fat free milk."
+After examining Milk for the first time: increase score by 1.
 MISC food is a thing in Fridge. It is fixed in place. The description is "Assorted foods and beverages."
 Sink1 is a device in Kitchen. It is undescribed. The printed name is "sink". Understand "sink" as Sink1. The description is "A two basin sink. It's currently empty- Elily must have washed the dishes."
+After examining MISC food for the first time: increase score by 1.
 Check switching on sink1:
 	say "You turn on the sink, and run your hands under the water."
 Check switching off sink1:
@@ -2286,6 +2550,9 @@ Instead of going southeast in kitchen:
 		continue the action.
 Cabinets are a Container in Kitchen. They are undescribed. Understand "cabinet" as cabinets. The description is "Wooden cabinets above the counter, sink, and stove."
 Plates1 are a thing in Cabinets. They are fixed in place. The printed name is "plates". Understand "plates" as Plates1. The description is "A couple different plates in a few different sizes."
+After examining Bowls for the first time: increase score by 1.
+After examining Silverware for the first time: increase score by 1.
+After switching on stove for the first time: increase score by 1.
 Bowls are a thing in Cabinets. They are fixed in place. The description is "A couple different bowls in a few different sizes."
 Glasses are a thing in Cabinets. They are fixed in place. The description is "A couple different glasses in a few different sizes."
 Silverware is a thing in Cabinets. It is fixed in place. The description is "A nicely assorted collection of forks, knives, spoons, and other serving utensils."
@@ -2311,13 +2578,16 @@ Clothes are a thing in Dresser. They are fixed in place. The description is "Fol
 Glass Door is a door. It is west of Bedroom and east of Veranda.
 [Elily]
 SleepingGirl is a thing. It is in Blackbox.
-Elily is a woman. She is on Bed. The description is "A beautiful girl with wavy, dark red hair.[if sleepinggirl is in blackbox] She is currently taking a nap on the bed."
-Instead of talking to Elily:
-	if SleepingGirl is in blackbox:
-		say "Elily is currently napping. It would be rude to disturb her."
+Elily is a woman. She is on Bed. The description is "A beautiful girl with wavy, dark red hair.[if sleepinggirl is in blackbox] She is currently taking a nap on the bed.[end if][if Elily is in Kitchen] She is drinking a glass of milk.[end if][if Planning is in blackbox] She's getting ready for your special dinner.[end if][if Elily is in Sky] She looks beautiful under the flickering flame of the torch.[end if][If Elily is in Beach] She looks beautiful with the gentle ocean air ruffling her hair.[end if][if Elily is in Dinner Table] She looks beautiful poised across from you next to the window.[end if]" 
+		
+After kissing Elily for the first time: increase score by 1.
+After kissing Elily for the second time: increase score by 1.
+
 Instead of kissing Elily:
 	if SleepingGirl is in blackbox:
-		say "You lean forward and kiss Elily's forehead. She smiles in her sleep."
+		say "You lean forward and kiss Elily's forehead. She smiles in her sleep.";
+	otherwise:
+		say "You lean forward and kiss Elily's cheek. She blushes and turns her head, smiling."
 [veranda]
 Veranda is a room. It is west of Glass Door. "A small veranda with a chair. It overlooks main street, which is usually pretty calm."
 Chair3 is an enterable scenery supporter in Veranda. The printed name is "chair". Understand "chair" as Chair3. The description is "A reclining chair."
@@ -2334,6 +2604,7 @@ Instead of talking to Apartment Clerk:
 		if player has ID Card:
 			say "'Here, John,' you say, passing over your ID card. 'All of this good enough to vouch for who I am?'[line break] 'Yes, yes it is, Mr. Crow. Here is your room key. Have a good day!'";
 			now player has Room Key;
+			 increase score by 1;
 		otherwise:
 			say "'I'm going to need your ID card as well, Mr. Crow.'";
 	if player has Room Key:
@@ -2346,37 +2617,861 @@ Scream is a thing.
 Instead of talking to Bertha:
 	if player does not have Room Key and scream is not in blackbox:
 		say "'Hey, Bertha.' The woman looks up from her intent task of betting a tabby.[line break]'Oh. Hi. What do you want.'[line break]'I've lost my room key-'[line break]'Stupid kid'[line break]'-and I need someone to vouch for me as being who I say I am.'[line break]'Don't you have a stupid ID in your wallet, or something.'[line break]'I'll check, but I need a person, too…' Bertha glares at you. She shifts her weight around under her giant shapeless floral dress and opens her mouth. [line break] 'CLERK!' She bellows. Your ears flinch. The young man hurries over, alarmed. 'This is Wade Crow.' [line break]'Very well,' says the clerk, obviously unsettled by the woman. [line break]'Now leave me alone!'";
+		 increase score by 1;
 		now Scream is in blackbox;
 	if Scream is in blackbox:
 		say "The woman looks up, sees that it's you, and sends you a terrible glare. You decide to let her be."
 	
 
 [Pet Shop]
+Note2 is a thing.
+GivenPuppy is a thing.
+Husky is a thing.
+Shepherd is a thing.
+Retriever is a thing.
+Weimaraner1 is a thing.
+Talked1 is a thing.
+Talked2 is a thing.
+Pet Shop is a room. It is south of Main Street. "One of Elily's favorite places in town. She loves puppies."
+Siberian Husky Puppy is an animal. It is in Pet Shop. The description is "An adorable little husky puppy. This one is a girl with black and white fur and two blue eyes."
+German Shepherd Puppy is an animal. It is in Pet Shop. The description is "A fierce little german shepherd puppy. He is a sable, so he's more brown than black."
+Golden Retriever Puppy is an animal. It is in Pet Shop. The description is "A sleeping golden ball of fur. She looks very cuddle-y."
+Weimaraner Puppy is an animal. It is in Pet Shop. The description is "A silver-grey ball of legs. He will grow up to be a fast dog!"
+Store Clerk is a woman. She is in Pet Shop. The description is "A teenage girl wearing the store's green apron and cuddling the puppies. Elily's summer job in high school and college was working in a pet store. She said the puppies were always the best part, and it was so hard to see them go."
+Instead of talking to Store Clerk:
+	if talked1 is not in blackbox:
+		say "'Hey, got enough puppies over there?' The girl laughs, and pulls the husky onto her lap. [line break]'Never! How may I help you? Do you want to take one of these cuties home?' She passes the sleeping retriever puppy to you who wakes up just enough to see that she's getting some love, and licks your nose.[line break]'Actually, I would love to buy one of these puppies. It's part of my whole proposal thing,' you say, leaning in with a smile. The girl lights up. 'I plan to take her on one of three dates- I haven't decided between a hot air balloon, dinner at the beach, or that fancy italian restaurant. But, my plan is to give her the puppy and the ring.'[line break]'You know, you could always just put the ring's box around the puppy's neck and when she's getting mauled in puppy licks and sees it..'[line break]'Oh! I hadn't thought of that. Wow, that's clever.' You look between the puppies. Which one do you want? (answer format: 'answer …')";
+	if talked1 is in blackbox and talked2 is not in blackbox:
+		say "'Hey, you're back! Are you all ready for your puppy?";
+		if player consents:
+			say "'I'll go get the puppy then!' She returns shortly, and hands over the dog, who promptly licks your face.";
+			if Husky is in blackbox:
+				now player has BlackBag1;
+				 increase score by 1;
+				now Siberian Husky Puppy is in BlackBag1;
+				now Collar is on Siberian Husky Puppy;
+				now talked2 is in blackbox;
+				now GivenPuppy is in blackbox;
+			if Shepherd is in blackbox:
+				now player has BlackBag1;
+				 increase score by 1;
+				now German Shepherd Puppy is in BlackBag1;
+				now Collar is on German Shepherd Puppy;
+				now talked2 is in blackbox;
+				now GivenPuppy is in blackbox;
+			if Weimaraner1 is in blackbox:
+				now player has BlackBag1;
+				 increase score by 1;
+				now Weimaraner Puppy is in BlackBag1;
+				now Collar is on Weimaraner Puppy;
+				now talked2 is in blackbox;
+				now GivenPuppy is in blackbox;
+			if Retriever is in blackbox:
+				now player has BlackBag1;
+				 increase score by 1;
+				now Golden Retriever Puppy is in BlackBag1;
+				now Collar is on Golden Retriever Puppy;
+				now Talked2 is in blackbox;
+				now GivenPuppy is in blackbox;
+		otherwise:
+			say "'Not yet, actually. I'll come back later for the puppy.'";
+			now player is in Main Street;
+	if talked2 is in blackbox and talked1 is in blackbox:
+		say "The girl seems busy, maybe you should come back later.";
+	if Question1 is in blackbox and Talked2 is in blackbox:
+		say "'Hey, what were you saying earlier about the ring and the puppy?'[line break]'What? Oh, right. I thought it would be a good idea to fasten the ring to the puppy's collar.'"
+		
+		
+Instead of answering Store Clerk that "siberian husky":
+	if Talked1 is not in blackbox:
+		say "'You know what, she's always wanted a husky with two blue eyes. I think I'll take that peppy little puppy.' The clerk beams and jumps to her feet, picking up the puppy and passing her to you. [line break]'Here, I'll ring you up. How will you be paying?' You hand her the credit card from your wallet. 'Here, how about this. You leave this cute little puppy here while you set everything up, and come get her right before your date.'";
+		now Husky is in blackbox;
+		now talked1 is in blackbox.
+Instead of answering Store Clerk that "husky":
+	if Talked1 is not in blackbox:
+		say "'You know what, she's always wanted a husky with two blue eyes. I think I'll take that peppy little puppy.' The clerk beams and jumps to her feet, picking up the puppy and passing her to you. [line break]'Here, I'll ring you up. How will you be paying?' You hand her the credit card from your wallet. 'Here, how about this. You leave this cute little puppy here while you set everything up, and come get her right before your date.'";
+		now Husky is in blackbox;
+		now talked1 is in blackbox.
+Instead of answering Store Clerk that "german shepherd":
+	if Talked1 is not in blackbox:
+		say "'You know, that shepherd puppy would be a wonderful companion. I think I'll take that puppy.' The clerk beams and jumps to her feet, picking up the puppy and passing him to you.[line break]'Here, I'll ring you up. How will you be paying?' You hand her the credit card from your wallet. 'Here, how about this. You leave this cute little puppy here while you set everything up, and come and get him right before your date.'";
+		now Shepherd is in blackbox;
+		now Talked1 is in blackbox.
+Instead of answering Store Clerk that "shepherd":
+	if Talked1 is not in blackbox:
+		say "'You know, that shepherd puppy would be a wonderful companion. I think I'll take that puppy.' The clerk beams and jumps to her feet, picking up the puppy and passing him to you.[line break]'Here, I'll ring you up. How will you be paying?' You hand her the credit card from your wallet. 'Here, how about this. You leave this cute little puppy here while you set everything up, and come and get him right before your date.'";
+		now Shepherd is in blackbox;
+		now Talked1 is in blackbox.
+Instead of answering Store Clerk that "golden retriever":
+	if Talked1 is not in blackbox:
+		say "'Golden retriever are such loayl dogs. I think I'll take that puppy.' The clerk beams and jumps to her feet, picking up the puppy and passing her to you.[line break]'Here, I'll ring you up. How will you be paying? You hand her the credit card from your wallet. 'Here, how about this. You leave this cute little puppy here while you set everything up, and come and get him right before your date.'";
+		now retriever is in blackbox;
+		now talked1 is in blackbox.
+Instead of answering Store Clerk that "retriever":
+	if Talked1 is not in blackbox:
+		say "'Golden retriever are such loayl dogs. I think I'll take that puppy.' The clerk beams and jumps to her feet, picking up the puppy and passing her to you.[line break]'Here, I'll ring you up. How will you be paying? You hand her the credit card from your wallet. 'Here, how about this. You leave this cute little puppy here while you set everything up, and come and get him right before your date.'";
+		now retriever is in blackbox;
+		now talked1 is in blackbox.
+Instead of answering Store Clerk that "weimaraner":
+	if Talked1 is not in blackbox:
+		say "'Elily loves to go running, and this dog will be able to go with her every morning. I think I'll take that puppy.' The clerk beams and jumps to her feet, picking up the puppy and passing him to you.[line break]'Here, I'll ring you up. How will you be paying?' You hand her the credit card from your wallet. 'Here, how about this. You leave this cute little puppy here while you set everything up, and come and get him right before your date.'";
+		now weimaraner1 is in blackbox;
+		now talked1 is in blackbox. 
+	
+
+
+[PreDate Prerequisites]
+Warning1 is a thing. It is in blackbox.
+Warning2 is a thing. It is in blackbox.
+Every Turn:
+	if talked1 is in blackbox:
+		if consult2 is in blackbox:
+			if warning1 is in blackbox:
+				say "You better go check out the date locations and go tell Elily to get ready for a fancy dinner. It's getting late!";
+				 increase score by 1;
+				now Warning1 is in Unicorn-Box;
+				now Elily is in Kitchen;
+				now SleepingGirl is in Unicorn-Box.
+			
+Every Turn:
+	if EngagementRing is in blackbox:
+		if GivenPuppy is in blackbox:
+			if Warning2 is in blackbox:
+				say "You better hurry to your date! Elily will be there soon.";
+				 increase score by 1;
+				now warning2 is in Unicorn-Box. 
+
+
+[Putting Engagement Ring Box on Collar]
+Understand "put [something] on [something]" or "fasten [something] to [something]" or "attach [something] to [something]" or "clip [something] on [something]" as Attaching. Attaching is an action applying to two things.
+Check attaching:
+	if noun is Collar:
+		if second noun is Engagement Ring1:
+			say "You fasten the ring to the puppy's collar.";
+			 increase score by 1;
+			now FastenedRing is in blackbox;
+		if second noun is Engagement Ring2:
+			say "You fasten the ring to the puppy's collar.";
+			 increase score by 1;
+			now FastenedRing is in blackbox;
+		if second noun is Engagement Ring3:
+			say "You fasten the ring to the puppy's collar.";
+			 increase score by 1;
+			now FastenedRing is in blackbox;
+		if second noun is Engagement Ring4:
+			say "You fasten the ring to the puppy's collar.";
+			 increase score by 1;
+			now FastenedRing is in blackbox;
+		if second noun is Engagement Ring5:
+			say "You fasten the ring to the puppy's collar.";
+			 increase score by 1;
+			now FastenedRing is in blackbox;
+		if second noun is Engagement Ring6:
+			say "You fasten the ring to the puppy's collar.";
+			 increase score by 1;
+			now FastenedRing is in blackbox;
+		if second noun is Engagement Ring7:
+			say "You fasten the ring to the puppy's collar.";
+			 increase score by 1;
+			now FastenedRing is in blackbox;
+		if second noun is Engagement Ring8:
+			say "You fasten the ring to the puppy's collar.";
+			 increase score by 1;
+			now FastenedRing is in blackbox;
+		if second noun is Engagement Ring9:
+			say "You fasten the ring to the puppy's collar.";
+			 increase score by 1;
+			now FastenedRing is in blackbox.
+FastenedRing is a thing. It is in Unicorn-Box.
+Collar is a thing. The description is "A brown leather collar.[if FastenedRing is in blackbox] The ring is tied to it."
+Question1 is a thing.
+
+
+Instead of going northeast while in Main Street:
+	if Unknowing is in blackbox:
+		say "The train taking off to the air balloon field is leaving shortly. This is one of three date locations where you can propose to Elily: the second being a tandem bikeride to the beach with a lovely home cooked picnic dinner, the third being a limo ride to the most fancy restaurant within fifty miles, the Serata Romantica. Pick your location carefully.";
+		 increase score by 1;
+		now Unknowing is in Unicorn-Box;
+	otherwise:
+		if EngagementRing is in blackbox:
+			if GivenPuppy is in blackbox:
+				if Planning is in blackbox:
+					if FastenedRing is in Unicorn-Box:
+						say "You've got your puppy and you've got the ring, but they're not in the right place… What did the animal store clerk say about it?";
+						now Question1 is in blackbox;
+					if FastenedRing is in Blackbox:
+						say "You approach the small train station and see Elily. She's wearing a long black dress that looks great under her red hair. 'Ma'am,' you say with a slight bow, extending your bent arm. She laughs and takes it. [line break]'Sir,' she says with a slight curtsey. You lead her aboard the train, and you both are whisked away to the hot air balloon field.";
+						now player is in Hot Air Balloon Field;
+						now Elily is in Hot Air Balloon Field;
+						now player has BlackBag1;
+						now player has BlackBag2;
+						now puppyinbag is in blackbox;
+				otherwise:
+					say "You need to tell Elily to meet you here first!";
+			otherwise:
+				say "Don't forget the puppy!";
+		otherwise:
+			say "Don't forget the ring!".
+
+
+Instead of going east while in Main Street:
+	if unknowing is in blackbox:
+		say "Theres a tandem Bike vendor here. For this date, you and Elily will ride one of these bikes down to the beach and enjoy a home cooked picnic dinner. This is one of three date locations where you can propose to Elily: the second being a short trainride to the air balloon field, and the third being a limo ride to the most fancy restaurant within fifty miles, the Serata Romantica. Pick your location carefully. (you can always 'look' E, NE, or SE from main street to double check the location.)";
+		 increase score by 1;
+		now unknowing is in Unicorn-Box;
+	otherwise:
+		if EngagementRing is in blackbox:
+			if GivenPuppy is in blackbox:
+				if Planning is in blackbox:
+					if FastenedRing is in Unicorn-Box:
+						say "You've got your puppy and you've got the ring, but they're not in the right place… What did the animal store clerk say about it?";
+						now Question1 is in blackbox;
+					if FastenedRing is in Blackbox:
+						say "You head to the beach path. 'One, please,' you say to the tandem bike vendor. Elily walks up. She's wearing a long black dress that looks great under her red hair. [line break]'Oh, what a perfect thing to wear on a bike,' she says. 'I guess I'll just sit, and you can peddle!'";
+						now Tandem Bike is in Beach;
+						now player is on Tandem Bike;
+						now Elily is in Beach;
+						now player has BlackBag1;
+						now player has BlackBag2;
+						now puppyinbag is in blackbox;
+				otherwise:
+					say "You need to tell Elily to meet you here first!";
+			otherwise:
+				say "Don't forget the puppy!";
+		otherwise:
+			say "Don't forget the ring!".
+
+						
+
+Instead of going southeast while in Main Street:
+	if unknowing is in blackbox:
+		say "The limo to take you to the most fancy restaurant within fifty miles, the Serata Romantica, is ready as soon as you are. This is one of three date locations where you can propose to Elily: the second being a short trainride to the air balloon field, and the third being a tandem bikeride to the beach with a lovely home cooked picnic dinner.";
+		 increase score by 1;
+		now unknowing is in Unicorn-Box;
+	otherwise:
+		if EngagementRing is in blackbox:
+			if GivenPuppy is in blackbox:
+				if Planning is in blackbox:
+					if FastenedRing is in Unicorn-Box:
+						say "You've got your puppy and you've got the ring, but they're not in the right place…";
+						now Question1 is in blackbox;
+					if FastenedRing is in Blackbox:
+						say "You dust off your suit and walk towards the limo. Elily is already waiting there. She's wearing a long black dress that looks great under her red hair. 'Ma'am,' you say with a slight bow, extending your bent arm. She laughs and takes it.[line break]'Sir,' she says with a slight curtsey. You help her into the limo, then follow her in. 'Where are we going?' She asks, holding onto your arm while looking past you out the window to the lights flashing by.[line break]'Oh, you'll see.'";
+						now player is in OutsideSerataRomantica;
+						now Elily is in OutsideSerataRomantica;
+						now player has BlackBag1;
+						now puppyinbag is in blackbox;
+				otherwise:
+					say "You need to tell Elily to meet you here first!";
+			otherwise:
+				say "Don't forget the puppy!";
+		otherwise:
+			say "Don't forget the ring!".
+						
+Puppyinbag is a thing. [move puppy to nondescriptbag1]
+
+Every turn:
+	if player has BlackBag1:
+		if Puppyinbag is in blackbox:
+			if Husky is in blackbox:
+				move Siberian Husky Puppy to BlackBag1;
+				now puppyinbag is in unicorn-box;
+			if Shepherd is in blackbox:
+				move German Shepherd Puppy to BlackBag1;
+				now puppyinbag is in unicorn-box;
+			if Retriever is in blackbox:
+				move Golden Retriever Puppy to BlackBag1;
+				now puppyinbag is in unicorn-box;
+			if Weimaraner1 is in blackbox:
+				move Weimaraner Puppy to BlackBag1;
+				now puppyinbag is in unicorn-box.
+
+Instead of DirectionLooking northeast in Main Street:
+	say "Northeast is the train to the hot air balloon field."
+Instead of DirectionLooking east in Main Street:
+	say "East is the path (via tandem bike) to the beach."
+Instead of DirectionLooking southeast in Main Street:
+	say "Southeast is the way to Serata Romantica (via limo)."
+		
+[Talking to Elily]
+Planning is a thing.
+[other]
+BlackBag1 is a container. It is closed and openable. Understand "bag" or "puppy bag" or "nondescript bag (puppy)" as Blackbag1. The printed name is "nondescript bag (puppy)". The description is "A large black dog bag with a flat bottom in which the puppy is sleeping."
+BlackBag2 is a container. It is closed and openable. Understand "bag" or "dinner bag" or "nondescript bag (dinner)" as blackbag2. The printed name is "nondescript bag (dinner)". The description is "A large black nondescript bag in which your prepared dinner is insulated.".
+dinner is a thing. It is edible. Understand "dinner" as dinner. Dinner is inside BlackBag2. The description is "A wonderfully cooked prime rib with mashed potatoes and steamed greens."
+Pinot Noir is a thing. It is edible. Pinot Noir is inside BlackBag2. Understand "wine" as Pinot Noir. The description is "A pleasant red wine, technically called Adelsheim 2010 Ribbon Springs Pinot Noir. It's one of the few wines bottled at the Oregon vineyard. It is light red and has a berry aroma."
+After examining dinner for the first time: increase score by 1.
+After examining Pinot Noir for the first time: increase score by 1.
 
 
 
+[Hot Air Balloon Field]
+Hot Air Balloon Field is a room. It is northeast of Main Street. "Here, a few men man five or six different air balloons."
+Employee is a man. He is in Hot Air Balloon Field.
+Instead of talking to Employee:
+	say "You approach the employee. 'Hi, I'm Wade Crow, I have a reservation?' The man flips through a clipboard that hangs from his belt.[line break]'Crow, … for two?' He looks up. Elily smiles and holds tighter to your arm. 'Right this way, sir, ma'am.' He leads you to a basket with a white and gold balloon.";
+	now HotAirBalloon is in Hot Air Balloon Field.
+HotAirBalloon is an enterable scenery supporter. The printed name is "Hot Air Balloon". Understand "balloon" or "balloons" or "hot air balloon" or "air balloon" or "basket" or "balloon basket" as HotAirBalloon. The description is "A lighter-than-air craft that is liften and (slightly) propelled by a large balloon and a flame."
+Instead of entering HotAirBalloon:
+	say "You get into the balloon's basket, then help Elily in. The employee increases the flame, and cuts some of the sand bags. The balloon rises into the sky.";
+	 increase score by 1;
+	now player has BlackBag1;
+	now player has BlackBag2;
+	now player is in Sky;
+	now Elily is in Sky.
 
-[Train to Hot Air Balloon]
 
+	
+[sky]
+Sky is a room. "You and Elily are standing in the basket of the balloon. There isn't a cloud in the night sky, and the stars are peppered around a full moon. Everything is perfect."
 
-
-[Hot Air Balloon]
+Instead of opening BlackBag1:
+	if player is in Sky:
+		if Eaten1 is in blackbox:
+			if Eaten2 is in blackbox:
+				say "'Elily, I've got a little something for you.' You reach into the bag and pull out the sleeping puppy. Elily's eyes light up. 'Is that a… that can't be… oh my goodness!'";
+				if Husky is in blackbox:
+					say "Elily takes the husky puppy from you. 'She's adorable! I've always wanted a little husky!' The puppy licks her nose, its tail wagging. Elily holds the husky at arms length. 'Oh, she's perfect!' You can't contain your smile. 'What, what is this?' Elily's fingers slip under the collar where the box is. She opens it, and gasps at the ring. She looks at you, bent down on one knee. [line break]'Elily Daise, the time I've spent with you has been the best in my life.. I don't know how I survived without you. Will you marry me?'[paragraph break] Elily's eyes sparkle happily. A solitary tear rolls down her cheek and over her smile.";
+					increase score by 14;
+					end the game in victory;
+				if Shepherd is in blackbox:
+					say "Elily takes the shepherd puppy from you. 'He's adorable! I've always wanted a little shepherd!' The puppy licks her nose, its tail wagging. Elily holds the shepherd at arms length. 'Oh, he's perfect!' You can't contain your smile. 'What, what is this?' Elily's fingers slip under the collar where the box is. She opens it, and gasps at the ring. She looks at you, bent down on one knee. [line break]'Elily Daise, the time I've spent with you has been the best in my life.. I don't know how I survived without you. Will you marry me?'[paragraph break] Elily's eyes sparkle happily. A solitary tear rolls down her cheek and over her smile.";
+					increase score by 14;
+					end the game in victory;
+				if Retriever is in blackbox:
+					say "Elily takes the golden retriever puppy from you. 'She's adorable! I've always wanted a little retriever!' The puppy licks her nose, its tail wagging. Elily holds the husky at arms length. 'Oh, she's perfect!' You can't contain your smile. 'What, what is this?' Elily's fingers slip under the collar where the box is. She opens it, and gasps at the ring. She looks at you, bent down on one knee. [line break]'Elily Daise, the time I've spent with you has been the best in my life.. I don't know how I survived without you. Will you marry me?'[paragraph break] Elily's eyes sparkle happily. A solitary tear rolls down her cheek and over her smile.";
+					increase score by 14;
+					end the game in victory;
+				if Weimaraner1 is in blackbox:
+					say "Elily takes the weimaraner puppy from you. 'He's adorable! I've always wanted a little weimaraner!' The puppy licks her nose, its tail wagging. Elily holds the weimaraner at arms length. 'Oh, he's perfect!' You can't contain your smile. 'What, what is this?' Elily's fingers slip under the collar where the box is. She opens it, and gasps at the ring. She looks at you, bent down on one knee. [line break]'Elily Daise, the time I've spent with you has been the best in my life.. I don't know how I survived without you. Will you marry me?'[paragraph break] Elily's eyes sparkle happily. A solitary tear rolls down her cheek and over her smile.";
+					increase score by 14;
+					end the game in victory;
+	if player is in Beach:
+		if Eaten1 is in blackbox:
+			if Eaten2 is in blackbox:
+				say "'Elily, I've got a little something for you.' You reach into the bag and pull out the sleeping puppy. Elily's eyes light up. 'Is that a… that can't be… oh my goodness!'";
+				if Husky is in blackbox:
+					say "Elily takes the husky puppy from you. 'She's adorable! I've always wanted a little husky!' The puppy licks her nose, its tail wagging. Elily holds the husky at arms length. 'Oh, she's perfect!' You can't contain your smile. 'What, what is this?' Elily's fingers slip under the collar where the box is. She opens it, and gasps at the ring. She looks at you, bent down on one knee. [line break]'Elily Daise, the time I've spent with you has been the best in my life.. I don't know how I survived without you. Will you marry me?'[paragraph break] Elily's eyes sparkle happily. A solitary tear rolls down her cheek and over her smile.";
+					increase score by 14;
+					end the game in victory;
+				if Shepherd is in blackbox:
+					say "Elily takes the shepherd puppy from you. 'He's adorable! I've always wanted a little shepherd!' The puppy licks her nose, its tail wagging. Elily holds the shepherd at arms length. 'Oh, he's perfect!' You can't contain your smile. 'What, what is this?' Elily's fingers slip under the collar where the box is. She opens it, and gasps at the ring. She looks at you, bent down on one knee. [line break]'Elily Daise, the time I've spent with you has been the best in my life.. I don't know how I survived without you. Will you marry me?'[paragraph break] Elily's eyes sparkle happily. A solitary tear rolls down her cheek and over her smile.";
+					increase score by 14;
+					end the game in victory;
+				if Retriever is in blackbox:
+					say "Elily takes the golden retriever puppy from you. 'She's adorable! I've always wanted a little retriever!' The puppy licks her nose, its tail wagging. Elily holds the husky at arms length. 'Oh, she's perfect!' You can't contain your smile. 'What, what is this?' Elily's fingers slip under the collar where the box is. She opens it, and gasps at the ring. She looks at you, bent down on one knee. [line break]'Elily Daise, the time I've spent with you has been the best in my life.. I don't know how I survived without you. Will you marry me?'[paragraph break] Elily's eyes sparkle happily. A solitary tear rolls down her cheek and over her smile.";
+					increase score by 14;
+					end the game in victory;
+				if Weimaraner1 is in blackbox:
+					say "Elily takes the weimaraner puppy from you. 'He's adorable! I've always wanted a little weimaraner!' The puppy licks her nose, its tail wagging. Elily holds the weimaraner at arms length. 'Oh, he's perfect!' You can't contain your smile. 'What, what is this?' Elily's fingers slip under the collar where the box is. She opens it, and gasps at the ring. She looks at you, bent down on one knee. [line break]'Elily Daise, the time I've spent with you has been the best in my life.. I don't know how I survived without you. Will you marry me?'[paragraph break] Elily's eyes sparkle happily. A solitary tear rolls down her cheek and over her smile.";
+					increase score by 14;
+					end the game in victory;
+			otherwise:
+				say "Why don't you have a little wine to go with dinner before you break out the puppy?";
+		otherwise:
+			say "Why don't you eat dinner before you bring out the puppy?";
+	otherwise:
+		say "You don't want to open the bag just yet- you might wake up the puppy and then it will take forever for it to sleep again!"
+		
+Eaten1 is a thing. [dinner]
+Eaten2 is a thing. [wine]
+Instead of eating dinner:
+	say "You pull out two plates from under the foil-wrapped steaks. On each plate you put a prime rib, a heap of potatoes, and a spoonfull of steamed greens. You pass one plate to Elily. 'Bon appetit,' you say, and take a bite of the steak.[line break] 'Oh, Wade, it's delicious!'";
+	 increase score by 1;
+	now dinner is off-stage;
+	now Eaten1 is in blackbox.
+Instead of eating Pinot Noir:
+	if Eaten1 is not in blackbox:
+		say "You put your fork down and reach into the bag for the wine. You pour two glasses, and hand one to Elily. 'A toast,' you propose. 'To the best thing that ever happened to me.' Elily blushes, and taps glasses before taking a sip.";
+		 increase score by 1;
+		now Eaten2 is in blackbox;
+	otherwise:
+		say "You pull out two glasses from the bag and pour the wine into each. 'A toast,' you propose. 'To the best thing that ever happened to me.' Elily blushes, and taps glasses before taking a sip.";
+		 increase score by 1;
+		now Eaten2 is in Blackbox;
+	if Eaten2 is in blackbox:
+		say "You refil the glasses, pull Elily close, and sip while gazing at the flickering lights of the town in the distance."
+	
+		
+Instead of opening BlackBag2:
+	if player is in sky:
+		continue the action;
+	if player is in Beach:
+		continue the action;
+	otherwise:
+		say "You better leave the bag closed- you don't want to break the insulation seal (this IS your dinner).".
 
 
 
 [Path to Beach]
-
-
+Unknowing is a thing. It is in blackbox.
+[Instead of going east while in Main Street:
+	if unknowing is in blackbox:
+		say "Theres a tandem Bike vendor here. For this date, you and Elily will ride one of these bikes down to the beach and enjoy a home cooked picnic dinner. This is one of three date locations where you can propose to Elily: the second being a short trainride to the air balloon field, and the third being a limo ride to the most fancy restaurant within fifty miles, the Serata Romantica. Pick your location carefully. (you can always 'look' E, NE, or SE from main street to double check the location.)";
+		now unknowing is in Unicorn-Box;
+	if unknowing is Unicorn-Box:
+		if EngagementRing is in blackbox:
+			if GivenPuppy is in blackbox:
+				if Planning is in blackbox:
+					if FastenedRing is in Blackbox:
+						say "You head to the beach path. 'One, please,' you say to the tandem bike vendor. Elily walks up. She's wearing a long black dress that looks great under her red hair. [line break]'Oh, what a perfect thing to wear on a bike,' she says. 'I guess I'll just sit, and you can peddle!'";
+						now Tandem Bike is in PathtoBeach;
+						now player is in PathtoBeach;
+						now Elily is in PathtoBeach;
+						now player has NondescriptBag1;
+						now player has NondescriptBag2.]
+Instead of entering Tandem Bike:
+	say "You get onto the tandem bike, and hold it steady while Elily plops herself on, side-saddle style. You start biking to the beach, enjoying the gentle salt breeze on your faces and the whisper of the wind over the sand.";
+	 increase score by 1;
+	now player is in Beach;
+	now Elily is in Beach;
+	now Tandem Bike is in Beach.
+Tandem Bike is a rideable vehicle. The description is "An orange tandem bike."
+PathtoBeach is a room. The printed name is "Path to Beach". It is east of Main Street. "A well kept dirt path that connects main street to the beach, which is to the east."
 
 [Beach]
+Beach is a room. It is east of PathtoBeach. "The sand is still warm from the day and the beach is surprisingly empty. Gentle waves roll under a clear sky that is illuminated by a full moon and peppered with stars."
+After going to Beach when Beach is unvisited:
+	say "'Now, before I ask why you're holding two large, nondescript bags, I want you to tell me what this is all about.'[line break]'What? I have to have some ulterior motive? I can't just take you out for a nice dinner?' Elily laughs.[line break]'Well, What's for dinner?'"
+
+Instead of eating dinner:
+	say "You pull out two plates from under the foil-wrapped steaks. On each plate you put a prime rib, a heap of potatoes, and a spoonfull of steamed greens. You pass one plate to Elily. 'Bon appetit,' you say, and take a bite of the steak.[line break] 'Oh, Wade, it's delicious!'";
+	 increase score by 1;
+	now dinner is off-stage;
+	now Eaten1 is in blackbox.
+Instead of eating Pinot Noir:
+	if Eaten1 is not in blackbox:
+		say "You put your fork down and reach into the bag for the wine. You pour two glasses, and hand one to Elily. 'A toast,' you propose. 'To the best thing that ever happened to me.' Elily blushes, and taps glasses before taking a sip.";
+		 increase score by 1;
+		now Eaten2 is in blackbox;
+	otherwise:
+		say "You pull out two glasses from the bag and pour the wine into each. 'A toast,' you propose. 'To the best thing that ever happened to me.' Elily blushes, and taps glasses before taking a sip.";
+		 increase score by 1;
+		now Eaten2 is in Blackbox;
+	if Eaten2 is in blackbox:
+		say "You refil the glasses, pull Elily close, and sip while gazing at the flickering lights of far away words in the sky."
 
 
 
 [Limo to Italian Restaurant]
+[Instead of going southeast while in Main Street:
+	if unknowing is in blackbox:
+		say "The limo to take you to the most fancy restaurant within fifty miles, the Serata Romantica, is ready as soon as you are. This is one of three date locations where you can propose to Elily: the second being a short trainride to the air balloon field, and the third being a tandem bikeride to the beach with a lovely home cooked picnic dinner.";
+		now unknowing is in Unicorn-Box;
+	if unknowing is Unicorn-Box:
+		if EngagementRing is in blackbox:
+			if GivenPuppy is in blackbox:
+				if Planning is in blackbox:
+					if FastenedRing is in Blackbox:
+						say "You dust off your suit and walk towards the limo. Elily is already waiting there. She's wearing a long black dress that looks great under her red hair. 'Ma'am,' you say with a slight bow, extending your bent arm. She laughs and takes it.[line break]'Sir,' she says with a slight curtsey. You help her into the limo, then follow her in. 'Where are we going?' She asks, holding onto your arm while looking past you out the window to the lights flashing by.[line break]'Oh, you'll see.'";
+						now player is in OutsideSerataRomantica;
+						now Elily is in OutsideSerataRomantica;
+						now player has NondescriptBag1.]
 
 
+
+[outside serata romantica]
+OutsideSerataRomantica is a room. It is southeast of Main Street. The printed name is "Outside of the Serata Romantica". "The front steps of the Serata Romantica are of marble. A man in a suit opens the limo door for you, escorting Elily out. He uses his other, gloved hand, to guesture up the steps to the north."
 
 [Italian Restaurant]
+Serata Romantica is a room. It is north of OutsideSerataRomantica. "The most elegant restaurant for fifty miles. It serves exquisite cuisine."
+Window is scenery. It is in Dinner Table. The description is "The world outside is dark, but there's a full moon. You can see the reflection of it on the ocean. The waves gently roll over a man made stone dock. The night couldn't be more perfect."
+Instead of taking window:
+	say "You stand up, flex your muscles, grab firmly to either side of the window frame, and with a grunt, rip it from the wall. Elily, enthralled with your manliness, jumps up, claps her hands, and showers you in compliments. You are the MAN![paragraph break]Yeah, no. That's a window. You don't take that."
+After taking window for the first time: increase score by 1.
+After going to Serata Romantica when Serata Romantica is unvisited:
+	say "A host greets you.[line break]'Crow, for two,' you say. The host looks through his computer. [line break]'Ah, yes. Welcome, sir, ma'am. Nolan will be your waiter tonight.' A tall man dressed in an elegant black suit with a folded white cloth napkin over his arm bows slightly, and with his hand outstretched, says 'follow me,' and leads you two to a table next to the window. 'Ask if you need anything,' the waiter says with another bow, and leaves.";
+	 increase score by 1;
+	now player is in Dinner Chair;
+	now Elily is in Dinner Table.
+Dinner Table is a room. "You and Elily are sitting at a two person table by a window."
+Dinning Table is a scenery supporter in Dinner Table.
+DinnerMenu is a thing. It is fixed in place. The printed name is "Dinner Menu". Understand "menu" or "dinner menu" as DinnerMenu. The description is "PAN SEARED SALMON IN 'PUTTANESCA BROTH: a light and savory dish with hints of tomato, olives, anchovy, jalapeno, fennel, and zucchini.[line break]CIOPPINI: mussels, shrimp and fish simmered in white wine in a hearty mediterranean broth.[line break]MUSSELS ARRABIATA: steamed mussels with zesty arrabiata sauce, served with toasted foccacia.[line break]LOBSTER TAIL: 8oz lobster tail baked and basted in lemon butter, served with pan-seared brussel sprouts.[line break]PAPPARDELLE A LA SALSICCIA: wide flat noodles with homemade sausage with pomodoro sauce and parmesan.[line break]CITRUS-GLAZED PORK CHOPS: marinated in orange-sage vinaigrette and sered with chick peas, apples, and arrugula."
+Pan Seared Salmon is a thing. It is edible. The description is "A light and savory dish with hints of tamato, olives, anchovy, halapeno, fennel, and zuccini."
+Cioppini is a thing. It is edible. The description is "Mussels, shrimp, and fish simmered in white wine in a hearty mediterranean broth."
+Mussels Arrabiata is a thing. It is edible. The description is "Steamed mussels with zesty arrabiata sauce, served with toasted foccacia."
+Lobster Tail is a thing. It is edible. The description is "An eight ounce lobster tail baked and basted in lemon butter, served with pan-seared brussel sprouts."
+Pappardelle A La Salsiccia is a thing. It is edible. The description is "Wide and flat noodles with homemade sausage in pomodoro sauce and parmesan."
+Citrus-Glazed Pork Chops are a thing. It is edible. The description is "Pork chops marinated in orange-sage vinaigrette and sered with chick peas, apples, and arrugula."
+WineMenu is a thing. It is fixed in place. The printed name is "Wine Menu". Understand "menu" or "wine menu" as WineMenu. The description is "FRANCISCAN ESTATE/NAPA VALLEY, 2010 (CHARDONNAY)[line break]MONTASOLO, VENETO/ITALY, 2009 (PINOT GRIGIO)[line break]REX GOLIATH (MERLOT)[line break]RAVENSWOOD/CALIFORNIA, 2009 (ZINFANDEL)[line break]BLACK STALLION/NAPA VALLEY, 2009 (CABERNET SAUVIGNON)".
+Franciscan Estate is a thing. It is edible. The description is "A chardonnay, year 2010."
+Montasolo is a thing. It is edible. The description is "A pinot grigio, year 2009."
+Rex Goliath is a thing. It is edible. The description is "A merlot, of California."
+Ravenswood is a thing. It is edible. The description is "A zinfandel, year 2009."
+Black Stallion is a thing. It is edible. The description is "A cabernet, year 2009."
+
+Dinner Chair is an enterable scenery supporter in Dinner Table.
+Dinner Chair1 is an enterable scenery supporter in Dinner Table. The printed name is "Dinner Chair".
+
+Nolan is a man. He is in Dinner Table. Understand "waiter" as Nolan. The description is "A tall man in an elegant black suit. He has an air of kindness and giving." He is wearing a black suit.
+After examining DinnerMenu for the first time:
+	now LookedAtMenu is in blackbox.
+
+LookedAtMenu is a thing. [condition for talking to the waiter]
+[talking to waiter]
+Waiter0 is a thing. It is in blackbox. [double condition, checking for 'may i get a wine for you']
+Waiter1 is a thing. [now you order food]
+Waiter2 is a thing. [now order your wine]
+Waiter3 is a thing. [food is all given.]
+Waiter4 is a thing. [food has been served.]
+Waiter5 is a thing. [red velvet cake has been served]
+Waiter6 is a thing. [nolan is off-stage]
+Instead of talking to Nolan:
+	if DinnerMenu is not on Dinning Table:
+		say "'Here are your menus, sir. Let me know when you are ready.'";
+		now DinnerMenu is on Dinning Table;
+		now WineMenu is on Dinning Table;
+	if Waiter1 is not in blackbox:
+		if LookedAtMenu is in blackbox:
+			say "'Excuse me, waiter, I think we're ready,' you say to Nolan.[line break]'Very well, sir. Ma'am, what may I get for you?' Elily looks back into her menu.[line break]'I'll have the salsiccia, and a glass of whatever Wade has.'[line break]'Excellent choice. And you, sir? Your entre?'[line break](answer: 'answer…')";
+			now Waiter1 is in blackbox;
+	if Waiter2 is not in blackbox and Waiter0 is in Unicorn-box:
+		say "'May I bring a wine for you, sir?'";
+	if Waiter4 is in blackbox and waiter5 is not in blackbox:
+		say "Are you done with dinner, sir?'";
+		if player consents:
+			say "'Very well, sir, let me get this out of your way.' The waiter takes your dishes. 'I'll be right back,' he says. When he returns, he bears two plates of red velvet cake. 'On the house, sir, ma'am,' he says with a smile.";
+			now Red Velvet Cake is on Dinning Table;
+			now Pan Seared Salmon is off-stage;
+			now Cioppini is off-stage;
+			now Mussels Arrabiata is off-stage;
+			now Lobster Tail is off-stage;
+			now Pappardelle A La Salsiccia is off-stage;
+			now Citrus-Glazed Pork Chops are off-stage;
+			now Franciscan Estate is off-stage;
+			now Montasolo is off-stage;
+			now Rex Goliath is off-stage;
+			now Ravenswood is off-stage;
+			now Black Stallion is off-stage;
+			now Waiter5 is in blackbox;
+	if waiter5 is in blackbox and waiter6 is in Unicorn-Box:
+		say "'Waiter, we're done with the cake.'[line break]'Very good, sir. Did you enjoy it?'";
+		if player consents:
+			say "'I'm very glad, sir.'";
+			now Nolan is off-stage;
+			now Waiter6 is in blackbox;
+		otherwise:
+			say "'Oh, I'm very sorry to hear that. I hope next time it is better.'";
+			now Nolan is off-stage;
+			now Waiter6 is in blackbox.
+Instead of eating Red Velvet Cake:
+	now Waiter6 is in Unicorn-Box;
+	say "You take a bite of the cake. It melts in your mouth, whisking you off to a far away world where such a delicious food could be produced. Your mind wanders back to the mer kingdom… You snap out of it, and finish the cake.";
+	now Red Velvet Cake is off-stage.	
+
+Red Velvet Cake is a thing. It is edible. The description is "A slice of gorgeous two layer red velvet cake. It's incredibly moist. White chocolate shavings are pressed against the wall of the cake. Pretty much the best slice of cake you've ever had."
+Instead of answering Nolan that "pan seared salmon":
+	if Waiter1 is in blackbox:
+		say "'I'll have the salmon, please.'[line break]'Ah, an excellent choice. The chef does an impeccably wonderful job with the salmon. And a wine, sir?'";
+		now Waiter2 is in blackbox;
+		now Waiter0 is in unicorn-box;
+		now Pan Seared Salmon is in blackbox;
+	otherwise:
+		say "You need to talk to the waiter before you can order."
+Instead of answering Nolan that "salmon":
+	if Waiter1 is in blackbox:
+		say "'I'll have the salmon, please.'[line break]'Ah, an excellent choice. The chef does an impeccably wonderful job with the salmon. And a wine, sir?'";
+		now Waiter2 is in blackbox;
+		now Waiter0 is in unicorn-box;
+		now Pan Seared Salmon is in blackbox;
+	otherwise:
+		say "You need to talk to the waiter before you can order."
+Instead of answering Nolan that "cioppini":
+	if Waiter1 is in blackbox:
+		say "'I'll have the cioppini, please.'[line break]'Ah, an excellent choice. The chef does an impeccably wonderful job with the cioppini. And a wine, sir?'";
+		now Waiter2 is in blackbox;
+		now Waiter0 is in unicorn-box;
+		now cioppini is in blackbox;
+	otherwise:
+		say "You need to talk to the waiter before you can order."
+Instead of answering Nolan that "mussels arrabiata":
+	if Waiter1 is in blackbox:
+		say "'I'll have the mussels, please.'[line break]'Ah, an excellent choice. The chef does an impeccably wonderful job with the mussels. And a wine, sir?'";
+		now Waiter2 is in blackbox;
+		now Waiter0 is in unicorn-box;
+		now Mussels Arrabiata is in blackbox;
+	otherwise:
+		say "You need to talk to the waiter before you can order."
+Instead of answering Nolan that "arrabiata":
+	if Waiter1 is in blackbox:
+		say "'I'll have the mussels, please.'[line break]'Ah, an excellent choice. The chef does an impeccably wonderful job with the mussels. And a wine, sir?'";
+		now Waiter2 is in blackbox;
+		now Waiter0 is in unicorn-box;
+		now Mussels Arrabiata is in blackbox;
+	otherwise:
+		say "You need to talk to the waiter before you can order."
+Instead of answering Nolan that "mussels":
+	if Waiter1 is in blackbox:
+		say "'I'll have the mussels, please.'[line break]'Ah, an excellent choice. The chef does an impeccably wonderful job with the mussels. And a wine, sir?'";
+		now Waiter2 is in blackbox;
+		now Waiter0 is in unicorn-box;
+		now Mussels Arrabiata is in blackbox;
+	otherwise:
+		say "You need to talk to the waiter before you can order."
+Instead of answering Nolan that "lobster tail":
+	if Waiter1 is in blackbox:
+		say "'I'll have the lobster, please.'[line break]'Ah, an excellent choice. The chef does an impeccably wonderful job with the lobster. And a wine, sir?'";
+		now Waiter2 is in blackbox;
+		now Waiter0 is in unicorn-box;
+		now Lobster Tail is in blackbox;
+	otherwise:
+		say "You need to talk to the waiter before you can order."
+Instead of answering Nolan that "lobster":
+	if Waiter1 is in blackbox:
+		say "'I'll have the lobster, please.'[line break]'Ah, an excellent choice. The chef does an impeccably wonderful job with the lobster. And a wine, sir?'";
+		now Waiter2 is in blackbox;
+		now Waiter0 is in unicorn-box;
+		now Lobster Tail is in blackbox;
+	otherwise:
+		say "You need to talk to the waiter before you can order."
+Instead of answering Nolan that "pappardelle a la salsiccia":
+	if Waiter1 is in blackbox:
+		say "'I'll have the pappardelle, please.'[line break]'Ah, an excellent choice. The chef does an impeccably wonderful job with the homemade sausage. And a wine, sir?'";
+		now Waiter2 is in blackbox;
+		now Waiter0 is in unicorn-box;
+		now Pappardelle A La Salsiccia is in blackbox;
+	otherwise:
+		say "You need to talk to the waiter before you can order."
+Instead of answering Nolan that "pappardelle":
+	if Waiter1 is in blackbox:
+		say "'I'll have the pappardelle, please.'[line break]'Ah, an excellent choice. The chef does an impeccably wonderful job with the homemade sausage. And a wine, sir?'";
+		now Waiter2 is in blackbox;
+		now Waiter0 is in unicorn-box;
+		now Pappardelle A La Salsiccia is in blackbox;
+	otherwise:
+		say "You need to talk to the waiter before you can order."
+Instead of answering Nolan that "salsiccia":
+	if Waiter1 is in blackbox:
+		say "'I'll have the pappardelle, please.'[line break]'Ah, an excellent choice. The chef does an impeccably wonderful job with the homemade sausage. And a wine, sir?'";
+		now Waiter2 is in blackbox;
+		now Waiter0 is in unicorn-box;
+		now Pappardelle A La Salsiccia is in blackbox;
+	otherwise:
+		say "You need to talk to the waiter before you can order."
+Instead of answering Nolan that "citrus-glazed pork chops":
+	if Waiter1 is in blackbox:
+		say "'I'll have the pork chops, please.'[line break]'Ah, an excellent choice. The chef does an impeccably wonderful job with the pork chops. And a wine, sir?'";
+		now Waiter2 is in blackbox;
+		now Waiter0 is in unicorn-box;
+		now Citrus-Glazed Pork Chops are in blackbox;
+	otherwise:
+		say "You need to talk to the waiter before you can order."
+Instead of answering Nolan that "citrus glazed pork chops":
+	if Waiter1 is in blackbox:
+		say "'I'll have the pork chops, please.'[line break]'Ah, an excellent choice. The chef does an impeccably wonderful job with the pork chops. And a wine, sir?'";
+		now Waiter2 is in blackbox;
+		now Waiter0 is in unicorn-box;
+		now Citrus-Glazed Pork Chops are in blackbox;
+	otherwise:
+		say "You need to talk to the waiter before you can order."
+Instead of answering Nolan that "pork chops":
+	if Waiter1 is in blackbox:
+		say "'I'll have the pork chops, please.'[line break]'Ah, an excellent choice. The chef does an impeccably wonderful job with the pork chops. And a wine, sir?'";
+		now Waiter2 is in blackbox;
+		now Waiter0 is in unicorn-box;
+		now Citrus-Glazed Pork Chops are in blackbox;
+	otherwise:
+		say "You need to talk to the waiter before you can order."
+[wine]
+Instead of answering Nolan that "franciscan estate":
+	if Waiter2 is in blackbox:
+		say "'I'll have the franciscan estate, please.'[line break]'Ah, an excellent choice. I will be back shortly with your orders. In the meantime, enjoy one another's company.'";
+		now Waiter3 is in blackbox;
+		now Waiter0 is in unicorn-box;
+		now Franciscan Estate is in blackbox;
+	otherwise:
+		say "You need to talk to the waiter before you can order."
+Instead of answering Nolan that "montasolo":
+	if Waiter2 is in blackbox:
+		say "'I'll have the montasolo, please.'[line break]'Ah, an excellent choice. I will be back shortly with your orders. In the meantime, enjoy one another's company.'";
+		now Waiter3 is in blackbox;
+		now Montasolo is in blackbox;
+	otherwise:
+		say "You need to talk to the waiter before you can order."
+Instead of answering Nolan that "rex goliath":
+	if Waiter2 is in blackbox:
+		say "'I'll have the rex goliath, please.'[line break]'Ah, an excellent choice. I will be back shortly with your orders. In the meantime, enjoy one another's company.'";
+		now Waiter3 is in blackbox;
+		now Rex Goliath is in blackbox;
+	otherwise:
+		say "You need to talk to the waiter before you can order."
+Instead of answering Nolan that "goliath":
+	if Waiter2 is in blackbox:
+		say "'I'll have the rex goliath, please.'[line break]'Ah, an excellent choice. I will be back shortly with your orders. In the meantime, enjoy one another's company.'";
+		now Waiter3 is in blackbox;
+		now Rex Goliath is in blackbox;
+	otherwise:
+		say "You need to talk to the waiter before you can order."
+Instead of answering Nolan that "ravenswood":
+	if Waiter2 is in blackbox:
+		say "'I'll have the ravenswood, please.'[line break]'Ah, an excellent choice. I will be back shortly with your orders. In the meantime, enjoy one another's company.'";
+		now Waiter3 is in blackbox;
+		now Ravenswood is in blackbox;
+	otherwise:
+		say "You need to talk to the waiter before you can order."
+Instead of answering Nolan that "black stallion":
+	if Waiter2 is in blackbox:
+		say "'I'll have the black stallion, please.'[line break]'Ah, an excellent choice. I will be back shortly with your orders. In the meantime, enjoy one another's company.'";
+		now Waiter3 is in blackbox;
+		now Black Stallion is in blackbox;
+	otherwise:
+		say "You need to talk to the waiter before you can order."
+Instead of answering Nolan that "stallion":
+	if Waiter2 is in blackbox:
+		say "'I'll have the stallion, please.'[line break]'Ah, an excellent choice. I will be back shortly with your orders. In the meantime, enjoy one another's company.'";
+		now Waiter3 is in blackbox;
+		now black stallion is in blackbox;
+	otherwise:
+		say "You need to talk to the waiter before you can order."
+[dinner]
+Every Turn:
+	if Waiter2 is in blackbox:
+		if Waiter3 is in blackbox:
+			if Pan Seared Salmon is in blackbox:
+				say "The waiter returns with your plate of salmon and Elily's bowl of pappardelle a la salsiccia. 'Una bella cena,' Nolan says.";
+				now Waiter4 is in blackbox;
+				 increase score by 1;
+				now Pan Seared Salmon is on Dinning Table;
+				now Pappardelle A La Salsiccia is on Dinning Table;
+			if Cioppini is in blackbox:
+				say "The waiter returns with your plate of cioppini and Elily's bowl of pappardelle a la salsiccia. 'Una bella cena,' Nolan says.";
+				now Waiter4 is in blackbox;
+				now Cioppini is on Dinning Table;
+				 increase score by 1;
+				now Pappardelle A La Salsiccia is on Dinning Table;
+			if Mussels Arrabiata is in blackbox:
+				say "The waiter returns with your bowl of mussels arrabiata and Elily's bowl of pappardelle a la salsiccia. 'Una bella cena,' Nolan says.";
+				 increase score by 1;
+				now Waiter4 is in blackbox;
+				now Mussels Arrabiata is on Dinning Table;
+				now Pappardelle A La Salsiccia is on Dinning Table;
+			if Lobster Tail is in blackbox:
+				say "The waiter returns with your lobster tail and Elily's bowl of pappardelle a la salsiccia. 'Una bella cena,' Nolan says.";
+				now Waiter4 is in blackbox;
+				now Lobster Tail is on Dinning Table;
+				 increase score by 1;
+				now Pappardelle A La Salsiccia is on Dinning Table;
+			if Pappardelle A La Salsiccia is in blackbox:
+				say "The waiter returns with two bowls of pappardelle a la salsiccia. 'Una bella cena,' Nolan says.";
+				now Waiter4 is in blackbox;
+				now Pappardelle A La Salsiccia is on Dinning Table;
+				 increase score by 1;
+			if Citrus-Glazed Pork Chops are in blackbox:
+				say "The waiter returns with your plate of pork chops and Elily's bowl of pappardelle a la salsiccia. 'Una bella cena,' Nolan says.";
+				now Citrus-Glazed Pork Chops are on Dinning Table;
+				now Pappardelle A La Salsiccia is on Dinning Table;
+				 increase score by 1;
+				now Waiter4 is in blackbox;
+			if Franciscan Estate is in blackbox:
+				say "With a smile, Nolan fills two glasses with franciscan estate. 'Have a wonderful dinner,' he says. 'Let me know if I can help you with anything.'";
+				now Franciscan Estate is on Dinning Table;
+				 increase score by 1;
+				now Waiter4 is in blackbox;
+			if Montasolo is in blackbox:
+				say "With a smile, Nolan fills two glasses with montasolo. 'Have a wonderful dinner,' he says. 'Let me know if I can help you with anything.'";
+				now Waiter4 is in blackbox;
+				now Montasolo is on Dinning Table;
+				 increase score by 1;
+			if Rex Goliath is in blackbox:
+				say "With a smile, Nolan fills two glasses with rex goliath. 'Have a wonderful dinner,' he says. 'Let me know if I can help you with anything.'";
+				now Waiter4 is in blackbox;
+				now Rex Goliath is on Dinning Table;
+				 increase score by 1;
+			if Ravenswood is in blackbox:
+				say "With a smile, Nolan fills two glasses with ravenswood. 'Have a wonderful dinner,' he says. 'Let me know if I can help you with anything.'";
+				now Waiter4 is in blackbox;
+				now Ravenswood is on Dinning Table;
+				 increase score by 1;
+			if Black Stallion is in blackbox:
+				say "With a smile, Nolan fills two glasses with black stallion. 'Have a wonderful dinner,' he says. 'Let me know if I can help you with anything.'";
+				now Black Stallion is on Dinning Table;
+				 increase score by 1;
+				now Waiter4 is in blackbox.
+				
+
+[overall talking to elily]
+Instead of talking to Elily:
+	if SleepingGirl is in blackbox:
+		if player is in Bedroom:
+			say "Elily is currently napping. It would be rude to disturb her.";
+	if Warning1 is in Unicorn-box and planning is not in blackbox:
+		say "You walk into the kitchen, Elily is drinking a glass of milk. 'Hey,' you say. [line break]'Hey! How are you? I haven't seen you all day.' She gives you a hug.[line break] 'Ha, it's been a long day. Look, go get ready- I've got something special for dinner tonight.' With a knowing smile, you leave the kitchen.";
+		now Planning is in Blackbox;
+	if Planning is in BlackBox:
+		if player is in Kitchen:
+			say "'Almost ready? We have to go soon! I'll meet you down there.'";
+			now player is in Your Apartment;
+	if player is in Hot Air Balloon Field:
+		say "'Oh, Wade, this looks like so much fun!'";
+	if player is in Sky:
+		if eaten1 is not in blackbox and eaten2 is not in blackbox:
+			say "'Now, before I ask why you're holding two large, nondescript bags, I want you to tell me what this is all about.'[line break]'What? I have to have some ulterior motive? I can't just take you out for a fun dinner?' Elily laughs. [line break]'Well, what's for dinner?'";
+		if eaten1 is in blackbox and eaten2 is not in blackbox:
+			say "'Oh, dinner was amazing. But do you have anything to drink in that bag of yours?'";
+		if eaten2 is in blackbox and eaten1 is not in blackbox:
+			say "Your growling stomach interrupts you.";
+		if eaten2 is in blackbox and eaten1 is in blackbox:
+			say "'Dinner was delicious, but, now if I might ask, what's in the other bag?'";
+	if player is in Beach:
+		if eaten1 is not in blackbox and eaten2 is not in blackbox:
+			say "'Now, before I ask why you're holding two large, nondescript bags, I want you to tell me what this is all about.'[line break]'What? I have to have some ulterior motive? I can't just take you out for a fun dinner?' Elily laughs. [line break]'Well, what's for dinner?'";
+		if eaten1 is in blackbox and eaten2 is not in blackbox:
+			say "'Oh, dinner was amazing. But do you have anything to drink in that bag of yours?'";
+		if eaten2 is in blackbox and eaten1 is not in blackbox:
+			say "Your growling stomach interrupts you.";
+		if eaten2 is in blackbox and eaten1 is in blackbox:
+			say "'Dinner was delicious, but, now if I might ask, what's in the other bag?'";
+	if player is on Dinner Chair:
+		if Waiter1 is not in blackbox:
+			say "'Now, before I ask why you're holding a large, nondescript bag, I want you to tell me what this is all about.'[line break]'What? I have to have some ulterior motive? I can't just take you out for a nice dinner?' Elily laughs. [line break]'Well, this is a very nice dinner! Let's eat.' She picks up one of the two menus.";
+			now DinnerMenu is on Dinning Table;
+			now WineMenu is on Dinning Table;
+		if Waiter1 is in blackbox and waiter2 is not in blackbox:
+			say "'I've made my order, it's your turn to order!'";
+		if Waiter2 is in blackbox and waiter3 is not in blackbox:
+			say "'I'm having whatever you're having, so pick well.'";
+		if waiter4 is in blackbox and Waiter5 is not in blackbox:
+			say "'Wow, this dinner is amazing! This is so nice, Wade.'";
+		if Waiter5 is in blackbox and waiter6 is not in blackbox:
+			say "'This is the best cake I've ever had.. these white chocolate shavings really make it special.'";
+		if Waiter6 is in blackbox:
+			say "'Elily, I've got a little something for you.' You reach into the bag and pull out the sleeping puppy. Elily's eyes light up. 'Is that a… that can't be… oh my goodness!'";
+			if Husky is in blackbox:
+				say "Elily takes the husky puppy from you. 'She's adorable! I've always wanted a little husky!' The puppy licks her nose, its tail wagging. Elily holds the husky at arms length. 'Oh, she's perfect!' You can't contain your smile. 'What, what is this?' Elily's fingers slip under the collar where the box is. She opens it, and gasps at the ring. She looks at you, bent down on one knee. [line break]'Elily Daise, the time I've spent with you has been the best in my life.. I don't know how I survived without you. Will you marry me?'[paragraph break] Elily's eyes sparkle happily. A solitary tear rolls down her cheek and over her smile.";
+				increase score by 14;
+				end the game in victory;
+			if Shepherd is in blackbox:
+				say "Elily takes the shepherd puppy from you. 'He's adorable! I've always wanted a little shepherd!' The puppy licks her nose, its tail wagging. Elily holds the shepherd at arms length. 'Oh, he's perfect!' You can't contain your smile. 'What, what is this?' Elily's fingers slip under the collar where the box is. She opens it, and gasps at the ring. She looks at you, bent down on one knee. [line break]'Elily Daise, the time I've spent with you has been the best in my life.. I don't know how I survived without you. Will you marry me?'[paragraph break] Elily's eyes sparkle happily. A solitary tear rolls down her cheek and over her smile.";
+				increase score by 14;
+				end the game in victory;
+			if Retriever is in blackbox:
+				say "Elily takes the golden retriever puppy from you. 'She's adorable! I've always wanted a little retriever!' The puppy licks her nose, its tail wagging. Elily holds the husky at arms length. 'Oh, she's perfect!' You can't contain your smile. 'What, what is this?' Elily's fingers slip under the collar where the box is. She opens it, and gasps at the ring. She looks at you, bent down on one knee. [line break]'Elily Daise, the time I've spent with you has been the best in my life.. I don't know how I survived without you. Will you marry me?'[paragraph break] Elily's eyes sparkle happily. A solitary tear rolls down her cheek and over her smile.";
+				increase score by 14;
+				end the game in victory;
+			if Weimaraner1 is in blackbox:
+				say "Elily takes the weimaraner puppy from you. 'He's adorable! I've always wanted a little weimaraner!' The puppy licks her nose, its tail wagging. Elily holds the weimaraner at arms length. 'Oh, he's perfect!' You can't contain your smile. 'What, what is this?' Elily's fingers slip under the collar where the box is. She opens it, and gasps at the ring. She looks at you, bent down on one knee. [line break]'Elily Daise, the time I've spent with you has been the best in my life.. I don't know how I survived without you. Will you marry me?'[paragraph break] Elily's eyes sparkle happily. A solitary tear rolls down her cheek and over her smile.";
+				increase score by 14;
+				end the game in victory.
+
+			
+
+[scene 4 test]
+[Understand "proposal" as pRoposal. pRoposal is an action out of world.
+Carry out pRoposal:
+	move player to Main Street;
+	move Room Key to player;
+	now Unknowing is in blackbox;
+	now Husky is in blackbox;
+	now EngagementRing is in blackbox;
+	now GivenPuppy is in blackbox;
+	now Planning is in blackbox;
+	now FastenedRing is in blackbox;
+	move Engagement Ring3 to player;
+	move Siberian Husky Puppy to player.]
+
+
+
+
 
 
 
