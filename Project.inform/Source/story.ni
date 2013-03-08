@@ -13,9 +13,15 @@ To say exit list:
 	repeat with way running through directions: 
 		let place be the room way from the location; 
 		if place is a room, say " [way]".
-
+		
+The examine devices rule is not listed in any rulebook.
 
 Include Rideable Vehicles by Graham Nelson.
+
+The description of the player is "Ah, looking at yourself. Such a vain thing to do.[if player is in Hot Air Balloon Field] You're wearing a nice dress shirt, a dark red tie (to match her hair) and black slacks.[end if][if player is in Sky] You're wearing a nice dress shirt, a dark red tie (to match her hair) and black slacks.[end if][if player is in OutsideSerataRomantica] You are wearing a black suit.[end if][if player is in Dinner Table] You are wearing a black suit.[end if]"
+ 
+[Understand "push [lever]" as pulling.
+Understand "press [lever]" as pulling.]
 
 Part 1 - The Campfire
 
@@ -126,6 +132,9 @@ Instead of kissing something that is not a person:
 	otherwise:
 		say "You lean forward to kiss [The noun], but think better of it. [The noun] do[if the noun is not plural-named]es[end if]n't look very sanitary."
 Grammar is backdrop. Grammar is everywhere.
+After examining Grammar for the first time: increase score by 1.
+After examining player for the first time: increase score by 1.
+After examining girlfriend for the first time: increase score by 1.
 Instead of examining grammar:
 	say "Yeah, like you totally got an 'A' on every grammar test that you took.[if examining for the first time]Wow. I can't believe you actually caught that. (You're the first person to notice!)[otherwise]Don't you have something better to do?"
 Understand "light [something] on fire" as lighting on fire. Lighting on fire is an action applying to one thing.
@@ -145,7 +154,9 @@ Check slapping:
 Blanket is scenery in Campfire. The description is "A fuzzy blue blanket that she's had as long as you've known her."
 Instead of opening blanket:
 	say "You reach for the blanket but she snatches it away from you. I can see that your date is going well. She's totally enjoying herself. Good job."
-The description of the player is "You tried looking in a mirror once, but it broke. I'd advise you not try that again. But it's okay, really, because you do not have a mirror. You're wearing dark blue jeans, covered shoes and a relatively nice dark-green t-shirt. Your hair is black and you stand around six feet."
+Instead of taking blanket:
+	say "You reach for the blanket but she snatches it away from you. I can see that your date is going well. She's totally enjoying herself. Good job."
+
 Instead of singing:
 	say "You have a lovely voice, but this isn't the time or place for serenades."	
 Instead of swearing obscenely:
@@ -178,7 +189,7 @@ Instead of switching on branches when player is not in Campfire:
 	say "If you light these here, you're going to have to carry an armful of fire all the way back to the campfire. Are you sure?";
 	if player consents:
 		say "The fire turns out to be too much to bear, and burns you severely.";
-		end the game in death
+		end the game in death.
 
 [Campfire items]
 sleeping bags are a thing. They are in Campfire. They are fixed in place. The description is "Two army-green sleeping bags. They're very warm and clean, but aren't in the best physical condition due to years of use."
@@ -214,7 +225,7 @@ After examining the holly tree for the first time: increase score by 1.
 Owl is scenery in woods. The description is "You can't see the bird, but the echo of its last half-'hoot' rings in your ears."
 Instead of taking owl:
 	say "It's hard to take something that you can't even see."
-Branches are a device. Branches are on the holly tree.
+Branches are a device. Branches are undescribed. Branches are on the holly tree. The description is "Some old dead and try branches.[if switched on] They're currently ablaze."
 Understand "light [branches]" as switching on.
 After switching on branches:
 		say "You kindle a small fire, and your girlfriend is thankful for the warmth. However, you forgot to pack any food and the extinction of the first fire cost you the last of the daylight hours."
@@ -289,7 +300,7 @@ Darkness is a backdrop in Dark Places. Darkness is backdrop in Hole. Understand 
 After going from the hole:
 	say "You clamber desperately back up the rotting rope ladder. Your flashlight flickers back to life.";
 	now the flashlight is switched on.
-The wheelbarrow is scenery in outhouse. The description is "Small plants had made their homes between the cracks in the wood and cast eerie shadows across the ground. [If player is not carrying hammer]Here you find a hammer.[Otherwise]You see nothing else here."
+The wheelbarrow is scenery in outhouse. The description is "Small plants have made their homes between the cracks in the wood and cast eerie shadows across the ground. [If player is not carrying hammer]Here you find a hammer.[Otherwise]You see nothing else here."
 
 Before examining wheelbarrow for the first time:
 	say "Holding your flashlight with two hands, like a sword, you make your way to an old overturned wooden wheelbarrow."
@@ -705,6 +716,8 @@ Instead of talking to Hayden:
 [Park]
 Tall Trees are scenery in Park. The description is "There are a couple black cherry trees and a willow tree."
 Black Cherry Trees are scenery in Park. The description is "There are only three of them. Their leaves are smooth and shiny."
+PicnicBench is an enterable scenery supporter in Park. The printed name is "Picnic Bench". Understand "picnic bench" or "bench" as PicnicBench. The description is "A lovely stereotypical wooden picnic bench. It's relatively new, and therefore has avoided any graffiti."
+After examining PicnicBench for the first time: increase score by 1.
 After examining Black Cherry Trees for the first time: increase score by 1.
 Willow Tree is scenery in Park. The description is "The willow tree is definately the oldest thing in the park. Its long leaves and branches brush the ground, and its trunk is scarred."
 After examining Willow Tree for the first time: increase score by 1.
@@ -728,7 +741,7 @@ Instead of taking Basket:
 	now player has Picnic-Basket;
 	now Basket is off-stage.
 Basket is scenery in Park. The description is "You open the lid of the picnic basket to reveal an untouched cheesecake."
-Fancy-Cheesecake is food. It is cooked.
+Fancy-Cheesecake is food. It is cooked. The printed name is "Cheesecake". Understand "cheesecake" as Fancy-cheesecake. The description is "It looks fancy! The sticker says 'Fruit Sampter (strawberry, cherry, pineapple, blueberry)'."
 After eating Fancy-Cheesecake: increase score by 1.
 Cheesecake is scenery. It is in Park. The description is "It looks fancy! The sticker says 'Fruit Sampler (strawberry, cherry, pineapple, blueberry)'."
 Instead of taking Cheesecake:
@@ -893,7 +906,6 @@ Instead of talking to Ms Baker:
 	if player has Payment Check:
 		say "'Here, Ms. Baker.' You hand over the check.[paragraph break]'Oh, thank you dear! And here's a little something for you.' Ms. Baker hands you a nine coin piece.";
 		now player has Nine Coin Piece;
-		increase score by 1;
 		now Payment Check is in Baker Box.
 	
 
@@ -983,7 +995,8 @@ After LookingFor Screen Protectors for the first time: increase score by 1.]
 
 [School]
 Rule for printing the name of Mr DK: say "Mr. DK".
-Mr DK is a man. He is in School. He is wearing dark slacks, black shoes, and an Aloha shirt.
+Mr DK is a man. He is in School. He is wearing dark slacks, black shoes, and an Aloha shirt. The description is "Mr. DK is a man of average hight. He is wearing dark slacks, black shoes, and an Aloha shirt. He's playing with his iPad.".
+iPad1 is scenery. It is in School. Understand "iPad" as iPad1. The description is "A popular tablet device made by Apple."
 Instead of talking to Mr DK:
 	if player has Steve Jobs:
 		say "Why don't you just give him Steve Jobs? It's going to be weird talking to him holding that giant cutout.";
@@ -1009,7 +1022,16 @@ Instead of talking to The Teller:
 	if player has Simple Key:
 		say "'Hello, I'm Wade-'[paragraph break]'I know who you are. Do you have your key?' You rummage through your pockets and pull out the key you found at the park. 'Ah, very good, sir. Right this way.' The teller leads you to your vault, 'vault 316,' then returns to the front of the bank.";
 		now Vault 316 is in Bank;
-		 increase score by 1;
+		now One Coin piece is in Vault 316;
+		move One And A Half Coin Piece to Vault 316;
+		move Two-Coin Piece to Vault 316;
+		move Two And A Half Coin Piece to Vault 316;
+		move Three Coin Piece to Vault 316;
+		move Five Coin Piece to Vault 316;
+		move Six Coin Piece to Vault 316;
+		move Eight Coin Piece to Vault 316;
+		move Ten Coin Piece to Vault 316;
+		increase score by 1;
 	otherwise:
 		say "Hello, I'm Wade-'[paragraph break]'I know who you are. Do you have your key?' You rummage through your pockets, but come up empty. 'No, I must have dropped it in the park or something.' The teller is unamused. 'I can't open your vault unless you have the key. Come back after you find it.'"
 
@@ -1021,6 +1043,7 @@ Check putting:
 	if noun is Monetary and second noun is wallet:
 		say "You put the coin in your wallet.";
 		now noun is in Wallet.
+		
 Vault 316 is a container. It is locked and lockable. It is fixed in place. Simple Key unlocks Vault 316.
 One Coin Piece is a Monetary. It is in Vault 316.
 One And A Half Coin Piece is a Monetary. It is in Vault 316.
@@ -1081,7 +1104,7 @@ Instead of going to Forest:
 [Main Trail1]
 MainTrail1 is a room. It is north of Forest. The printed name of MainTrail1 is "Main Trail". "You step onto the main trail. To the west, is the first trail. To the north, the main trail continues on."
 FirstTrail is a room. It is west of MainTrail1. The printed name is "First Trail". "You turn west off of the main trial onto the first trail."
-T1-1 is a room. It is south of First Trail. The printed name is "First Trail". "You come to a dead end with only one way to turn."
+T1-1 is a room. It is south of FirstTrail. The printed name is "First Trail". "You come to a dead end with only one way to turn."
 T1-2 is a room. It is west of T1-1. The printed name is "First Trail". "You come to a dead end with only one way to turn."
 T1-3 is a room. It is north of T1-2. The printed name is "First Trail". "You come to a dead end with only one way to turn."
 T1-4 is a room. It is east of T1-3. The printed name is "First Trail". "You come to a dead end."
@@ -1096,9 +1119,9 @@ T2-2 is a room. It is east of T2-1. The printed name is "Second Trail". "You com
 T2-3 is a room. It is east of T2-2. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
 T2-4 is a room. It is south of T2-3. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
 T2-5 is a room. It is east of T2-4. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
-T2-6 is a room. It is south of T2-4. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
-T2-7 is a room. It is east of T2-5. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
-T2-8 is a room. It is east of T2-2-3. The printed name is "Second Trail". "You come to a dead end."
+T2-6 is a room. It is south of T2-5. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
+T2-7 is a room. It is east of T2-6. The printed name is "Second Trail". "You come to a dead end with only one way to turn."
+T2-8 is a room. It is east of T2-7. The printed name is "Second Trail". "You come to a dead end."
 After going to T2-8 for the first time: increase score by 1.
 
 [main trail3]
@@ -1109,8 +1132,8 @@ T3-2 is a room. It is east of T3-1. The printed name is "Third Trail". "You come
 T3-3 is a room. It is north of T3-2. The printed name is "Third Trail". "You come to a dead end with only one way to turn."
 T3-4 is a room. It is west of T3-3. The printed name is "Third Trail". "You come to a dead end."
 FourthTrail is a room. It is east of MainTrail3. The printed name is "Fourth Trail". "You turn east off of the main trail onto the fourth trail."
-T4-1 is a room. It is south of FourthTrail. The printed name is "Third Trail". "You come to a dead end with only one way to turn."
-T4-2 is a room. It is east of T4-1. The printed name is "Third Trail". "You come to a dead end."
+T4-1 is a room. It is south of FourthTrail. The printed name is "Fourth Trail". "You come to a dead end with only one way to turn."
+T4-2 is a room. It is east of T4-1. The printed name is "Fourth Trail". "You come to a dead end."
 After going to T3-4 for the first time: increase score by 1.
 After going to T4-2 for the first time: increase score by 1.
 
@@ -1127,14 +1150,15 @@ T6-1-3 is a room. It is east of T6-1-2. The printed name is "Sixth Trail". "You 
 T6-1-4 is a room. It is north of T6-1-3. The printed name is "Sixth Trail". "You come to a dead end with only one way to turn."
 T6-1-5 is a room. It is east of T6-1-4. The printed name is "Sixth Trail". "You come to a dead end with only one way to turn."
 T6-1-6 is a room. It is south of T6-1-5. The printed name is "Sixth Trail". "You come to a dead end with only one way to turn."
-T6-1-7 is a room. It is west of T6-1-6. The printed name is "Sixth Trail". "You come to a dead end."
-After going to T6-1-7 for the first time: increase score by 1.
+T6-1-7 is a room. It is west of T6-1-6. The printed name is "Sixth Trail". "You come to the end of the trail."
+After going to T6-1-7 for the first time: increase score by 5.
+
 
 [main trail4]
 MainTrail4 is a room. It is north of MainTrail3. The printed name of MainTrail4 is "Main Trail". "You continue along the main trail. The fifth trail turns off to the west."
 FifthTrail is a room. It is west of MainTrail4. The printed name is "Fifth Trail". "You turn west off of the main trail onto the fifth trail."
 T5-1 is a room. It is north of FifthTrail. The printed name is "Fifth Trail". "You turn and hit a dead end."
-T5-2 is a room. It is south of T5-1. The printed name is "Fifth Trail". "You turn and hit a dead end."
+T5-2 is a room. It is south of T5-1. The printed name is "Fifth Trail". "You turn and hit a dead end with only one way to turn."
 T5-3 is a room. It is east of T5-2. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
 T5-4 is a room. It is south of T5-3. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
 T5-5 is a room. It is east of T5-4. The printed name is "Fifth Trail". "You come to a dead end with only one way to turn."
@@ -1203,6 +1227,7 @@ Part 3 - The Magic Realm
 
 [Town Rooms]
 Broken Lighthouse is a room. "A cliff drops off towards the ocean, with a tall lighthouse looming over. The ocean is dark blue and frothy from slamming against the sharp rocks at the base of the cliff. To the north is an old, unkept cobblestone path."
+Ocean is scenery. It is in Broken Lighthouse. The description is "Frothy white water mixed into dark cold waves."
 Cobblestone Path is a room. It is north of Broken Lighthouse. "Weeds grow up through between the stones. The lighthouse lays south while the town center sits north."
 Town Center is a room. It is north of Cobblestone Path. "The town center is a worn and dusty clearing to which the surrounding shops are circled around. The cobblestone path lies to the south. To the west is One Stop Alchemist, northwest is an armory, the blacksmith is north, a wand shop to the east, and a store called 'Beasts' to the southeast."
 One Stop Alchemist is a room. It is west of Town Center. "One Stop Alchemist is a potions shop. Dirty windows frame the door."
@@ -2840,7 +2865,6 @@ Instead of going east while in Main Street:
 				say "Don't forget the puppy!";
 		otherwise:
 			say "Don't forget the ring!".
-
 						
 
 Instead of going southeast while in Main Street:
