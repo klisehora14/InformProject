@@ -1,18 +1,18 @@
 ! Blurb file created by Inform build 6G60
 
-status "/Applications/Inform.app/Contents/Resources/Inform7/Extensions/Reserved/CblorbModel.html" "/Users/klisehora14/Desktop/Project.inform/Build/StatusCblorb.html"
+status "/Applications/Inform.app/Contents/Resources/Inform7/Extensions/Reserved/CblorbModel.html" "/Users/klisehora14/Desktop/Inform/Project Materials/Project.inform/Build/StatusCblorb.html"
 
 
 ! Identification
 
-project folder "/Users/klisehora14/Desktop/Project.inform"
-release to "/Users/klisehora14/Desktop/Project Materials/Release"
+project folder "/Users/klisehora14/Desktop/Inform/Project Materials/Project.inform"
+release to "/Users/klisehora14/Desktop/Inform/Project Materials/Project Materials/Release"
 
 ! Blorb instructions
 
-storyfile leafname "Project.gblorb"
-storyfile "/Users/klisehora14/Desktop/Project.inform/Build/output.ulx" include
-ifiction "/Users/klisehora14/Desktop/Project.inform/Metadata.iFiction" include
+storyfile leafname "An Experience.gblorb"
+storyfile "/Users/klisehora14/Desktop/Inform/Project Materials/Project.inform/Build/output.ulx" include
+ifiction "/Users/klisehora14/Desktop/Inform/Project Materials/Project.inform/Metadata.iFiction" include
 cover "/Applications/Inform.app/Contents/Resources/Inform7/Extensions/Reserved/DefaultCover.jpg"
 picture 1 "/Applications/Inform.app/Contents/Resources/Inform7/Extensions/Reserved/DefaultCover.jpg"
 
@@ -21,9 +21,9 @@ picture 1 "/Applications/Inform.app/Contents/Resources/Inform7/Extensions/Reserv
 placeholder [IFID] = "45B2DBE2-579F-4795-A88D-8D3AC6D86351"
 placeholder [RELEASE] = "1"
 placeholder [YEAR] = "2013"
-placeholder [TITLE] = "Project"
+placeholder [TITLE] = "An Experience"
 placeholder [AUTHOR] = "Kapri Lisehora"
-placeholder [BLURB] = "An unfortunately memorable weekend"
+placeholder [BLURB] = "A work of interactive fiction."
 
 ! Other material to release
 

@@ -232,10 +232,10 @@ After switching on branches:
 After switching on branches for the first time: increase score by 1.
 		
 [cabin]
-The cabin is a room. It is south of the Campfire. The description is "It appears to be a small cabin with an outhouse to the east. The windows are boarded up and the oak door looks solid."
+The cabin exterior is a room. It is south of the Campfire. The description is "It appears to be a small cabin with an outhouse to the east. The windows are boarded up and the oak door looks solid."
 After going south from Campfire for the first time:
 	say "Brandishing your faithful flashlight you cautiously make your way to the spooky old abandoned cabin you passed on your way to the camping location. Wind rushes through the top of the nearby woods and over your head, only to plummet down the rocky cliff. The cabin looms before you. There's an outhouse to the east."
-The oak door is a door. It is south of cabin. The description of oak door is "The door is made of old, thick oak planks and has an iron cage over the peephole. A bullet is lodged to the right of the bars. [if master lock is unbroken] A simple Master lock keeps the door closed.[Otherwise] Pieces of a broken lock dangle uselessly." Oak door is closed and openable. It is locked and lockable.
+The oak door is a door. It is south of cabin exterior. The description of oak door is "The door is made of old, thick oak planks and has an iron cage over the peephole. A bullet is lodged to the right of the bars. [if master lock is unbroken] A simple Master lock keeps the door closed.[Otherwise] Pieces of a broken lock dangle uselessly." Oak door is closed and openable. It is locked and lockable.
 Bullet is scenery. It is in cabin. It is undescribed. The description is "A spent .45".
 
 
@@ -251,7 +251,7 @@ The grass is the floor in Dirt. The description is "The ground is composed of di
 The Floor is the floor in the cabin. The description is "Your footfalls create a dull hollow sound on the frayed wooden planks that are tightly nailed together to create a level floor."]
 
 [The Outhouse]
-The outhouse is a room. The outhouse is east of the cabin. "You arrive at an old wooden outhouse. You notice an overturned wheelbarrow behind it. With a heavy push the door gives way to a small room full of stale air and forgotten spiderwebs. Up on a shelf is a toolbox. At your feet lies a trapdoor and the toilet function is nestled in the corner to your right."
+The outhouse is a room. The outhouse is east of the cabin exterior. "You arrive at an old wooden outhouse. You notice an overturned wheelbarrow behind it. With a heavy push the door gives way to a small room full of stale air and forgotten spiderwebs. Up on a shelf is a toolbox. At your feet lies a trapdoor and the toilet function is nestled in the corner to your right."
 Instead of opening toolbox:
 	say "The toolbox is locked shut. It doesn't seem like you'll find anything in it, anyway."
 The toolbox is scenery in outhouse. The description is "A standard old toolbox covered in dark stains that you can't make out in your flashlight's feeble beam."
@@ -326,29 +326,28 @@ Check hitting it with:
 		now the Master lock is broken;
 		now the oak door is unlocked.
 
-cabin interior is a room. It is south of oak door. The description is "The room consists of a solitary sofa infront of a fireplace, and a kitchenette."
-After examining Cabin Interior for the first time: increase score by 1.
-After going in cabin interior for the first time:
+Cabin is a room. It is south of oak door. The description is "The room consists of a solitary sofa infront of a fireplace, and a kitchenette."
+After going in cabin for the first time:
 	say "The door creaks havily, sucking in wind and shadows. The room you enter consists of a fireplace, a sofa, and a kitchenette."
-The sofa is scenery in cabin interior. The description is "A disgrace to the '70's, but nevertheless a sofa from that time. The ugly floral pattern is fadded and the cloth on the arm wrests is worn through."
+The sofa is scenery in cabin. The description is "A disgrace to the '70's, but nevertheless a sofa from that time. The ugly floral pattern is fadded and the cloth on the armrests is worn through."
 Instead of looking under sofa:
 	say "Just a family of dead dust mites."; increase score by 2.
 After examining sofa for the first time: increase score by 1.
 
-dust mites are scenery in cabin interior.
+dust mites are scenery in cabin.
 Instead of taking dust mites:
 	say "As lovely a gift you think dust would be, I promise you're wrong. "
 
-Ashes are scenery in cabin interior. The description is "A fluffy pile of soot."
+Ashes are scenery in cabin. The description is "A fluffy pile of soot."
 Instead of taking ashes:
 	say "You try desperately to scoop the ashes up, but they fall through your fingers. Don't feel too bad about it, though. I don't really think your girlfriend would think that's a nice present anyway."	
-The fireplace is scenery. It is in the cabin interior. The description is "The last user had apparently forgotten to clean the fireplace. A thick pile of ashes lay under a thick layer of dust."
-The kitchenette is a container in the cabin interior. It is fixed in place. The description is "Here you find several dollar-store white plates and a couple cans of soup whose expiration dates haven't yet been reached."
+The fireplace is scenery. It is in the cabin. The description is "The last user had apparently forgotten to clean the fireplace. A thick pile of ashes lay under a thick layer of dust."
+The kitchenette is a container in the cabin. It is fixed in place. The description is "Here you find several dollar-store white plates and a couple cans of soup whose expiration dates haven't yet been reached."
 Plates are scenery in kitchenette. Plates are fixed in place. The description is "Ten milky-white, cheap plates. The skeletons of dead bugs are solidified to their surfaces."
 After examining plates for the first time: increase score by 1.
 Soup is food. Soup is uncooked. Soup is inside the kitchenette. The soup is undescribed. The description is "Just simple store-brand chicken noodle soup."
 After examining soup for the first time: increase score by 1.
-Bug Skeletons are scenery in cabin interior. The description is "Too dim to tell the exact details, but that's all for the better; bugs gross you out."
+Bug Skeletons are scenery in cabin. The description is "Too dim to tell the exact details, but that's all for the better; bugs gross you out."
 Instead of taking Bug Skeletons:
 	say "If you're apprehensive about even looking at them, I can totally understand why you'd want to put them in your pocket. But you still try. However, the first one crumbles under the force of your fingers so you stop."
 
